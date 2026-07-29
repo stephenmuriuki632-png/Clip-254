@@ -1,0 +1,6 @@
+{
+  "name": "ClipKenya",
+  "description": "Africa's Creator Economy Super Platform connecting creators, brands, video editors, UGC creators, and influencers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
