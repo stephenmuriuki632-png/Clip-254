@@ -44,6 +44,8 @@ import { AdminSecurityDashboard } from './AdminSecurityDashboard';
 import { AdminFileManager } from './AdminFileManager';
 import { AdminSystemSettings } from './AdminSystemSettings';
 import { PermissionsCenter } from './PermissionsCenter';
+import { IntegrationsAndAutomationHub } from './IntegrationsAndAutomationHub';
+import { Zap } from 'lucide-react';
 
 export const AdminDashboard: React.FC = () => {
   const [activeAdminTab, setActiveAdminTab] = useState<string>('overview');
@@ -52,6 +54,7 @@ export const AdminDashboard: React.FC = () => {
 
   const navItems = [
     { id: 'overview', label: 'Admin Home', icon: LayoutDashboard, category: 'Main' },
+    { id: 'integrations', label: 'Integrations & Automations', icon: Zap, badge: 'Zapier', category: 'System' },
     { id: 'statistics', label: 'Statistics Matrix', icon: BarChart3, category: 'Main' },
     { id: 'users', label: 'User Directory', icon: Users, badge: '1,400+', category: 'Management' },
     { id: 'campaigns', label: 'Campaigns & Bounties', icon: Film, category: 'Management' },
@@ -172,6 +175,7 @@ export const AdminDashboard: React.FC = () => {
         {/* Content View Area */}
         <main className="flex-1 min-w-0">
           {activeAdminTab === 'overview' && <AdminOverview onNavigateTab={(t) => setActiveAdminTab(t)} />}
+          {activeAdminTab === 'integrations' && <IntegrationsAndAutomationHub />}
           {activeAdminTab === 'statistics' && <AdminStatistics />}
           {activeAdminTab === 'users' && <AdminUserManagement />}
           {activeAdminTab === 'campaigns' && <AdminCampaignManagement />}

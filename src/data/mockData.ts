@@ -10,7 +10,9 @@ import {
   Transaction,
   NotificationItem,
   AcademyCourse,
-  CommunityPost
+  CommunityPost,
+  CommunityGroup,
+  CommunityEvent
 } from '../types';
 
 export const CURRENT_USER: UserProfile = {
@@ -464,26 +466,152 @@ export const MOCK_POSTS: CommunityPost[] = [
   }
 ];
 
+export const MOCK_COMMUNITY_GROUPS: CommunityGroup[] = [
+  {
+    id: 'grp_001',
+    name: 'East African Video Editors Guild',
+    category: 'Video Editing',
+    description: 'Master Premiere Pro, DaVinci Resolve, CapCut, and viral sound design with 1,200+ top clippers across Kenya, Uganda, and Tanzania.',
+    coverImage: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+    membersCount: 1420,
+    isJoined: true,
+    recentActivity: 'Active 5 mins ago'
+  },
+  {
+    id: 'grp_002',
+    name: 'African UGC Creators Network',
+    category: 'UGC',
+    description: 'Learn how to pitch brands, write converting TikTok scripts, negotiate rates, and create high-performing UGC brand videos.',
+    coverImage: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80',
+    avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=300&q=80',
+    membersCount: 980,
+    isJoined: true,
+    recentActivity: 'Active 12 mins ago'
+  },
+  {
+    id: 'grp_003',
+    name: 'Fintech & M-Pesa Content Hub',
+    category: 'Finance',
+    description: 'Creating viral educational content, financial literacy videos, and fintech app reviews for the modern African consumer.',
+    coverImage: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80',
+    avatar: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=300&q=80',
+    membersCount: 640,
+    isJoined: false,
+    recentActivity: 'Active 1 hour ago'
+  },
+  {
+    id: 'grp_004',
+    name: 'Nairobi Streamers & Gamers',
+    category: 'Gaming',
+    description: 'Twitch, YouTube, and Kick streamers sharing clipping clips, esports tournaments, and setup configurations.',
+    coverImage: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80',
+    avatar: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&w=300&q=80',
+    membersCount: 510,
+    isJoined: false,
+    recentActivity: 'Active 3 hours ago'
+  }
+];
+
+export const MOCK_COMMUNITY_EVENTS: CommunityEvent[] = [
+  {
+    id: 'evt_001',
+    title: 'Nairobi Creator Hackathon: Build 10 Viral Short Clips in 3 Hours',
+    type: 'Hackathon',
+    hostName: 'ClipKenya Official & Safaricom',
+    hostAvatar: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=300&q=80',
+    date: '2026-08-10',
+    time: '18:00 EAT',
+    duration: '3 Hours',
+    coverImage: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80',
+    description: 'Live collaborative clipping competition! Edit raw stream footage live and win instant M-Pesa cash prizes from a 250,000 KES pool.',
+    attendeesCount: 340,
+    isAttending: true,
+    locationOrUrl: 'iHub Nairobi & YouTube Live',
+    prizePoolKES: 250000
+  },
+  {
+    id: 'evt_002',
+    title: 'Masterclass: How to Monetize TikTok & Reels with Brand Escrow Deals',
+    type: 'Webinar',
+    hostName: 'Amina Abdi & Maina Kamau',
+    hostAvatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=300&q=80',
+    date: '2026-08-14',
+    time: '20:00 EAT',
+    duration: '90 Mins',
+    coverImage: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80',
+    description: 'Learn exact rate cards, pitch emails, contract templates, and how to negotiate 50,000+ KES per UGC campaign.',
+    attendeesCount: 520,
+    isAttending: false,
+    locationOrUrl: 'ClipKenya Academy Live Studio'
+  }
+];
+
 export const MOCK_CONVERSATIONS: Conversation[] = [
   {
     id: 'conv_001',
+    type: 'campaign',
     participantId: 'brand_safaricom',
     participantName: 'Safaricom Campaign Manager',
     participantAvatar: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=300&q=80',
     participantRole: 'Verified Brand',
     lastMessage: 'Hi Maina, we loved your pitch for the M-Pesa Global UGC campaign! Sending the official contract offer now.',
     lastMessageTime: '10:45 AM',
-    unreadCount: 1
+    unreadCount: 1,
+    campaignTitle: 'M-Pesa Global UGC Launch Campaign',
+    campaignBudgetKES: 45000,
+    campaignStatus: 'Active Escrow',
+    campaignDeliverables: ['1x 45s Vertical Video', 'M-Pesa App Demo', '2 Revisions Allowed'],
+    onlineStatus: 'online',
+    isPinned: true
   },
   {
     id: 'conv_002',
+    type: 'private',
     participantId: 'usr_002',
     participantName: 'Wanjiku Njuguna',
     participantAvatar: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80',
     participantRole: 'Video Editor',
     lastMessage: 'I updated the color grade on clip #3 and exported in 4K 60fps. Check out the drive link.',
     lastMessageTime: 'Yesterday',
-    unreadCount: 0
+    unreadCount: 0,
+    onlineStatus: 'online',
+    lastSeen: 'Active now'
+  },
+  {
+    id: 'conv_003',
+    type: 'group',
+    participantId: 'grp_001',
+    participantName: 'Nairobi Editors Guild',
+    participantAvatar: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=300&q=80',
+    participantRole: 'Community Group',
+    groupName: 'Nairobi Editors Guild',
+    groupAvatar: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=300&q=80',
+    groupMembers: [
+      { id: 'usr_001', name: 'Maina Kamau', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80', role: 'Creator', isMod: true },
+      { id: 'usr_002', name: 'Wanjiku Njuguna', avatar: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80', role: 'Editor' },
+      { id: 'usr_003', name: 'Kevin Omondi', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80', role: 'Pro Clipper' }
+    ],
+    lastMessage: 'Kevin: Check out this CapCut auto-subtitle preset I created for Swahili clips!',
+    lastMessageTime: '2 hrs ago',
+    unreadCount: 3,
+    isPinned: true
+  },
+  {
+    id: 'conv_004',
+    type: 'campaign',
+    participantId: 'usr_001',
+    participantName: 'Kipchumba Chebet (Podcast)',
+    participantAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
+    participantRole: 'Host / Creator',
+    lastMessage: 'Great job on clip #42! It hit 80,000 views on TikTok in 24 hours.',
+    lastMessageTime: 'Jul 27',
+    unreadCount: 0,
+    campaignTitle: 'Future of AI Episode Clipping Bounty',
+    campaignBudgetKES: 150000,
+    campaignStatus: 'Active',
+    onlineStatus: 'offline',
+    lastSeen: '2 hours ago'
   }
 ];
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import { ToastProvider } from './context/ToastContext';
 import { Navbar } from './components/Navbar';
@@ -20,7 +20,9 @@ import { MessagingInbox } from './components/Messaging/MessagingInbox';
 import { AnalyticsDashboard } from './components/Analytics/AnalyticsDashboard';
 import { CreatorAcademy } from './components/Academy/CreatorAcademy';
 import { CommunityLounge } from './components/Community/CommunityLounge';
+import { NotificationCentre } from './components/Notifications/NotificationCentre';
 import { AdminDashboard } from './components/Admin/AdminDashboard';
+import { IntegrationsAndAutomationHub } from './components/Admin/IntegrationsAndAutomationHub';
 
 import { CreatorDashboard } from './components/CreatorDashboard/CreatorDashboard';
 import { ClipperDashboard } from './components/ClipperDashboard/ClipperDashboard';
@@ -39,19 +41,36 @@ import { ImpersonationBanner } from './components/Admin/ImpersonationBanner';
 import { Forbidden403 } from './components/Common/Forbidden403';
 import { Footer } from './components/Footer';
 
+// PWA & Mobile Components
+import { registerServiceWorker } from './pwa/registerServiceWorker';
+import { OfflineIndicator } from './components/Mobile/OfflineIndicator';
+import { BottomNav } from './components/Mobile/BottomNav';
+import { MobileFAB } from './components/Mobile/MobileFAB';
+import { PwaInstallBanner } from './components/Mobile/PwaInstallBanner';
+import { MobileUploader } from './components/Mobile/MobileUploader';
+import { PushNotificationManagerModal } from './components/Mobile/PushNotificationManagerModal';
+
 const AppContent: React.FC = () => {
   const { activeTab, setActiveTab, canAccess, isRoleManagerOpen, setIsRoleManagerOpen } = useApp();
   const [isCampaignModalOpen, setIsCampaignModalOpen] = useState(false);
+  const [isMobileUploaderOpen, setIsMobileUploaderOpen] = useState(false);
+  const [isPushSettingsOpen, setIsPushSettingsOpen] = useState(false);
+
+  useEffect(() => {
+    registerServiceWorker();
+  }, []);
 
   const isTabAllowed = canAccess(activeTab);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col font-sans transition-colors duration-200">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col font-sans transition-colors duration-200 pb-16 md:pb-0">
+      <OfflineIndicator />
       <ImpersonationBanner />
 
       <Navbar 
         onOpenWallet={() => setActiveTab('wallet')}
-        onOpenCreateCampaign={() => setIsCampaignModalOpen(true)} 
+        onOpenCreateCampaign={() => setIsCampaignModalOpen(true)}
+        onOpenPushSettings={() => setIsPushSettingsOpen(true)}
       />
 
       <main className="flex-1">
@@ -86,7 +105,9 @@ const AppContent: React.FC = () => {
             {activeTab === 'analytics' && <AnalyticsDashboard />}
             {activeTab === 'academy' && <CreatorAcademy />}
             {activeTab === 'community' && <CommunityLounge />}
+            {activeTab === 'notifications' && <NotificationCentre />}
             {activeTab === 'admin' && <AdminDashboard />}
+            {activeTab === 'integrations' && <IntegrationsAndAutomationHub />}
             {(activeTab === 'creator-dashboard' || activeTab === 'dashboard') && <CreatorDashboard />}
             {activeTab === 'clipper-dashboard' && <ClipperDashboard />}
 
@@ -104,6 +125,14 @@ const AppContent: React.FC = () => {
 
       <Footer />
 
+      {/* PWA & Mobile Navigation & FAB */}
+      <BottomNav onOpenMobileUploader={() => setIsMobileUploaderOpen(true)} />
+      <MobileFAB
+        onOpenMobileUploader={() => setIsMobileUploaderOpen(true)}
+        onOpenCreateCampaign={() => setIsCampaignModalOpen(true)}
+      />
+      <PwaInstallBanner />
+
       {/* Global Modals */}
       <ProfileModal />
       <CreateCampaignModal
@@ -113,6 +142,14 @@ const AppContent: React.FC = () => {
       <RoleManagerModal
         isOpen={isRoleManagerOpen}
         onClose={() => setIsRoleManagerOpen(false)}
+      />
+      <MobileUploader
+        isOpen={isMobileUploaderOpen}
+        onClose={() => setIsMobileUploaderOpen(false)}
+      />
+      <PushNotificationManagerModal
+        isOpen={isPushSettingsOpen}
+        onClose={() => setIsPushSettingsOpen(false)}
       />
     </div>
   );

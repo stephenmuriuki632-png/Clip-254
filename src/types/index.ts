@@ -1,6 +1,8 @@
 export * from './ugc';
 export * from './freelancer';
 export * from './finance';
+export * from './ai';
+export * from './academy';
 
 export type UserRole = 
   | 'creator' 
@@ -173,6 +175,12 @@ export interface UGCOrder {
   status: 'open' | 'assigned' | 'review' | 'completed';
 }
 
+export interface MessageReaction {
+  emoji: string;
+  count: number;
+  users: string[]; // userIds
+}
+
 export interface Message {
   id: string;
   conversationId: string;
@@ -181,6 +189,21 @@ export interface Message {
   senderAvatar: string;
   text: string;
   timestamp: string;
+  mediaType?: 'image' | 'video' | 'audio' | 'document' | 'zip' | 'gif';
+  mediaUrl?: string;
+  fileName?: string;
+  fileSize?: string;
+  voiceDuration?: string;
+  replyTo?: {
+    id: string;
+    senderName: string;
+    text: string;
+  };
+  reactions?: MessageReaction[];
+  isPinned?: boolean;
+  isStarred?: boolean;
+  isEdited?: boolean;
+  status?: 'sending' | 'delivered' | 'read';
   offerDetails?: {
     title: string;
     amountKES: number;
@@ -189,6 +212,15 @@ export interface Message {
     status: 'pending' | 'accepted' | 'declined' | 'completed';
   };
   attachmentUrl?: string;
+}
+
+export interface ConversationMember {
+  id: string;
+  name: string;
+  avatar: string;
+  role: string;
+  isOnline?: boolean;
+  isMod?: boolean;
 }
 
 export interface Conversation {
@@ -200,6 +232,20 @@ export interface Conversation {
   lastMessage: string;
   lastMessageTime: string;
   unreadCount: number;
+  type?: 'private' | 'group' | 'campaign';
+  groupName?: string;
+  groupAvatar?: string;
+  groupMembers?: ConversationMember[];
+  campaignTitle?: string;
+  campaignBudgetKES?: number;
+  campaignStatus?: string;
+  campaignDeliverables?: string[];
+  isPinned?: boolean;
+  isArchived?: boolean;
+  isMuted?: boolean;
+  isBlocked?: boolean;
+  onlineStatus?: 'online' | 'offline' | 'away';
+  lastSeen?: string;
 }
 
 export interface Transaction {
@@ -221,9 +267,11 @@ export interface NotificationItem {
   title: string;
   message: string;
   type: 'info' | 'success' | 'warning' | 'money' | 'message';
+  category?: 'messages' | 'campaigns' | 'payments' | 'submissions' | 'community' | 'system';
   read: boolean;
   timestamp: string;
   link?: string;
+  senderAvatar?: string;
 }
 
 export interface AcademyCourse {
@@ -243,6 +291,29 @@ export interface AcademyCourse {
   topics: string[];
 }
 
+export interface PollOption {
+  id: string;
+  text: string;
+  votes: number;
+  votedUserIds?: string[];
+}
+
+export interface CommunityComment {
+  id: string;
+  postId: string;
+  authorId: string;
+  authorName: string;
+  authorAvatar: string;
+  authorRole: string;
+  content: string;
+  timestamp: string;
+  likesCount: number;
+  isLiked?: boolean;
+  isPinned?: boolean;
+  parentId?: string; // for nested replies
+  reactions?: { emoji: string; count: number }[];
+}
+
 export interface CommunityPost {
   id: string;
   authorId: string;
@@ -251,10 +322,48 @@ export interface CommunityPost {
   authorRole: string;
   title: string;
   content: string;
-  category: 'Collab' | 'Tips & Tricks' | 'Showcase' | 'Job Opportunities' | 'General';
+  category: 'Collab' | 'Tips & Tricks' | 'Showcase' | 'Job Opportunities' | 'General' | 'Announcements';
   likesCount: number;
   commentsCount: number;
   timestamp: string;
   tags: string[];
   isLiked?: boolean;
+  isPinned?: boolean;
+  isSaved?: boolean;
+  mediaType?: 'image' | 'video' | 'poll' | 'question';
+  mediaUrl?: string;
+  pollOptions?: PollOption[];
+  pollTotalVotes?: number;
+}
+
+export interface CommunityGroup {
+  id: string;
+  name: string;
+  category: 'Video Editing' | 'UGC' | 'Creators' | 'Gaming' | 'Finance' | 'Education' | 'Technology' | 'Fitness' | 'Comedy' | 'Business' | 'Marketing';
+  description: string;
+  coverImage: string;
+  avatar: string;
+  membersCount: number;
+  isJoined?: boolean;
+  recentActivity: string;
+}
+
+export interface CommunityEvent {
+  id: string;
+  title: string;
+  type: 'Webinar' | 'Livestream' | 'Competition' | 'Workshop' | 'Creator Meetup' | 'Hackathon';
+  category?: string;
+  hostName: string;
+  hostAvatar: string;
+  date: string;
+  time?: string;
+  duration?: string;
+  coverImage?: string;
+  bannerImage?: string;
+  description: string;
+  attendeesCount: number;
+  isAttending?: boolean;
+  locationOrUrl?: string;
+  meetingLink?: string;
+  prizePoolKES?: number;
 }

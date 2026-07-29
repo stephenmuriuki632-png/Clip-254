@@ -1,0 +1,50 @@
+{
+  "short_name": "ClipKenya",
+  "name": "ClipKenya - Creator Economy Super Platform",
+  "description": "Africa's #1 marketplace for short-form video clipping bounties, UGC campaigns, brand sponsorships, and creator tools.",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%234f46e5'><rect width='512' height='512' rx='128' fill='%234f46e5'/><path d='M180 140l180 116-180 116V140z' fill='%23f59e0b'/><path d='M340 140l32 32-132 132-32-32L340 140z' fill='%23ffffff'/></svg>",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "id": "/",
+  "start_url": "/",
+  "background_color": "#0f172a",
+  "theme_color": "#4f46e5",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "categories": ["business", "entertainment", "social", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Post Bounty",
+      "short_name": "Post Bounty",
+      "description": "Post a new short-form clipping or UGC bounty",
+      "url": "/?tab=clipping",
+      "icons": [{ "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='%234f46e5'><rect width='96' height='96' rx='24'/><path d='M48 24v48M24 48h48' stroke='%23fff' stroke-width='8' stroke-linecap='round'/></svg>", "sizes": "96x96" }]
+    },
+    {
+      "name": "M-Pesa Wallet",
+      "short_name": "Wallet",
+      "description": "Deposit KES or withdraw earnings",
+      "url": "/?tab=wallet",
+      "icons": [{ "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='%2310b981'><rect width='96' height='96' rx='24'/><circle cx='48' cy='48' r='24' fill='%23fff'/></svg>", "sizes": "96x96" }]
+    },
+    {
+      "name": "AI Suite",
+      "short_name": "AI Tools",
+      "description": "Generate viral hooks, scripts, and captions",
+      "url": "/?tab=ai-tools",
+      "icons": [{ "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='%238b5cf6'><rect width='96' height='96' rx='24'/></svg>", "sizes": "96x96" }]
+    },
+    {
+      "name": "Messages",
+      "short_name": "Messages",
+      "description": "Chat with brands and creators",
+      "url": "/?tab=messages",
+      "icons": [{ "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='%233b82f6'><rect width='96' height='96' rx='24'/></svg>", "sizes": "96x96" }]
+    }
+  ]
+}

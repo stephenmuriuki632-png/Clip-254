@@ -2,28 +2,18 @@ import express from "express";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
+import {
+  currentAISettings,
+  adminAiControl,
+  auditLogsStore,
+  generateAIContent
+} from "./src/server/aiService";
 
 async function startServer() {
   const app = express();
   const PORT = 3000;
 
   app.use(express.json({ limit: "10mb" }));
-
-  // Initialize Gemini AI Client (Lazy check in endpoint for missing key safety)
-  const getGenAIClient = () => {
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-      return null;
-    }
-    return new GoogleGenAI({
-      apiKey,
-      httpOptions: {
-        headers: {
-          "User-Agent": "aistudio-build",
-        },
-      },
-    });
-  };
 
   // Health check endpoint
   app.get("/api/health", (_req, res) => {
@@ -50,56 +40,81 @@ async function startServer() {
 </urlset>`);
   });
 
-  // AI Tool Endpoint: Generate Hook Ideas, Viral Scripts, Captions, or Campaign Briefs
+  // AI Settings API
+  app.get("/api/ai/config", (_req, res) => {
+    res.json({ success: true, settings: currentAISettings });
+  });
+
+  app.post("/api/ai/config", (req, res) => {
+    const { provider, temperature, language, tone, outputLength, autoSaveHistory } = req.body;
+    if (provider) currentAISettings.provider = provider;
+    if (temperature !== undefined) currentAISettings.temperature = Number(temperature);
+    if (language) currentAISettings.language = language;
+    if (tone) currentAISettings.tone = tone;
+    if (outputLength) currentAISettings.outputLength = outputLength;
+    if (autoSaveHistory !== undefined) currentAISettings.autoSaveHistory = autoSaveHistory;
+
+    res.json({ success: true, settings: currentAISettings, message: "AI Settings updated successfully" });
+  });
+
+  // Admin AI Panel API
+  app.get("/api/ai/admin", (_req, res) => {
+    res.json({
+      success: true,
+      control: adminAiControl,
+      auditLogsCount: auditLogsStore.length
+    });
+  });
+
+  app.post("/api/ai/admin", (req, res) => {
+    const { toolId, enabled, dailyCreditLimit } = req.body;
+    if (toolId && enabled !== undefined) {
+      adminAiControl.enabledTools[toolId as keyof typeof adminAiControl.enabledTools] = Boolean(enabled);
+    }
+    if (dailyCreditLimit) {
+      adminAiControl.dailyCreditLimit = Number(dailyCreditLimit);
+    }
+    res.json({ success: true, control: adminAiControl, message: "Admin AI settings saved" });
+  });
+
+  app.get("/api/ai/audit-logs", (_req, res) => {
+    res.json({ success: true, logs: auditLogsStore });
+  });
+
+  // AI Tool Generation Endpoint
   app.post("/api/ai/generate", async (req, res) => {
     try {
-      const { type, prompt, niche, platform, language, targetAudience } = req.body;
-      const ai = getGenAIClient();
+      const { toolId = "hook_gen", type, prompt, niche, platform, language, tone, targetAudience, provider, userEmail } = req.body;
+      const effectiveToolId = toolId || (type === "hooks" ? "hook_gen" : type === "script" ? "script_writer" : type === "captions" ? "caption_gen" : type === "brief" ? "proposal_writer" : "hook_gen");
 
-      if (!ai) {
-        // Fallback response if GEMINI_API_KEY is not present yet
-        return res.json({
-          success: true,
-          result: `[AI Studio Mode] Generated ideas for "${prompt || "ClipKenya Creator"}":\n\n1. "Stop scrolling if you're in ${niche || "Kenya"}! Here is the $1,000 secret..."\n2. "3 mistakes every African creator makes on ${platform || "TikTok"}"\n3. "How this Nairobi brand made 500k KES using UGC videos"\n\n(Tip: Configure GEMINI_API_KEY in Secrets panel for live Google Gemini AI responses!)`,
-          fallback: true
+      const response = await generateAIContent({
+        toolId: effectiveToolId,
+        prompt: prompt || "Viral short-form creator content idea for Kenya",
+        niche,
+        platform,
+        language,
+        tone,
+        targetAudience,
+        provider,
+        userEmail
+      });
+
+      if (!response.success) {
+        return res.status(400).json({
+          success: false,
+          error: response.error || "Generation blocked by system security or admin control."
         });
       }
 
-      let systemInstruction = "You are ClipKenya's lead AI Creator Strategist. You specialize in viral short-form content, creator economy trends, and high-converting brand campaigns across Kenya and Africa.";
-      let userPrompt = "";
-
-      if (type === "hooks") {
-        systemInstruction += " Generate 5 irresistible video hooks with visual cues and estimated retention score.";
-        userPrompt = `Generate 5 viral short-form video hooks for ${platform || "TikTok/Reels"} about: "${prompt}". Target audience: ${targetAudience || "African youth and tech/lifestyle enthusiasts"}. Language style: ${language || "English with subtle Sheng/Kenyan touch"}. Include visual action cues in brackets.`;
-      } else if (type === "script") {
-        systemInstruction += " Format output with timestamps [0:00-0:05], Visual Scene, Audio/Voiceover script, and On-screen Text overlays.";
-        userPrompt = `Write a compelling 45-second short video script for ${platform || "TikTok"} about: "${prompt}". Niche: ${niche || "Creator/Tech"}. Include Hook, Body Value, and CTA to follow on ClipKenya.`;
-      } else if (type === "captions") {
-        systemInstruction += " Return 3 caption options (High-engagement, Storytelling, and Direct CTA) plus 15 relevant viral hashtags including Kenyan/African tags.";
-        userPrompt = `Create engaging captions and hashtags for a video about: "${prompt}". Platform: ${platform || "Instagram/TikTok"}.`;
-      } else if (type === "brief") {
-        systemInstruction += " Format as a professional Brand UGC/Campaign Brief with Objective, Deliverables, Target Creator Profile, Key Messages, and Do's & Don'ts.";
-        userPrompt = `Draft a high-performing brand campaign brief for: "${prompt}". Industry: ${niche || "E-commerce/SaaS"}. Target Creators: ${targetAudience || "Kenyan UGC & Micro-influencers"}.`;
-      } else {
-        userPrompt = prompt;
-      }
-
-      const response = await ai.models.generateContent({
-        model: "gemini-3.6-flash",
-        contents: userPrompt,
-        config: {
-          systemInstruction,
-          temperature: 0.7,
-        },
-      });
-
       res.json({
         success: true,
-        result: response.text || "No content generated.",
-        type
+        result: response.result,
+        toolId: effectiveToolId,
+        providerUsed: response.providerUsed,
+        creditsDeducted: response.creditsDeducted
       });
     } catch (error: any) {
-      console.error("Gemini AI error:", error);
+      console.error("AI Generation error:", error);
       res.status(500).json({
         success: false,
         error: error.message || "Failed to generate AI content",

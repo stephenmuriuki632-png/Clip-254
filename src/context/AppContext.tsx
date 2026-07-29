@@ -10,7 +10,12 @@ import {
   Message,
   Transaction,
   NotificationItem,
-  UserRole
+  UserRole,
+  CommunityPost,
+  CommunityComment,
+  CommunityGroup,
+  CommunityEvent,
+  PollOption
 } from '../types';
 import {
   hasPermission as checkHasPermission,
@@ -27,8 +32,12 @@ import {
   MOCK_CONVERSATIONS,
   MOCK_MESSAGES,
   INITIAL_TRANSACTIONS,
-  INITIAL_NOTIFICATIONS
+  INITIAL_NOTIFICATIONS,
+  MOCK_POSTS,
+  MOCK_COMMUNITY_GROUPS,
+  MOCK_COMMUNITY_EVENTS
 } from '../data/mockData';
+import { realtimeHub } from '../lib/supabase';
 
 interface AppContextType {
   // User & Perspective
@@ -80,16 +89,59 @@ interface AppContextType {
   toggleBookmarkSubmission: (submissionId: string) => void;
   bookGig: (gigId: string) => void;
 
-  // Messaging & Notifications
+  // Messaging & Realtime Chat
   conversations: Conversation[];
   messages: Record<string, Message[]>;
   activeConvId: string | null;
   setActiveConvId: (id: string | null) => void;
-  sendMessage: (convId: string, text: string, offerDetails?: Message['offerDetails']) => void;
+  sendMessage: (convId: string, text: string, options?: Partial<Message>) => void;
+  editMessage: (convId: string, messageId: string, newText: string) => void;
+  deleteMessage: (convId: string, messageId: string) => void;
+  pinMessage: (convId: string, messageId: string) => void;
+  starMessage: (convId: string, messageId: string) => void;
+  reactToMessage: (convId: string, messageId: string, emoji: string) => void;
+  startNewConversation: (participant: UserProfile) => string;
+  createGroupChat: (groupName: string, memberIds: string[], groupAvatar?: string) => string;
+  togglePinConversation: (convId: string) => void;
+  toggleArchiveConversation: (convId: string) => void;
+  toggleMuteConversation: (convId: string) => void;
+  blockUser: (userId: string) => void;
+  reportUser: (userId: string, reason: string) => void;
+  acceptEscrowContract: (convId: string, msgId: string) => void;
+  declineEscrowContract: (convId: string, msgId: string) => void;
+  blockedUserIds: string[];
   
+  // Notification Centre
   notifications: NotificationItem[];
   unreadNotifsCount: number;
   markNotificationsAsRead: () => void;
+  deleteNotification: (id: string) => void;
+  clearAllNotifications: () => void;
+  addNotification: (notif: Omit<NotificationItem, 'id' | 'timestamp' | 'read'>) => void;
+
+  // Follow System
+  followingUserIds: string[];
+  followUser: (userId: string) => void;
+  unfollowUser: (userId: string) => void;
+
+  // Creator Community
+  communityPosts: CommunityPost[];
+  addCommunityPost: (post: Omit<CommunityPost, 'id' | 'timestamp' | 'likesCount' | 'commentsCount'>) => void;
+  likeCommunityPost: (postId: string) => void;
+  votePoll: (postId: string, optionId: string) => void;
+  saveCommunityPost: (postId: string) => void;
+  deleteCommunityPost: (postId: string) => void;
+  comments: Record<string, CommunityComment[]>;
+  addComment: (postId: string, content: string, parentId?: string) => void;
+  likeComment: (commentId: string) => void;
+  pinComment: (commentId: string) => void;
+
+  // Community Groups & Events
+  communityGroups: CommunityGroup[];
+  toggleJoinGroup: (groupId: string) => void;
+  communityEvents: CommunityEvent[];
+  toggleRsvpEvent: (eventId: string) => void;
+  createEvent: (event: Omit<CommunityEvent, 'id' | 'attendeesCount'>) => void;
 
   // Theme & Navigation
   theme: 'dark' | 'light';
@@ -170,12 +222,35 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [submissions, setSubmissions] = useState<ClipSubmission[]>(MOCK_SUBMISSIONS);
   const [freelanceGigs] = useState<FreelanceGig[]>(MOCK_FREELANCE_GIGS);
 
-  const [conversations] = useState<Conversation[]>(MOCK_CONVERSATIONS);
+  const [conversations, setConversations] = useState<Conversation[]>(MOCK_CONVERSATIONS);
   const [messages, setMessages] = useState<Record<string, Message[]>>(MOCK_MESSAGES);
   const [activeConvId, setActiveConvId] = useState<string | null>('conv_001');
+  const [blockedUserIds, setBlockedUserIds] = useState<string[]>([]);
 
   const [notifications, setNotifications] = useState<NotificationItem[]>(INITIAL_NOTIFICATIONS);
   const unreadNotifsCount = notifications.filter(n => !n.read).length;
+
+  const [followingUserIds, setFollowingUserIds] = useState<string[]>(['usr_002', 'usr_003']);
+  const [communityPosts, setCommunityPosts] = useState<CommunityPost[]>(MOCK_POSTS);
+  const [comments, setComments] = useState<Record<string, CommunityComment[]>>({
+    post_001: [
+      {
+        id: 'cmt_001',
+        postId: 'post_001',
+        authorId: 'usr_002',
+        authorName: 'Wanjiku Njuguna',
+        authorAvatar: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80',
+        authorRole: 'Video Editor',
+        content: 'I am available for Premiere Pro & CapCut editing! DMing you now.',
+        timestamp: '1 hour ago',
+        likesCount: 5,
+        isLiked: true,
+        isPinned: true
+      }
+    ]
+  });
+  const [communityGroups, setCommunityGroups] = useState<CommunityGroup[]>(MOCK_COMMUNITY_GROUPS);
+  const [communityEvents, setCommunityEvents] = useState<CommunityEvent[]>(MOCK_COMMUNITY_EVENTS);
 
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [activeTab, setActiveTab] = useState<string>('home');
@@ -185,6 +260,29 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(null);
 
   const [searchQuery, setSearchQuery] = useState<string>('');
+
+  // Subscribe to Realtime messages and notifications across browser sessions/tabs
+  useEffect(() => {
+    const unsubMsg = realtimeHub.subscribe('chat_messages', (payload) => {
+      if (payload && payload.convId && payload.message) {
+        setMessages(prev => ({
+          ...prev,
+          [payload.convId]: [...(prev[payload.convId] || []).filter(m => m.id !== payload.message.id), payload.message]
+        }));
+      }
+    });
+
+    const unsubNotif = realtimeHub.subscribe('notifications', (payload) => {
+      if (payload && payload.notification) {
+        setNotifications(prev => [payload.notification, ...prev]);
+      }
+    });
+
+    return () => {
+      unsubMsg();
+      unsubNotif();
+    };
+  }, []);
 
   // Sync theme to document body class
   useEffect(() => {
@@ -518,7 +616,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   };
 
   // Send Chat Message
-  const sendMessage = (convId: string, text: string, offerDetails?: Message['offerDetails']) => {
+  const sendMessage = (convId: string, text: string, options?: Partial<Message>) => {
     const newMsg: Message = {
       id: 'msg_' + Date.now(),
       conversationId: convId,
@@ -527,13 +625,378 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       senderAvatar: currentUser.avatar,
       text,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      offerDetails
+      status: 'delivered',
+      ...options
     };
 
     setMessages(prev => ({
       ...prev,
       [convId]: [...(prev[convId] || []), newMsg]
     }));
+
+    // Broadcast via Realtime channel
+    realtimeHub.publish('chat_messages', { convId, message: newMsg });
+
+    // Update last message on conversation
+    setConversations(prev => prev.map(c => c.id === convId ? {
+      ...c,
+      lastMessage: text || (options?.mediaType ? `[Shared ${options.mediaType}]` : 'Sent a file'),
+      lastMessageTime: 'Just now'
+    } : c));
+  };
+
+  const editMessage = (convId: string, messageId: string, newText: string) => {
+    setMessages(prev => ({
+      ...prev,
+      [convId]: (prev[convId] || []).map(m => m.id === messageId ? { ...m, text: newText, isEdited: true } : m)
+    }));
+  };
+
+  const deleteMessage = (convId: string, messageId: string) => {
+    setMessages(prev => ({
+      ...prev,
+      [convId]: (prev[convId] || []).filter(m => m.id !== messageId)
+    }));
+  };
+
+  const pinMessage = (convId: string, messageId: string) => {
+    setMessages(prev => ({
+      ...prev,
+      [convId]: (prev[convId] || []).map(m => m.id === messageId ? { ...m, isPinned: !m.isPinned } : m)
+    }));
+  };
+
+  const starMessage = (convId: string, messageId: string) => {
+    setMessages(prev => ({
+      ...prev,
+      [convId]: (prev[convId] || []).map(m => m.id === messageId ? { ...m, isStarred: !m.isStarred } : m)
+    }));
+  };
+
+  const reactToMessage = (convId: string, messageId: string, emoji: string) => {
+    setMessages(prev => ({
+      ...prev,
+      [convId]: (prev[convId] || []).map(m => {
+        if (m.id !== messageId) return m;
+        const reactions = m.reactions || [];
+        const existingIndex = reactions.findIndex(r => r.emoji === emoji);
+        let updatedReactions = [...reactions];
+        if (existingIndex > -1) {
+          const item = updatedReactions[existingIndex];
+          if (item.users.includes(currentUser.id)) {
+            item.users = item.users.filter(u => u !== currentUser.id);
+            item.count -= 1;
+          } else {
+            item.users.push(currentUser.id);
+            item.count += 1;
+          }
+          updatedReactions = updatedReactions.filter(r => r.count > 0);
+        } else {
+          updatedReactions.push({ emoji, count: 1, users: [currentUser.id] });
+        }
+        return { ...m, reactions: updatedReactions };
+      })
+    }));
+  };
+
+  const startNewConversation = (participant: UserProfile): string => {
+    const existing = conversations.find(c => c.participantId === participant.id);
+    if (existing) {
+      setActiveConvId(existing.id);
+      return existing.id;
+    }
+
+    const newConv: Conversation = {
+      id: 'conv_' + Date.now(),
+      type: 'private',
+      participantId: participant.id,
+      participantName: participant.name,
+      participantAvatar: participant.avatar,
+      participantRole: participant.role,
+      lastMessage: 'Conversation started',
+      lastMessageTime: 'Just now',
+      unreadCount: 0,
+      onlineStatus: 'online',
+      lastSeen: 'Active now'
+    };
+
+    setConversations(prev => [newConv, ...prev]);
+    setActiveConvId(newConv.id);
+    return newConv.id;
+  };
+
+  const createGroupChat = (groupName: string, memberIds: string[], groupAvatar?: string): string => {
+    const memberProfiles = creators.filter(c => memberIds.includes(c.id));
+    const members = [
+      { id: currentUser.id, name: currentUser.name, avatar: currentUser.avatar, role: currentUser.role, isMod: true },
+      ...memberProfiles.map(m => ({ id: m.id, name: m.name, avatar: m.avatar, role: m.role, isMod: false }))
+    ];
+
+    const newGroup: Conversation = {
+      id: 'grp_' + Date.now(),
+      type: 'group',
+      participantId: 'grp_' + Date.now(),
+      participantName: groupName,
+      participantAvatar: groupAvatar || 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=300&q=80',
+      participantRole: 'Group Chat',
+      groupName,
+      groupAvatar,
+      groupMembers: members,
+      lastMessage: `${currentUser.name} created the group "${groupName}"`,
+      lastMessageTime: 'Just now',
+      unreadCount: 0
+    };
+
+    setConversations(prev => [newGroup, ...prev]);
+    setActiveConvId(newGroup.id);
+    return newGroup.id;
+  };
+
+  const togglePinConversation = (convId: string) => {
+    setConversations(prev => prev.map(c => c.id === convId ? { ...c, isPinned: !c.isPinned } : c));
+  };
+
+  const toggleArchiveConversation = (convId: string) => {
+    setConversations(prev => prev.map(c => c.id === convId ? { ...c, isArchived: !c.isArchived } : c));
+  };
+
+  const toggleMuteConversation = (convId: string) => {
+    setConversations(prev => prev.map(c => c.id === convId ? { ...c, isMuted: !c.isMuted } : c));
+  };
+
+  const blockUser = (userId: string) => {
+    setBlockedUserIds(prev => [...new Set([...prev, userId])]);
+    setConversations(prev => prev.map(c => c.participantId === userId ? { ...c, isBlocked: true } : c));
+    alert('User has been blocked.');
+  };
+
+  const reportUser = (userId: string, reason: string) => {
+    alert(`Report submitted for user. Reason: ${reason}. Our moderation team will review this shortly.`);
+  };
+
+  const acceptEscrowContract = (convId: string, msgId: string) => {
+    setMessages(prev => ({
+      ...prev,
+      [convId]: (prev[convId] || []).map(m => {
+        if (m.id === msgId && m.offerDetails) {
+          return {
+            ...m,
+            offerDetails: { ...m.offerDetails, status: 'accepted' }
+          };
+        }
+        return m;
+      })
+    }));
+
+    addNotification({
+      title: '✅ Escrow Contract Accepted!',
+      message: 'You accepted the contract offer. Funds are locked safely in Escrow.',
+      type: 'success',
+      category: 'campaigns'
+    });
+  };
+
+  const declineEscrowContract = (convId: string, msgId: string) => {
+    setMessages(prev => ({
+      ...prev,
+      [convId]: (prev[convId] || []).map(m => {
+        if (m.id === msgId && m.offerDetails) {
+          return {
+            ...m,
+            offerDetails: { ...m.offerDetails, status: 'declined' }
+          };
+        }
+        return m;
+      })
+    }));
+  };
+
+  // Notification Centre Handlers
+  const deleteNotification = (id: string) => {
+    setNotifications(prev => prev.filter(n => n.id !== id));
+  };
+
+  const clearAllNotifications = () => {
+    setNotifications([]);
+  };
+
+  const addNotification = (notif: Omit<NotificationItem, 'id' | 'timestamp' | 'read'>) => {
+    const item: NotificationItem = {
+      ...notif,
+      id: 'notif_' + Date.now(),
+      timestamp: 'Just now',
+      read: false
+    };
+    setNotifications(prev => [item, ...prev]);
+    realtimeHub.publish('notifications', { notification: item });
+  };
+
+  // Follow Handlers
+  const followUser = (userId: string) => {
+    setFollowingUserIds(prev => [...new Set([...prev, userId])]);
+    addNotification({
+      title: '👤 User Followed',
+      message: `You are now following user ${userId}`,
+      type: 'info',
+      category: 'community'
+    });
+  };
+
+  const unfollowUser = (userId: string) => {
+    setFollowingUserIds(prev => prev.filter(id => id !== userId));
+  };
+
+  // Community Feed Handlers
+  const addCommunityPost = (post: Omit<CommunityPost, 'id' | 'timestamp' | 'likesCount' | 'commentsCount'>) => {
+    const newPost: CommunityPost = {
+      ...post,
+      id: 'post_' + Date.now(),
+      timestamp: 'Just now',
+      likesCount: 1,
+      commentsCount: 0,
+      isLiked: true
+    };
+
+    setCommunityPosts(prev => [newPost, ...prev]);
+
+    addNotification({
+      title: '📢 Community Post Live',
+      message: `Your post "${post.title}" is live on the Creator Lounge feed.`,
+      type: 'success',
+      category: 'community'
+    });
+  };
+
+  const likeCommunityPost = (postId: string) => {
+    setCommunityPosts(prev => prev.map(p => {
+      if (p.id === postId) {
+        return {
+          ...p,
+          likesCount: p.isLiked ? p.likesCount - 1 : p.likesCount + 1,
+          isLiked: !p.isLiked
+        };
+      }
+      return p;
+    }));
+  };
+
+  const votePoll = (postId: string, optionId: string) => {
+    setCommunityPosts(prev => prev.map(p => {
+      if (p.id === postId && p.pollOptions) {
+        const options = p.pollOptions.map(opt => {
+          if (opt.id === optionId) {
+            const users = opt.votedUserIds || [];
+            if (!users.includes(currentUser.id)) {
+              return { ...opt, votes: opt.votes + 1, votedUserIds: [...users, currentUser.id] };
+            }
+          }
+          return opt;
+        });
+        const total = options.reduce((sum, o) => sum + o.votes, 0);
+        return { ...p, pollOptions: options, pollTotalVotes: total };
+      }
+      return p;
+    }));
+  };
+
+  const saveCommunityPost = (postId: string) => {
+    setCommunityPosts(prev => prev.map(p => p.id === postId ? { ...p, isSaved: !p.isSaved } : p));
+  };
+
+  const deleteCommunityPost = (postId: string) => {
+    setCommunityPosts(prev => prev.filter(p => p.id !== postId));
+  };
+
+  const addComment = (postId: string, content: string, parentId?: string) => {
+    const newCmt: CommunityComment = {
+      id: 'cmt_' + Date.now(),
+      postId,
+      authorId: currentUser.id,
+      authorName: currentUser.name,
+      authorAvatar: currentUser.avatar,
+      authorRole: currentUser.role,
+      content,
+      timestamp: 'Just now',
+      likesCount: 0,
+      parentId
+    };
+
+    setComments(prev => ({
+      ...prev,
+      [postId]: [...(prev[postId] || []), newCmt]
+    }));
+
+    setCommunityPosts(prev => prev.map(p => p.id === postId ? { ...p, commentsCount: p.commentsCount + 1 } : p));
+  };
+
+  const likeComment = (commentId: string) => {
+    setComments(prev => {
+      const copy = { ...prev };
+      Object.keys(copy).forEach(postId => {
+        copy[postId] = copy[postId].map(c => {
+          if (c.id === commentId) {
+            return {
+              ...c,
+              likesCount: c.isLiked ? c.likesCount - 1 : c.likesCount + 1,
+              isLiked: !c.isLiked
+            };
+          }
+          return c;
+        });
+      });
+      return copy;
+    });
+  };
+
+  const pinComment = (commentId: string) => {
+    setComments(prev => {
+      const copy = { ...prev };
+      Object.keys(copy).forEach(postId => {
+        copy[postId] = copy[postId].map(c => {
+          if (c.id === commentId) {
+            return { ...c, isPinned: !c.isPinned };
+          }
+          return c;
+        });
+      });
+      return copy;
+    });
+  };
+
+  const toggleJoinGroup = (groupId: string) => {
+    setCommunityGroups(prev => prev.map(g => {
+      if (g.id === groupId) {
+        return {
+          ...g,
+          membersCount: g.isJoined ? g.membersCount - 1 : g.membersCount + 1,
+          isJoined: !g.isJoined
+        };
+      }
+      return g;
+    }));
+  };
+
+  const toggleRsvpEvent = (eventId: string) => {
+    setCommunityEvents(prev => prev.map(e => {
+      if (e.id === eventId) {
+        return {
+          ...e,
+          attendeesCount: e.isAttending ? e.attendeesCount - 1 : e.attendeesCount + 1,
+          isAttending: !e.isAttending
+        };
+      }
+      return e;
+    }));
+  };
+
+  const createEvent = (event: Omit<CommunityEvent, 'id' | 'attendeesCount'>) => {
+    const newEvt: CommunityEvent = {
+      ...event,
+      id: 'evt_' + Date.now(),
+      attendeesCount: 1,
+      isAttending: true
+    };
+    setCommunityEvents(prev => [newEvt, ...prev]);
   };
 
   return (
@@ -579,9 +1042,45 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         activeConvId,
         setActiveConvId,
         sendMessage,
+        editMessage,
+        deleteMessage,
+        pinMessage,
+        starMessage,
+        reactToMessage,
+        startNewConversation,
+        createGroupChat,
+        togglePinConversation,
+        toggleArchiveConversation,
+        toggleMuteConversation,
+        blockUser,
+        reportUser,
+        acceptEscrowContract,
+        declineEscrowContract,
+        blockedUserIds,
         notifications,
         unreadNotifsCount,
         markNotificationsAsRead,
+        deleteNotification,
+        clearAllNotifications,
+        addNotification,
+        followingUserIds,
+        followUser,
+        unfollowUser,
+        communityPosts,
+        addCommunityPost,
+        likeCommunityPost,
+        votePoll,
+        saveCommunityPost,
+        deleteCommunityPost,
+        comments,
+        addComment,
+        likeComment,
+        pinComment,
+        communityGroups,
+        toggleJoinGroup,
+        communityEvents,
+        toggleRsvpEvent,
+        createEvent,
         theme,
         toggleTheme,
         activeTab,

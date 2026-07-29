@@ -20,13 +20,20 @@ import {
   Menu,
   X,
   ChevronDown,
-  PhoneCall
+  PhoneCall,
+  Smartphone,
+  Download
 } from 'lucide-react';
 import { UserRole } from '../types';
 
-export const Navbar: React.FC<{ onOpenWallet: () => void; onOpenCreateCampaign: () => void }> = ({
+export const Navbar: React.FC<{
+  onOpenWallet: () => void;
+  onOpenCreateCampaign: () => void;
+  onOpenPushSettings?: () => void;
+}> = ({
   onOpenWallet,
-  onOpenCreateCampaign
+  onOpenCreateCampaign,
+  onOpenPushSettings
 }) => {
   const {
     currentUser,
@@ -239,9 +246,32 @@ export const Navbar: React.FC<{ onOpenWallet: () => void; onOpenCreateCampaign: 
                       </div>
                     ))}
                   </div>
+                  <div className="pt-2 border-t border-slate-100 dark:border-slate-700 mt-2">
+                    <button
+                      onClick={() => {
+                        setShowNotifPopover(false);
+                        setActiveTab('notifications');
+                      }}
+                      className="w-full py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 text-indigo-600 dark:text-indigo-300 font-bold text-xs text-center block transition-colors"
+                    >
+                      View All Notifications & Preferences
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
+
+            {/* Push Notifications Settings */}
+            {onOpenPushSettings && (
+              <button
+                onClick={onOpenPushSettings}
+                className="hidden sm:flex p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors shadow-2xs"
+                title="PWA Push Notifications"
+                aria-label="PWA Push Notifications"
+              >
+                <Smartphone className="w-4 h-4 text-indigo-500" />
+              </button>
+            )}
 
             {/* Theme Toggle */}
             <button
