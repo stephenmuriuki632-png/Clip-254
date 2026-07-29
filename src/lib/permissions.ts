@@ -231,6 +231,31 @@ export const ROLE_DEFINITIONS: Record<UserRole, RoleDefinition> = {
     ]
   },
 
+  clipper: {
+    id: 'clipper',
+    title: 'Streamer Clipper & UGC Creator',
+    badge: 'Pro Clipper',
+    iconName: 'Scissor',
+    description: 'Clip Twitch & YouTube streams, edit viral TikTok/Shorts hooks, submit to active bounties, and earn instant M-Pesa payouts.',
+    capabilities: [
+      'Browse active campaign bounties',
+      'Download stream VODs & submit edited clips',
+      'Track clip view metrics & approval status',
+      'Earn M-Pesa payouts per approved clip',
+      'Build clipper portfolio & receive ratings'
+    ],
+    defaultPermissions: [
+      'campaigns:search_filter',
+      'videos:download_source',
+      'submissions:edit',
+      'submissions:track_status',
+      'ratings:receive',
+      'wallet:view',
+      'wallet:withdraw',
+      'profile:manage'
+    ]
+  },
+
   freelancer: {
     id: 'freelancer',
     title: 'Creative Freelancer',

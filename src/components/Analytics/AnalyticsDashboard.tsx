@@ -14,21 +14,21 @@ import {
 } from 'recharts';
 
 export const AnalyticsDashboard: React.FC = () => {
-  const { balanceKES, currentUser } = useApp();
+  const { balanceKES, submissions, transactions } = useApp();
+
+  const totalViews = submissions.reduce((acc, s) => acc + (s.views || 0), 0);
+  const totalPayoutsKES = transactions.filter(t => t.type === 'payout' || t.type === 'escrow_release').reduce((acc, t) => acc + t.amountKES, 0);
+  const totalPayoutsUSD = Math.round((totalPayoutsKES / 130) * 100) / 100;
+  const completedDeals = submissions.filter(s => s.status === 'approved' || s.status === 'completed' || s.status === 'paid').length;
 
   const monthlyEarningsData = [
-    { month: 'Feb', KES: 22000, views: '180K' },
-    { month: 'Mar', KES: 35000, views: '320K' },
-    { month: 'Apr', KES: 28000, views: '290K' },
-    { month: 'May', KES: 48000, views: '510K' },
-    { month: 'Jun', KES: 65000, views: '840K' },
-    { month: 'Jul', KES: 82400, views: '1.2M' },
+    { month: 'Current', KES: totalPayoutsKES, views: `${totalViews}` }
   ];
 
   const platformPerformanceData = [
-    { platform: 'TikTok', views: 820000, earningsKES: 45000 },
-    { platform: 'YouTube Shorts', views: 340000, earningsKES: 22400 },
-    { platform: 'Instagram Reels', views: 190000, earningsKES: 15000 },
+    { platform: 'TikTok', views: submissions.filter(s => s.platform === 'tiktok').reduce((acc, s) => acc + (s.views || 0), 0) },
+    { platform: 'YouTube Shorts', views: submissions.filter(s => s.platform === 'youtube').reduce((acc, s) => acc + (s.views || 0), 0) },
+    { platform: 'Instagram Reels', views: submissions.filter(s => s.platform === 'instagram').reduce((acc, s) => acc + (s.views || 0), 0) }
   ];
 
   return (
@@ -58,10 +58,12 @@ export const AnalyticsDashboard: React.FC = () => {
             <span className="text-xs font-bold uppercase tracking-wider">Total Clip Views</span>
             <Eye className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
           </div>
-          <p className="font-heading font-extrabold text-2xl text-slate-900 dark:text-white">1.35M</p>
-          <div className="flex items-center gap-1 text-[11px] text-emerald-600 dark:text-emerald-400 font-bold">
+          <p className="font-heading font-extrabold text-2xl text-slate-900 dark:text-white">
+            {totalViews > 1000000 ? `${(totalViews / 1000000).toFixed(1)}M` : totalViews > 1000 ? `${(totalViews / 1000).toFixed(1)}K` : totalViews}
+          </p>
+          <div className="flex items-center gap-1 text-[11px] text-slate-500 font-bold">
             <TrendingUp className="w-3 h-3" />
-            <span>+38% vs last month</span>
+            <span>Realtime tracking</span>
           </div>
         </div>
 
@@ -70,16 +72,18 @@ export const AnalyticsDashboard: React.FC = () => {
             <span className="text-xs font-bold uppercase tracking-wider">Cumulative Payouts</span>
             <DollarSign className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
           </div>
-          <p className="font-heading font-extrabold text-2xl text-indigo-600 dark:text-indigo-400">280,400 KES</p>
-          <p className="text-[11px] text-slate-400">≈ $2,150 USD Earned</p>
+          <p className="font-heading font-extrabold text-2xl text-indigo-600 dark:text-indigo-400">
+            {totalPayoutsKES.toLocaleString()} KES
+          </p>
+          <p className="text-[11px] text-slate-400">≈ ${totalPayoutsUSD.toLocaleString()} USD Earned</p>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
+        <div className="p-5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-2">
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-xs font-bold uppercase tracking-wider">Completed Deals</span>
             <Award className="w-4 h-4 text-amber-500" />
           </div>
-          <p className="font-heading font-extrabold text-2xl text-slate-900 dark:text-white">34 Orders</p>
+          <p className="font-heading font-extrabold text-2xl text-slate-900 dark:text-white">{completedDeals} Orders</p>
           <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold">100% On-Time Delivery</p>
         </div>
 

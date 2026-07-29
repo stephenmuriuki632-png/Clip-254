@@ -212,25 +212,25 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     return checkCanAccessTab(tabId, effectiveUser, currentRole);
   };
   
-  const [balanceKES, setBalanceKES] = useState<number>(44900);
+  const [balanceKES, setBalanceKES] = useState<number>(0);
   const balanceUSD = Math.round((balanceKES / 130) * 100) / 100;
   
   const [transactions, setTransactions] = useState<Transaction[]>(INITIAL_TRANSACTIONS);
   const [creators] = useState<UserProfile[]>(MOCK_CREATORS);
   const [campaigns, setCampaigns] = useState<Campaign[]>(MOCK_CAMPAIGNS);
   const [bounties, setBounties] = useState<ClipBounty[]>(MOCK_BOUNTIES);
-  const [submissions, setSubmissions] = useState<ClipSubmission[]>(MOCK_SUBMISSIONS);
+  const [submissions, setSubmissions] = useState<ClipSubmission[]>([]);
   const [freelanceGigs] = useState<FreelanceGig[]>(MOCK_FREELANCE_GIGS);
 
   const [conversations, setConversations] = useState<Conversation[]>(MOCK_CONVERSATIONS);
   const [messages, setMessages] = useState<Record<string, Message[]>>(MOCK_MESSAGES);
-  const [activeConvId, setActiveConvId] = useState<string | null>('conv_001');
+  const [activeConvId, setActiveConvId] = useState<string | null>(null);
   const [blockedUserIds, setBlockedUserIds] = useState<string[]>([]);
 
   const [notifications, setNotifications] = useState<NotificationItem[]>(INITIAL_NOTIFICATIONS);
   const unreadNotifsCount = notifications.filter(n => !n.read).length;
 
-  const [followingUserIds, setFollowingUserIds] = useState<string[]>(['usr_002', 'usr_003']);
+  const [followingUserIds, setFollowingUserIds] = useState<string[]>([]);
   const [communityPosts, setCommunityPosts] = useState<CommunityPost[]>(MOCK_POSTS);
   const [comments, setComments] = useState<Record<string, CommunityComment[]>>({
     post_001: [

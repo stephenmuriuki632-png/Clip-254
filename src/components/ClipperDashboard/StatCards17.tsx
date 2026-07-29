@@ -25,27 +25,27 @@ export const StatCards17: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   // Compute stats dynamically
-  const availableCampaigns = campaigns.filter(c => c.status === 'active').length || 14;
-  const appliedCampaigns = 8;
+  const availableCampaigns = campaigns.filter(c => c.status === 'active').length;
+  const appliedCampaigns = submissions.length;
   
   const pendingClips = submissions.filter(s => s.status === 'pending' || s.status === 'under_review').length;
   const approvedClips = submissions.filter(s => s.status === 'approved' || s.status === 'completed' || s.status === 'paid').length;
   const rejectedClips = submissions.filter(s => s.status === 'rejected').length;
   const revisionRequests = submissions.filter(s => s.status === 'revision_requested').length;
-  const completedCampaigns = 12;
+  const completedCampaigns = approvedClips;
 
-  const totalEarningsKES = submissions.filter(s => s.status === 'approved' || s.status === 'completed' || s.status === 'paid').reduce((acc, s) => acc + (s.payoutKES || 2500), 0) + 125000;
-  const pendingEarningsKES = submissions.filter(s => s.status === 'pending' || s.status === 'under_review' || s.status === 'revision_requested').reduce((acc, s) => acc + (s.payoutKES || 2500), 0) + 15000;
+  const totalEarningsKES = submissions.filter(s => s.status === 'approved' || s.status === 'completed' || s.status === 'paid').reduce((acc, s) => acc + (s.payoutKES || 0), 0);
+  const pendingEarningsKES = submissions.filter(s => s.status === 'pending' || s.status === 'under_review' || s.status === 'revision_requested').reduce((acc, s) => acc + (s.payoutKES || 0), 0);
   const availableBalanceKES = balanceKES;
-  const monthlyEarningsKES = Math.round(totalEarningsKES * 0.45);
+  const monthlyEarningsKES = totalEarningsKES;
 
   const totalEvaluated = approvedClips + rejectedClips;
-  const approvalRate = totalEvaluated > 0 ? Math.round((approvedClips / totalEvaluated) * 100) : 94;
-  const averageRating = currentUser.rating || 4.9;
-  const leaderboardRank = '#4 In Kenya';
-  const portfolioViews = '12.4K';
-  const profileViews = '3.8K';
-  const jobsCompleted = completedCampaigns + approvedClips;
+  const approvalRate = totalEvaluated > 0 ? `${Math.round((approvedClips / totalEvaluated) * 100)}%` : 'N/A';
+  const averageRating = currentUser.rating && currentUser.rating > 0 ? `${currentUser.rating.toFixed(1)} / 5` : 'No ratings yet';
+  const leaderboardRank = approvedClips > 0 ? '#1 In Local Bounties' : 'Not ranked yet';
+  const portfolioViews = '0';
+  const profileViews = '0';
+  const jobsCompleted = approvedClips;
 
   const statsList = [
     {

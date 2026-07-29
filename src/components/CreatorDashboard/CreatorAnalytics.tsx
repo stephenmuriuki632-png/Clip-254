@@ -8,7 +8,12 @@ import {
   Users, 
   Calendar,
   Award,
-  Sparkles
+  Sparkles,
+  PlusCircle,
+  ArrowRight,
+  ShieldCheck,
+  UserCheck,
+  Wallet
 } from 'lucide-react';
 import { 
   AreaChart, 
@@ -28,9 +33,12 @@ import {
 import { useApp } from '../../context/AppContext';
 
 export const CreatorAnalytics: React.FC = () => {
-  const { campaigns, submissions } = useApp();
+  const { campaigns, submissions, currentUser, setActiveTab, openCreateCampaignModal } = useApp();
 
   const [timeRange, setTimeRange] = useState<'7d' | '30d' | '90d' | '1y'>('30d');
+
+  const myCampaigns = campaigns.filter(c => c.creatorId === currentUser.id);
+  const hasRealData = myCampaigns.length > 0 || submissions.length > 0;
 
   // Performance Trend Data
   const trendData = [
@@ -94,8 +102,67 @@ export const CreatorAnalytics: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Performance Area Chart */}
-      <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-4">
+      {!hasRealData ? (
+        <div className="space-y-6">
+          <div className="p-8 rounded-3xl bg-gradient-to-br from-indigo-900/90 via-slate-900 to-slate-950 border border-indigo-800/40 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="space-y-2 text-center md:text-left">
+              <span className="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                Analytics Pending
+              </span>
+              <h3 className="text-2xl font-extrabold font-heading text-white">Create your first campaign to start receiving submissions.</h3>
+              <p className="text-xs text-slate-300 max-w-xl leading-relaxed">
+                Once your campaign is active and clippers begin submitting vertical videos, your total organic views, M-Pesa escrow spend, and creator performance charts will render here in real time.
+              </p>
+            </div>
+            <button
+              onClick={openCreateCampaignModal}
+              className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-lg shadow-indigo-600/30 transition-all hover:scale-105 shrink-0"
+            >
+              <PlusCircle className="w-4 h-4" />
+              <span>Create First Campaign</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                <UserCheck className="w-5 h-5" />
+              </div>
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white font-heading">Complete your profile to increase trust.</h4>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Add brand guidelines, social links, and logo so top video editors & clippers apply immediately.</p>
+              <button onClick={() => setActiveTab('settings')} className="text-xs font-extrabold text-indigo-600 dark:text-indigo-400 flex items-center gap-1 hover:underline">
+                Update Brand Profile <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white font-heading">Verify your account to unlock more features.</h4>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Verify your company registration or social handle to post unlimited high-budget campaigns.</p>
+              <button onClick={() => setActiveTab('settings')} className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400 flex items-center gap-1 hover:underline">
+                Get Verified <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+                <Wallet className="w-5 h-5" />
+              </div>
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white font-heading">Fund your wallet via M-Pesa.</h4>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Deposit budget into secure Escrow to automatically pay clippers as soon as clips go viral.</p>
+              <button onClick={() => setActiveTab('wallet')} className="text-xs font-extrabold text-purple-600 dark:text-purple-400 flex items-center gap-1 hover:underline">
+                Top Up Wallet <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <>
+          {/* Main Performance Area Chart */}
+        <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
             <h3 className="font-extrabold text-sm text-slate-900 dark:text-white font-heading">
@@ -222,6 +289,8 @@ export const CreatorAnalytics: React.FC = () => {
         </div>
 
       </div>
+        </>
+      )}
 
     </div>
   );

@@ -12,6 +12,7 @@ export type UserRole =
   | 'brand' 
   | 'agency' 
   | 'freelancer' 
+  | 'clipper'
   | 'admin';
 
 export interface UserProfile {

@@ -19,28 +19,29 @@ import {
 import { useApp } from '../../context/AppContext';
 
 export const StatCards: React.FC = () => {
-  const { campaigns, submissions, balanceKES } = useApp();
+  const { campaigns, submissions, balanceKES, currentUser } = useApp();
 
-  // Metrics calculations
-  const totalCampaigns = campaigns.length;
-  const activeCampaigns = campaigns.filter(c => c.status === 'active').length;
-  const completedCampaigns = campaigns.filter(c => c.status === 'completed').length;
-  const pausedCampaigns = campaigns.filter(c => c.status === 'paused').length;
+  // Metrics calculations for the current user/brand
+  const myCampaigns = campaigns.filter(c => c.creatorId === currentUser.id);
+  const totalCampaigns = myCampaigns.length;
+  const activeCampaigns = myCampaigns.filter(c => c.status === 'active').length;
+  const completedCampaigns = myCampaigns.filter(c => c.status === 'completed').length;
+  const pausedCampaigns = myCampaigns.filter(c => c.status === 'paused').length;
 
-  const totalBudgetKES = campaigns.reduce((acc, c) => acc + (c.budgetKES || 0), 0);
-  const totalSpendingKES = campaigns.reduce((acc, c) => acc + (c.budgetKES ? c.budgetKES * 0.65 : 0), 0);
-  const monthlySpendingKES = Math.round(totalSpendingKES * 0.4);
+  const totalBudgetKES = myCampaigns.reduce((acc, c) => acc + (c.budgetKES || 0), 0);
+  const totalSpendingKES = submissions.filter(s => s.status === 'approved' || s.status === 'paid').reduce((acc, s) => acc + (s.payoutKES || 0), 0);
+  const monthlySpendingKES = totalSpendingKES;
 
   const approvedClips = submissions.filter(s => s.status === 'approved' || s.status === 'paid').length;
   const pendingReviews = submissions.filter(s => s.status === 'pending' || s.status === 'under_review').length;
   const rejectedClips = submissions.filter(s => s.status === 'rejected').length;
 
-  const totalSubmissions = submissions.length || 1;
-  const approvalRate = Math.round((approvedClips / totalSubmissions) * 100);
+  const totalSubmissions = submissions.length;
+  const approvalRate = totalSubmissions > 0 ? `${Math.round((approvedClips / totalSubmissions) * 100)}%` : '0%';
 
   const totalViews = submissions.reduce((acc, s) => acc + (s.views || 0), 0);
-  const totalEngagement = Math.round(totalViews * 0.082); // ~8.2% engagement rate simulation
-  const creatorsHired = new Set(submissions.map(s => s.editorId)).size || 12;
+  const totalEngagement = submissions.reduce((acc, s) => acc + (s.likes || 0) + (s.comments || 0), 0);
+  const creatorsHired = new Set(submissions.filter(s => s.status === 'approved').map(s => s.editorId)).size;
 
   const stats = [
     {

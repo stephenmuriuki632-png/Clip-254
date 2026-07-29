@@ -21,48 +21,33 @@ export const CURRENT_USER: UserProfile = {
   handle: '@mainatreats',
   role: 'creator',
   primaryRole: 'creator',
-  additionalRoles: ['editor', 'freelancer', 'ugc'],
+  additionalRoles: ['editor', 'freelancer', 'ugc', 'brand', 'agency', 'clipper'],
   activeRole: 'creator',
   email: 'maina@clipkenya.africa',
   avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
   coverImage: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
-  bio: 'Nairobi Tech & Digital Creator. Creating 60-second tech reviews, gadget unboxings, and CapCut tutorials for 450k+ followers across TikTok & Shorts.',
+  bio: 'Digital Creator & Video Editor in Nairobi, Kenya. Ready to launch campaigns & clip viral videos.',
   location: 'Nairobi, Kenya',
-  verified: true,
-  rating: 4.9,
-  reviewCount: 48,
-  followersCount: 485000,
+  verified: false,
+  rating: 0,
+  reviewCount: 0,
+  followersCount: 0,
   primaryPlatform: 'tiktok',
   niche: ['Tech & Gadgets', 'Video Editing', 'Lifestyle'],
   rates: {
-    hourlyKES: 4500,
-    videoClipKES: 15000,
-    ugcPostKES: 25000,
-    sponsoredVideoKES: 60000,
+    hourlyKES: 3500,
+    videoClipKES: 5000,
+    ugcPostKES: 15000,
+    sponsoredVideoKES: 45000,
   },
   socialLinks: {
     tiktok: 'https://tiktok.com/@mainatreats',
-    youtube: 'https://youtube.com/@mainatech',
-    instagram: 'https://instagram.com/@maina_tech',
-    portfolio: 'https://mainatreats.clipkenya.site'
+    youtube: 'https://youtube.com/@mainatech'
   },
-  skills: ['4K Video Editing', 'CapCut Pro', 'TikTok Viral Hooks', 'Swahili Voiceover', 'Product Unboxing'],
-  badge: 'Pro Creator & Clipper',
-  completedOrders: 34,
-  featuredVideos: [
-    {
-      title: 'Testing $150 Wireless Mic in Nairobi Street Noise',
-      url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-      thumbnail: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=600&q=80',
-      views: '1.2M views'
-    },
-    {
-      title: 'Top 5 Budget Editing Laptops in Kenya 2026',
-      url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-      thumbnail: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80',
-      views: '840K views'
-    }
-  ]
+  skills: ['Video Editing', 'CapCut Pro', 'TikTok Viral Hooks', 'Swahili Voiceover'],
+  badge: 'New Member',
+  completedOrders: 0,
+  featuredVideos: []
 };
 
 export const MOCK_CREATORS: UserProfile[] = [
@@ -547,178 +532,10 @@ export const MOCK_COMMUNITY_EVENTS: CommunityEvent[] = [
   }
 ];
 
-export const MOCK_CONVERSATIONS: Conversation[] = [
-  {
-    id: 'conv_001',
-    type: 'campaign',
-    participantId: 'brand_safaricom',
-    participantName: 'Safaricom Campaign Manager',
-    participantAvatar: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=300&q=80',
-    participantRole: 'Verified Brand',
-    lastMessage: 'Hi Maina, we loved your pitch for the M-Pesa Global UGC campaign! Sending the official contract offer now.',
-    lastMessageTime: '10:45 AM',
-    unreadCount: 1,
-    campaignTitle: 'M-Pesa Global UGC Launch Campaign',
-    campaignBudgetKES: 45000,
-    campaignStatus: 'Active Escrow',
-    campaignDeliverables: ['1x 45s Vertical Video', 'M-Pesa App Demo', '2 Revisions Allowed'],
-    onlineStatus: 'online',
-    isPinned: true
-  },
-  {
-    id: 'conv_002',
-    type: 'private',
-    participantId: 'usr_002',
-    participantName: 'Wanjiku Njuguna',
-    participantAvatar: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80',
-    participantRole: 'Video Editor',
-    lastMessage: 'I updated the color grade on clip #3 and exported in 4K 60fps. Check out the drive link.',
-    lastMessageTime: 'Yesterday',
-    unreadCount: 0,
-    onlineStatus: 'online',
-    lastSeen: 'Active now'
-  },
-  {
-    id: 'conv_003',
-    type: 'group',
-    participantId: 'grp_001',
-    participantName: 'Nairobi Editors Guild',
-    participantAvatar: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=300&q=80',
-    participantRole: 'Community Group',
-    groupName: 'Nairobi Editors Guild',
-    groupAvatar: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=300&q=80',
-    groupMembers: [
-      { id: 'usr_001', name: 'Maina Kamau', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80', role: 'Creator', isMod: true },
-      { id: 'usr_002', name: 'Wanjiku Njuguna', avatar: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80', role: 'Editor' },
-      { id: 'usr_003', name: 'Kevin Omondi', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80', role: 'Pro Clipper' }
-    ],
-    lastMessage: 'Kevin: Check out this CapCut auto-subtitle preset I created for Swahili clips!',
-    lastMessageTime: '2 hrs ago',
-    unreadCount: 3,
-    isPinned: true
-  },
-  {
-    id: 'conv_004',
-    type: 'campaign',
-    participantId: 'usr_001',
-    participantName: 'Kipchumba Chebet (Podcast)',
-    participantAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
-    participantRole: 'Host / Creator',
-    lastMessage: 'Great job on clip #42! It hit 80,000 views on TikTok in 24 hours.',
-    lastMessageTime: 'Jul 27',
-    unreadCount: 0,
-    campaignTitle: 'Future of AI Episode Clipping Bounty',
-    campaignBudgetKES: 150000,
-    campaignStatus: 'Active',
-    onlineStatus: 'offline',
-    lastSeen: '2 hours ago'
-  }
-];
+export const MOCK_CONVERSATIONS: Conversation[] = [];
 
-export const MOCK_MESSAGES: Record<string, Message[]> = {
-  conv_001: [
-    {
-      id: 'msg_101',
-      conversationId: 'conv_001',
-      senderId: 'brand_safaricom',
-      senderName: 'Safaricom Campaign Manager',
-      senderAvatar: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=300&q=80',
-      text: 'Jambo Maina! We reviewed your portfolio on ClipKenya and your previous tech unboxing videos are top-notch.',
-      timestamp: '10:30 AM'
-    },
-    {
-      id: 'msg_102',
-      conversationId: 'conv_001',
-      senderId: 'usr_me_001',
-      senderName: 'Maina Kamau',
-      senderAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
-      text: 'Asante sana! I would love to create a high-converting 45-second TikTok video showing how easy it is to transfer funds abroad with M-Pesa Global.',
-      timestamp: '10:38 AM'
-    },
-    {
-      id: 'msg_103',
-      conversationId: 'conv_001',
-      senderId: 'brand_safaricom',
-      senderName: 'Safaricom Campaign Manager',
-      senderAvatar: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=300&q=80',
-      text: 'Sounds great. Here is the formal contract offer with Escrow protection.',
-      timestamp: '10:45 AM',
-      offerDetails: {
-        title: '1x M-Pesa Global UGC Video + Rights',
-        amountKES: 45000,
-        deliverables: '1x 45s Vertical Video, 2 Revisions, M-Pesa Global branding callout',
-        deadline: '2026-08-12',
-        status: 'pending'
-      }
-    }
-  ]
-};
+export const MOCK_MESSAGES: Record<string, Message[]> = {};
 
-export const INITIAL_TRANSACTIONS: Transaction[] = [
-  {
-    id: 'tx_001',
-    userId: 'usr_me_001',
-    type: 'payout',
-    amountKES: 17400,
-    amountUSD: 133,
-    status: 'completed',
-    provider: 'mpesa',
-    reference: 'RKP82910X9',
-    timestamp: '2026-07-25 14:32',
-    description: 'Video Bounty Payout: AI & Tech Jobs in Africa Clip',
-    recipientOrSource: 'ClipKenya Bounty Escrow'
-  },
-  {
-    id: 'tx_002',
-    userId: 'usr_me_001',
-    type: 'deposit',
-    amountKES: 25000,
-    amountUSD: 192,
-    status: 'completed',
-    provider: 'mpesa',
-    reference: 'QMT91024L2',
-    timestamp: '2026-07-20 09:15',
-    description: 'M-Pesa Express STK Deposit (+254 712 *** 890)',
-    recipientOrSource: 'M-Pesa STK Push'
-  },
-  {
-    id: 'tx_003',
-    userId: 'usr_me_001',
-    type: 'referral_bonus',
-    amountKES: 2500,
-    amountUSD: 19,
-    status: 'completed',
-    provider: 'mpesa',
-    reference: 'REF8829101',
-    timestamp: '2026-07-18 18:00',
-    description: 'Referral Bonus: @wanjiku_edits joined ClipKenya',
-    recipientOrSource: 'ClipKenya Creator Referral Program'
-  }
-];
+export const INITIAL_TRANSACTIONS: Transaction[] = [];
 
-export const INITIAL_NOTIFICATIONS: NotificationItem[] = [
-  {
-    id: 'notif_001',
-    title: '💰 Bounty Payout Approved!',
-    message: 'Your submitted clip "Why AI won\'t replace Nairobi Software Engineers" passed 145k views. 17,400 KES deposited to your wallet.',
-    type: 'money',
-    read: false,
-    timestamp: '1 hour ago'
-  },
-  {
-    id: 'notif_002',
-    title: '✉️ New Campaign Contract Offer',
-    message: 'Safaricom PLC sent you a 45,000 KES campaign contract offer in messages.',
-    type: 'message',
-    read: false,
-    timestamp: '2 hours ago'
-  },
-  {
-    id: 'notif_003',
-    title: '🎉 Welcome to ClipKenya Pro',
-    message: 'Your profile is now verified. You have full access to M-Pesa instant payouts and Gemini AI Creator Tools.',
-    type: 'success',
-    read: true,
-    timestamp: '2 days ago'
-  }
-];
+export const INITIAL_NOTIFICATIONS: NotificationItem[] = [];
