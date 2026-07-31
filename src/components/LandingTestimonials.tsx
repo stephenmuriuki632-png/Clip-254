@@ -12,7 +12,7 @@ export const LandingTestimonials: React.FC = () => {
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
       rating: 5,
       earnings: 'Made KES 145,000 last month',
-      quote: 'ClipKenya changed my life as a university editor. I extract 60-second clips from top podcasters and receive instant M-Pesa payouts the minute my clips hit view milestones!',
+      quote: 'ClipForge changed my life as a university editor. I extract 60-second clips from top podcasters and receive instant M-Pesa payouts the minute my clips hit view milestones!',
       verified: true
     },
     {
@@ -32,7 +32,7 @@ export const LandingTestimonials: React.FC = () => {
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
       rating: 5,
       earnings: 'Launched 15+ UGC Briefs',
-      quote: 'Finding authentic Kenyan micro-influencers used to take weeks. With ClipKenya’s UGC Marketplace, we receive 50+ vetted video submissions in under 48 hours with full usage rights.',
+      quote: 'Finding authentic Kenyan micro-influencers used to take weeks. With ClipForge’s UGC Marketplace, we receive 50+ vetted video submissions in under 48 hours with full usage rights.',
       verified: true
     }
   ];
@@ -50,7 +50,7 @@ export const LandingTestimonials: React.FC = () => {
             Trusted by 15,000+ Creators, Editors & Brands
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-            Hear how ClipKenya is empowering African digital entrepreneurs with fair compensation and escrow protection.
+            Hear how ClipForge is empowering African digital entrepreneurs with fair compensation and escrow protection.
           </p>
         </div>
 

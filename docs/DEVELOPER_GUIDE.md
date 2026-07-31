@@ -1,6 +1,6 @@
-# 👨‍💻 ClipKenya Developer Guide
+# 👨‍💻 ClipForge Developer Guide
 
-Welcome to the ClipKenya developer documentation. This guide details codebase conventions, architecture decisions, component design, state management, and security patterns.
+Welcome to the ClipForge developer documentation. This guide details codebase conventions, architecture decisions, component design, state management, and security patterns.
 
 ---
 
@@ -16,7 +16,7 @@ Welcome to the ClipKenya developer documentation. This guide details codebase co
 ├── src/
 │   ├── components/
 │   │   ├── AI/                # Gemini AI viral generators & hook writers
-│   │   ├── Academy/           # ClipKenya Creator Academy course player & store
+│   │   ├── Academy/           # ClipForge Creator Academy course player & store
 │   │   ├── Admin/             # Admin portal, dispute resolution, analytics
 │   │   ├── Bounties/          # Clipping bounties, submission dialogs
 │   │   ├── Campaigns/         # UGC Brand campaigns and creator applications

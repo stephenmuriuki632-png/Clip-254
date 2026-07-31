@@ -32,7 +32,7 @@ export const WithdrawalModal: React.FC<Props> = ({
   const [amountInput, setAmountInput] = useState('10000');
   const [phoneInput, setPhoneInput] = useState('254712345678');
   const [bankDetails, setBankDetails] = useState({ bankName: 'Equity Bank Kenya', accountNum: '011029384756', accountName: 'Alex K.' });
-  const [paypalEmail, setPaypalEmail] = useState('user@clipkenya.co.ke');
+  const [paypalEmail, setPaypalEmail] = useState('user@clipforge.co.ke');
   const [loading, setLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 

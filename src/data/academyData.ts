@@ -23,12 +23,12 @@ export const DETAILED_COURSES: DetailedCourse[] = [
     priceKES: 0, // FREE
     originalPriceKES: 3500,
     description: 'Learn how to generate $1,000+ per month through video clipping bounties, UGC brand deals, and M-Pesa direct monetization.',
-    longDescription: 'This course is the definitive guide for African video editors, podcast clippers, and short-form creators wanting to earn consistent income. We cover finding active ClipKenya bounties, optimizing video hooks for high view retention, writing converting pitches for brands, and instantly withdrawing earnings via M-Pesa.',
-    topics: ['Finding High-Paying Bounties', 'Hook Science for TikTok FYP', 'Pitching Brands via ClipKenya', 'M-Pesa Escrow Payouts'],
-    prerequisites: ['Basic smartphone or PC editing software (CapCut or Premiere)', 'ClipKenya active account'],
+    longDescription: 'This course is the definitive guide for African video editors, podcast clippers, and short-form creators wanting to earn consistent income. We cover finding active ClipForge bounties, optimizing video hooks for high view retention, writing converting pitches for brands, and instantly withdrawing earnings via M-Pesa.',
+    topics: ['Finding High-Paying Bounties', 'Hook Science for TikTok FYP', 'Pitching Brands via ClipForge', 'M-Pesa Escrow Payouts'],
+    prerequisites: ['Basic smartphone or PC editing software (CapCut or Premiere)', 'ClipForge active account'],
     skillsLearned: [
       'TikTok FYP Algorithm Retention Tricks',
-      'ClipKenya Escrow Bounties Navigation',
+      'ClipForge Escrow Bounties Navigation',
       'High-Converting Brand Pitch Writing',
       'M-Pesa Payout Workflow'
     ],
@@ -36,7 +36,7 @@ export const DETAILED_COURSES: DetailedCourse[] = [
       id: 'usr_me_001',
       name: 'Maina Kamau',
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
-      role: 'Pro Creator & ClipKenya Ambassador',
+      role: 'Pro Creator & ClipForge Ambassador',
       bio: 'Nairobi digital creator with 450k+ followers. Has landed over 80+ brand deals and generated 15M+ views across East Africa.',
       rating: 4.9,
       studentsCount: 3800,
@@ -55,7 +55,7 @@ export const DETAILED_COURSES: DetailedCourse[] = [
             title: 'Welcome to the Masterclass & Short-Form Overview',
             duration: '08:20',
             videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-            summary: 'An introduction to the ClipKenya ecosystem, current market rates in Kenya, and how video clipping works.',
+            summary: 'An introduction to the ClipForge ecosystem, current market rates in Kenya, and how video clipping works.',
             isFreePreview: true,
             resources: [
               {
@@ -66,7 +66,7 @@ export const DETAILED_COURSES: DetailedCourse[] = [
                 size: '1.2 MB'
               }
             ],
-            transcript: 'Jambo creators! Welcome to the course. In this first lesson we break down how creators and clippers collaborate on ClipKenya...'
+            transcript: 'Jambo creators! Welcome to the course. In this first lesson we break down how creators and clippers collaborate on ClipForge...'
           },
           {
             id: 'les_102',
@@ -94,15 +94,15 @@ export const DETAILED_COURSES: DetailedCourse[] = [
           questions: [
             {
               id: 'q1',
-              question: 'How are bounty earnings safely held on ClipKenya before milestone payouts?',
+              question: 'How are bounty earnings safely held on ClipForge before milestone payouts?',
               options: [
                 'In the creator personal bank account',
-                'In ClipKenya Escrow Smart Pool',
+                'In ClipForge Escrow Smart Pool',
                 'Sent via paper check',
                 'Deferred for 12 months'
               ],
               correctAnswerIndex: 1,
-              explanation: 'ClipKenya uses automated Escrow pools to lock brand funds securely until video view milestones are verified.'
+              explanation: 'ClipForge uses automated Escrow pools to lock brand funds securely until video view milestones are verified.'
             },
             {
               id: 'q2',
@@ -156,7 +156,7 @@ export const DETAILED_COURSES: DetailedCourse[] = [
         assignment: {
           id: 'assign_101',
           title: 'Practical Project: Edit 1 Viral Bounty Clip',
-          instructions: 'Download raw stream footage from the ClipKenya Bounties pool, edit a 30-45s vertical video with dynamic captions and a strong hook, and submit your link below.',
+          instructions: 'Download raw stream footage from the ClipForge Bounties pool, edit a 30-45s vertical video with dynamic captions and a strong hook, and submit your link below.',
           rubric: [
             'Includes vertical 9:16 framing',
             'Strong visual or audio hook within first 3 seconds',
@@ -190,7 +190,7 @@ export const DETAILED_COURSES: DetailedCourse[] = [
     faqs: [
       {
         question: 'Do I get a certificate upon completion?',
-        answer: 'Yes! After completing all lessons, passing module quizzes, and submitting your project, you will instantly receive an official ClipKenya Verified Creator Certificate.'
+        answer: 'Yes! After completing all lessons, passing module quizzes, and submitting your project, you will instantly receive an official ClipForge Verified Creator Certificate.'
       },
       {
         question: 'Is this course suitable for total beginners?',
@@ -270,7 +270,7 @@ export const DETAILED_COURSES: DetailedCourse[] = [
     faqs: [
       {
         question: 'Can I pay using M-Pesa?',
-        answer: 'Yes! You can instantly enroll using M-Pesa STK push or directly from your ClipKenya Wallet balance.'
+        answer: 'Yes! You can instantly enroll using M-Pesa STK push or directly from your ClipForge Wallet balance.'
       }
     ],
     certificateAvailable: true,
@@ -341,7 +341,7 @@ export const DETAILED_COURSES: DetailedCourse[] = [
     description: 'Leverage Gemini AI, Midjourney, and ElevenLabs to launch 100% automated YouTube Shorts & TikTok channels.',
     longDescription: 'Learn how to generate viral scripts with Gemini AI, build custom avatars, synthesize realistic African accents, and auto-caption videos on complete autopilot.',
     topics: ['Gemini AI Scripting', 'ElevenLabs Voiceover Tuning', 'Faceless TikTok Channels', 'Automated Clip Generation'],
-    prerequisites: ['Internet access and ClipKenya AI Studio subscription'],
+    prerequisites: ['Internet access and ClipForge AI Studio subscription'],
     skillsLearned: [
       'AI Prompt Engineering for Video Scripts',
       'Voice Synthesis & Accent Tuning',
@@ -373,7 +373,7 @@ export const MOCK_LEARNING_PATHS: LearningPath[] = [
   {
     id: 'path_001',
     title: 'Full-Stack Short-Form Clipper',
-    subtitle: 'From zero editing experience to earning 100,000+ KES/mo on ClipKenya bounties',
+    subtitle: 'From zero editing experience to earning 100,000+ KES/mo on ClipForge bounties',
     description: 'A comprehensive 3-step structured learning roadmap to master CapCut editing, viral hook science, and bounty payouts.',
     icon: 'Scissors',
     category: 'Video Editing & Clipping',
@@ -385,7 +385,7 @@ export const MOCK_LEARNING_PATHS: LearningPath[] = [
         id: 'step_1',
         stepNumber: 1,
         title: 'Short-Form Monetization Fundamentals',
-        description: 'Understand how video bounties work and learn the ClipKenya escrow system.',
+        description: 'Understand how video bounties work and learn the ClipForge escrow system.',
         courseId: 'course_001'
       },
       {
@@ -440,11 +440,11 @@ export const MOCK_USER_CERTIFICATES: CertificateData[] = [
     courseTitle: 'Monetizing Short-Form Content in Kenya & Africa (2026 Masterclass)',
     studentName: 'Maina Kamau',
     studentId: 'usr_me_001',
-    instructorName: 'Maina Kamau & ClipKenya Academy',
+    instructorName: 'Maina Kamau & ClipForge Academy',
     issueDate: '2026-07-22',
     verificationCode: 'CK-ACADEMY-2026-9012X',
     badgeUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=300&q=80',
-    skills: ['TikTok Hook Science', 'ClipKenya Bounty Escrow', 'Swahili Sheng Captions', 'M-Pesa Monetization']
+    skills: ['TikTok Hook Science', 'ClipForge Bounty Escrow', 'Swahili Sheng Captions', 'M-Pesa Monetization']
   }
 ];
 
@@ -510,7 +510,7 @@ export const MOCK_LEARNER_BADGES: LearnerBadge[] = [
   {
     id: 'badge_1',
     name: 'First Steps',
-    description: 'Enrolled in your first ClipKenya Academy course',
+    description: 'Enrolled in your first ClipForge Academy course',
     icon: 'Award',
     unlockedAt: '2026-07-10',
     isUnlocked: true
@@ -534,7 +534,7 @@ export const MOCK_LEARNER_BADGES: LearnerBadge[] = [
   {
     id: 'badge_4',
     name: 'Verified Graduate',
-    description: 'Earned an official ClipKenya Academy Verified Certificate',
+    description: 'Earned an official ClipForge Academy Verified Certificate',
     icon: 'GraduationCap',
     unlockedAt: '2026-07-22',
     isUnlocked: true

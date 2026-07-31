@@ -24,14 +24,14 @@ export const BlogPage: React.FC = () => {
       date: 'July 10, 2026',
       readTime: '6 min read',
       category: 'Brand Strategy',
-      snippet: 'Authenticity converts 3x higher than studio ads. Discover how brands leverage ClipKenya micro-creators for high ROAS.'
+      snippet: 'Authenticity converts 3x higher than studio ads. Discover how brands leverage ClipForge micro-creators for high ROAS.'
     }
   ];
 
   return (
     <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-10">
       <div className="text-center space-y-3 max-w-2xl mx-auto">
-        <Badge variant="emerald" size="lg">ClipKenya Insights</Badge>
+        <Badge variant="emerald" size="lg">ClipForge Insights</Badge>
         <h1 className="font-heading text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
           Creator Economy News & Editing Playbooks
         </h1>

@@ -368,7 +368,7 @@ export const AdminUserManagement: React.FC = () => {
         onClose={() => setIsExportOpen(false)}
         title="User Directory"
         data={creators}
-        filename="clipkenya_users"
+        filename="clipforge_users"
       />
     </div>
   );

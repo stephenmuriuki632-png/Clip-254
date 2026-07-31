@@ -36,7 +36,7 @@ export const AiAssistantDrawer: React.FC<AiAssistantDrawerProps> = ({
 
   const [activeTab, setActiveTab] = useState<'GENERATOR' | 'HISTORY'>('GENERATOR');
   const [toolType, setToolType] = useState<AiPromptHistoryItem['toolType']>('HOOK_WRITER');
-  const [provider, setProvider] = useState<'Gemini 2.5 Flash' | 'ClipKenya AI Fine-Tuned' | 'DeepSeek R1'>('Gemini 2.5 Flash');
+  const [provider, setProvider] = useState<'Gemini 2.5 Flash' | 'ClipForge AI Fine-Tuned' | 'DeepSeek R1'>('Gemini 2.5 Flash');
   const [prompt, setPrompt] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedOutput, setGeneratedOutput] = useState('');
@@ -58,11 +58,11 @@ export const AiAssistantDrawer: React.FC<AiAssistantDrawerProps> = ({
       let output = '';
 
       if (toolType === 'HOOK_WRITER') {
-        output = `🔥 TOP 3 VIRAL TIKTOK HOOKS:\n1. "Don't post your next video until you fix this ONE mistake Nairobi creators make!"\n2. "How I made KES 45,000 clipping 15-second tech videos on ClipKenya last week."\n3. "If you live in Westlands or Kilimani, Safaricom just updated this feature..."`;
+        output = `🔥 TOP 3 VIRAL TIKTOK HOOKS:\n1. "Don't post your next video until you fix this ONE mistake Nairobi creators make!"\n2. "How I made KES 45,000 clipping 15-second tech videos on ClipForge last week."\n3. "If you live in Westlands or Kilimani, Safaricom just updated this feature..."`;
       } else if (toolType === 'SCRIPT_GEN') {
-        output = `🎬 30-SECOND REEL SCRIPT:\n[0:00 - 0:03] Fast Cut: Point to screen with sound FX.\n[0:03 - 0:12] Voiceover: "Finding high paying clip bounties in Kenya used to be tough. Here is how M-Pesa instant payouts work on ClipKenya."\n[0:12 - 0:25] B-Roll: Show live screen recording of wallet balance moving from KES 0 to KES 12,500.\n[0:25 - 0:30] CTA: "Tap link in bio to start clipping today!"`;
+        output = `🎬 30-SECOND REEL SCRIPT:\n[0:00 - 0:03] Fast Cut: Point to screen with sound FX.\n[0:03 - 0:12] Voiceover: "Finding high paying clip bounties in Kenya used to be tough. Here is how M-Pesa instant payouts work on ClipForge."\n[0:12 - 0:25] B-Roll: Show live screen recording of wallet balance moving from KES 0 to KES 12,500.\n[0:25 - 0:30] CTA: "Tap link in bio to start clipping today!"`;
       } else if (toolType === 'HASHTAGS') {
-        output = `#ClipKenya #NairobiCreators #TikTokKenya #MpesaBounty #KenyaShorts #VideoEditingKenya #TechNairobi #ViralClips #CreatorEconomyKE`;
+        output = `#ClipForge #NairobiCreators #TikTokKenya #MpesaBounty #KenyaShorts #VideoEditingKenya #TechNairobi #ViralClips #CreatorEconomyKE`;
       } else if (toolType === 'PROPOSAL_GEN') {
         output = `Hi! I reviewed your campaign brief. As a professional short-form editor based in Nairobi, I deliver fast-paced 9:16 vertical cuts with dynamic motion subtitles, audio FX, and high retention pacing. I can deliver 10 clips per week with instant revisions. Let us get started!`;
       } else {
@@ -105,7 +105,7 @@ export const AiAssistantDrawer: React.FC<AiAssistantDrawerProps> = ({
             </div>
             <div>
               <h2 className="text-base font-extrabold flex items-center gap-2">
-                ClipKenya AI Assistant
+                ClipForge AI Assistant
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
                   Gemini 2.5 Flash
                 </span>
@@ -199,7 +199,7 @@ export const AiAssistantDrawer: React.FC<AiAssistantDrawerProps> = ({
                 className="w-full p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white"
               >
                 <option value="Gemini 2.5 Flash">Gemini 2.5 Flash (Ultra High Speed)</option>
-                <option value="ClipKenya AI Fine-Tuned">ClipKenya Fine-Tuned (Kenyan Slang & Swahili)</option>
+                <option value="ClipForge AI Fine-Tuned">ClipForge Fine-Tuned (Kenyan Slang & Swahili)</option>
                 <option value="DeepSeek R1">DeepSeek R1 (Deep Campaign Reasoning)</option>
               </select>
             </div>

@@ -24,7 +24,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
     courseTitle: course.title,
     studentName: studentName || 'Maina Kamau',
     studentId: 'usr_me_001',
-    instructorName: `${course.instructor.name} & ClipKenya Academy`,
+    instructorName: `${course.instructor.name} & ClipForge Academy`,
     issueDate: new Date().toISOString().split('T')[0],
     verificationCode: `CK-ACADEMY-2026-${Math.random().toString(36).substring(2, 8).toUpperCase()}`,
     badgeUrl: course.thumbnail,
@@ -32,7 +32,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
   };
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(`https://clipkenya.africa/verify-certificate/${certData.verificationCode}`);
+    navigator.clipboard.writeText(`https://clipforge.africa/verify-certificate/${certData.verificationCode}`);
     addToast('Certificate verification link copied to clipboard!', 'success');
   };
 
@@ -57,7 +57,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
           <div className="flex items-center gap-2">
             <Award className="w-6 h-6 text-amber-500" />
             <h3 className="text-lg font-heading font-extrabold text-slate-900 dark:text-white">
-              Official ClipKenya Verified Certificate
+              Official ClipForge Verified Certificate
             </h3>
           </div>
           <button
@@ -77,7 +77,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
           {/* Top Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30 text-xs font-bold uppercase tracking-widest mx-auto">
             <ShieldCheck className="w-4 h-4 text-amber-400" />
-            <span>ClipKenya Creator Academy</span>
+            <span>ClipForge Creator Academy</span>
           </div>
 
           <div className="space-y-2">

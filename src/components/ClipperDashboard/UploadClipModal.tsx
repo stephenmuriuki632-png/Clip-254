@@ -28,7 +28,7 @@ export const UploadClipModal: React.FC<UploadClipModalProps> = ({ campaign, isOp
   const [clipTitle, setClipTitle] = useState('');
   const [platformUrl, setPlatformUrl] = useState('');
   const [notes, setNotes] = useState('');
-  const [hashtags, setHashtags] = useState('#ClipKenya #TechTok #KenyaEdits');
+  const [hashtags, setHashtags] = useState('#ClipForge #TechTok #KenyaEdits');
   
   // File upload state
   const [isDragging, setIsDragging] = useState(false);
@@ -107,7 +107,7 @@ export const UploadClipModal: React.FC<UploadClipModalProps> = ({ campaign, isOp
     }
 
     const targetBountyId = campaign?.id || 'bounty_001';
-    const targetUrl = platformUrl.trim() || 'https://tiktok.com/@clipkenya/video/' + Date.now();
+    const targetUrl = platformUrl.trim() || 'https://tiktok.com/@clipforge/video/' + Date.now();
 
     submitClip(targetBountyId, clipTitle.trim(), targetUrl);
 

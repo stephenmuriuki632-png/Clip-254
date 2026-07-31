@@ -48,7 +48,7 @@ export const AISettingsView: React.FC = () => {
           <span>AI Engine Configuration & Provider Settings</span>
         </h2>
         <p className="text-xs text-slate-500 dark:text-slate-400">
-          Customize your default AI Provider, creativity levels, regional language blends, and tone defaults across all ClipKenya AI tools.
+          Customize your default AI Provider, creativity levels, regional language blends, and tone defaults across all ClipForge AI tools.
         </p>
       </div>
 

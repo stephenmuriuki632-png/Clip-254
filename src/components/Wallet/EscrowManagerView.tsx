@@ -65,7 +65,7 @@ export const EscrowManagerView: React.FC<Props> = ({
             {totalHeldKES.toLocaleString()} <span className="text-emerald-400 text-lg">KES</span> Locked in Active Escrow
           </h3>
           <p className="text-xs text-slate-400">
-            Funds are held securely by ClipKenya until deliverables pass inspection & quality control.
+            Funds are held securely by ClipForge until deliverables pass inspection & quality control.
           </p>
         </div>
 
@@ -259,7 +259,7 @@ export const EscrowManagerView: React.FC<Props> = ({
 
                   {isDisputed && (
                     <span className="text-xs text-red-500 font-bold flex items-center gap-1">
-                      <AlertTriangle className="w-4 h-4" /> Disputed - ClipKenya Legal Reviewing
+                      <AlertTriangle className="w-4 h-4" /> Disputed - ClipForge Legal Reviewing
                     </span>
                   )}
                 </div>

@@ -90,7 +90,7 @@ export const AdminDashboard: React.FC = () => {
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
               <h1 className="font-heading font-extrabold text-base tracking-tight">
-                ClipKenya Enterprise Admin
+                ClipForge Enterprise Admin
               </h1>
               <span className="hidden sm:inline-block text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-indigo-400 border border-slate-700 font-mono">
                 v4.2 PROD

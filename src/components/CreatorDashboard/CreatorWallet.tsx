@@ -82,7 +82,7 @@ export const CreatorWallet: React.FC = () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `ClipKenya_Statement_${new Date().toISOString().split('T')[0]}.csv`;
+    a.download = `ClipForge_Statement_${new Date().toISOString().split('T')[0]}.csv`;
     a.click();
   };
 
@@ -99,7 +99,7 @@ export const CreatorWallet: React.FC = () => {
               <span className="p-2 rounded-xl bg-indigo-600/30 text-indigo-400 border border-indigo-500/30">
                 <Wallet className="w-5 h-5" />
               </span>
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-400">ClipKenya Wallet</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-400">ClipForge Wallet</span>
             </div>
 
             <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[11px] font-bold flex items-center gap-1.5">

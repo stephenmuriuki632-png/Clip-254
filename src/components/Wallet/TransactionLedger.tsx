@@ -63,7 +63,7 @@ export const TransactionLedger: React.FC<Props> = ({ transactions, onViewInvoice
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.setAttribute('href', url);
-    link.setAttribute('download', `ClipKenya_Financial_Ledger_${Date.now()}.csv`);
+    link.setAttribute('download', `ClipForge_Financial_Ledger_${Date.now()}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -241,8 +241,9 @@ export const TransactionLedger: React.FC<Props> = ({ transactions, onViewInvoice
         </table>
 
         {filteredTransactions.length === 0 && (
-          <div className="p-12 text-center text-slate-400 text-xs">
-            No matching transactions found in the financial ledger.
+          <div className="p-12 text-center text-slate-400 text-xs space-y-1">
+            <p className="font-bold text-slate-700 dark:text-slate-300 text-sm font-heading">No transactions</p>
+            <p className="text-xs text-slate-500">Your financial activity will appear here.</p>
           </div>
         )}
       </div>

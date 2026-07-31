@@ -28,7 +28,7 @@ export const PwaInstallBanner: React.FC = () => {
               <Sparkles className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
             </div>
             <h4 className="text-sm font-extrabold font-heading text-white">
-              Get ClipKenya App
+              Get ClipForge App
             </h4>
             <p className="text-[11px] text-slate-300 line-clamp-1">
               Faster loading, offline bounties & instant M-Pesa push alerts.
@@ -51,7 +51,7 @@ export const PwaInstallBanner: React.FC = () => {
           className="w-full py-2 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-all"
         >
           <Download className="w-4 h-4" />
-          <span>Install ClipKenya</span>
+          <span>Install ClipForge</span>
         </button>
         <button
           onClick={() => setDismissed(true)}

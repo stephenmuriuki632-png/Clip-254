@@ -1,5 +1,5 @@
 -- ====================================================================
--- CLIPKENYA SUPABASE SEED DATA
+-- CLIPFORGE SUPABASE SEED DATA
 -- Realistic Sample Data for Kenyan Creators, Clippers, Brands & Marketplace
 -- ====================================================================
 
@@ -9,13 +9,13 @@ INSERT INTO public.profiles (
     id, role, primary_role, additional_roles, name, username, email, bio, 
     profile_photo, country, city, languages, skills, verification_status, rating, total_reviews, completed_jobs
 ) VALUES
-('a1b2c3d4-e5f6-7890-1234-56789abcdef0', 'creator', 'creator', ARRAY['editor', 'freelancer'], 'Maina Kamau', '@mainatreats', 'maina@clipkenya.africa', 'Host of Kenya''s #1 Tech & Business Podcast. Looking for viral video clippers!', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80', 'Kenya', 'Nairobi', ARRAY['Swahili', 'English'], ARRAY['Podcasting', 'Content Strategy', 'Public Speaking'], 'verified', 4.9, 38, 142),
+('a1b2c3d4-e5f6-7890-1234-56789abcdef0', 'creator', 'creator', ARRAY['editor', 'freelancer'], 'Maina Kamau', '@mainatreats', 'maina@clipforge.africa', 'Host of Kenya''s #1 Tech & Business Podcast. Looking for viral video clippers!', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80', 'Kenya', 'Nairobi', ARRAY['Swahili', 'English'], ARRAY['Podcasting', 'Content Strategy', 'Public Speaking'], 'verified', 4.9, 38, 142),
 
-('b2c3d4e5-f6a7-8901-2345-6789abcdef01', 'editor', 'editor', ARRAY['freelancer'], 'Achieng Ochieng', '@achieng_edits', 'achieng@clipkenya.africa', 'Premiere Pro & CapCut Master. Specialized in CapCut animations and TikTok hooks.', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80', 'Kenya', 'Mombasa', ARRAY['English', 'Swahili'], ARRAY['CapCut', 'Premiere Pro', 'Motion Graphics'], 'verified', 5.0, 52, 94),
+('b2c3d4e5-f6a7-8901-2345-6789abcdef01', 'editor', 'editor', ARRAY['freelancer'], 'Achieng Ochieng', '@achieng_edits', 'achieng@clipforge.africa', 'Premiere Pro & CapCut Master. Specialized in CapCut animations and TikTok hooks.', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80', 'Kenya', 'Mombasa', ARRAY['English', 'Swahili'], ARRAY['CapCut', 'Premiere Pro', 'Motion Graphics'], 'verified', 5.0, 52, 94),
 
 ('c3d4e5f6-a7b8-9012-3456-789abcdef012', 'brand', 'brand', ARRAY['agency'], 'Safaricom Youth / MPESA', '@safaricom_ke', 'brand@safaricom.co.ke', 'Empowering Kenyan Youth & Digital Creators through M-Pesa Express payouts.', 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=300&q=80', 'Kenya', 'Nairobi', ARRAY['English', 'Swahili'], ARRAY['Brand Strategy', 'Sponsorships'], 'verified', 4.8, 120, 310),
 
-('d4e5f6a7-b8c9-0123-4567-89abcdef0123', 'ugc', 'ugc', ARRAY['influencer'], 'Njeri Wanjiku', '@njeri_vlogs', 'njeri@clipkenya.africa', 'UGC creator specializing in lifestyle, beauty, and tech unboxings in Nairobi.', 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80', 'Kenya', 'Nairobi', ARRAY['Swahili', 'English'], ARRAY['UGC Video', 'Beauty', 'Lifestyle'], 'verified', 4.9, 29, 45)
+('d4e5f6a7-b8c9-0123-4567-89abcdef0123', 'ugc', 'ugc', ARRAY['influencer'], 'Njeri Wanjiku', '@njeri_vlogs', 'njeri@clipforge.africa', 'UGC creator specializing in lifestyle, beauty, and tech unboxings in Nairobi.', 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80', 'Kenya', 'Nairobi', ARRAY['Swahili', 'English'], ARRAY['UGC Video', 'Beauty', 'Lifestyle'], 'verified', 4.9, 29, 45)
 ON CONFLICT (id) DO NOTHING;
 
 

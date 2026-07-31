@@ -182,7 +182,7 @@ export const CreatorAcademy: React.FC = () => {
       priceKES: newCourseData.priceKES || 0,
       description: newCourseData.description || 'Newly published course.',
       longDescription: newCourseData.description || 'Newly published course.',
-      topics: ['Short-Form Editing', 'ClipKenya Bounties'],
+      topics: ['Short-Form Editing', 'ClipForge Bounties'],
       prerequisites: ['Basic editing tools'],
       skillsLearned: ['Video Editing', 'Bounty Payouts'],
       instructor: {
@@ -190,7 +190,7 @@ export const CreatorAcademy: React.FC = () => {
         name: user?.name || 'Maina Kamau',
         avatar: user?.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
         role: 'Pro Creator & Instructor',
-        bio: user?.bio || 'ClipKenya verified creator.',
+        bio: user?.bio || 'ClipForge verified creator.',
         rating: 5.0,
         studentsCount: 1,
         coursesCount: 1,
@@ -253,7 +253,7 @@ export const CreatorAcademy: React.FC = () => {
           <div className="space-y-2 max-w-2xl">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-semibold border border-indigo-500/30">
               <GraduationCap className="w-4 h-4" />
-              <span>ClipKenya Academy & Learning Suite</span>
+              <span>ClipForge Academy & Learning Suite</span>
             </div>
             <h1 className="text-2xl sm:text-4xl font-extrabold font-heading text-white">
               Master the African Creator Economy

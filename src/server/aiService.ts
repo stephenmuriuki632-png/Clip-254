@@ -107,7 +107,7 @@ export async function generateAIContent(params: {
   provider?: AIProvider;
   userEmail?: string;
 }): Promise<{ success: boolean; result: string; providerUsed: AIProvider; creditsDeducted: number; error?: string }> {
-  const { toolId, prompt, niche, platform, language, tone, targetAudience, provider = currentAISettings.provider, userEmail = "creator@clipkenya.co.ke" } = params;
+  const { toolId, prompt, niche, platform, language, tone, targetAudience, provider = currentAISettings.provider, userEmail = "creator@clipforge.co.ke" } = params;
 
   // 1. Security Check
   const securityCheck = validatePromptSecurity(prompt);
@@ -138,7 +138,7 @@ export async function generateAIContent(params: {
       result: "",
       providerUsed: provider,
       creditsDeducted: 0,
-      error: `The tool '${toolId}' has been temporarily disabled by ClipKenya Admin.`,
+      error: `The tool '${toolId}' has been temporarily disabled by ClipForge Admin.`,
     };
   }
 
@@ -224,7 +224,7 @@ function getProviderDisplayName(p: AIProvider): string {
 }
 
 function buildSystemInstruction(toolId: string, niche?: string, platform?: string, lang?: string, tone?: string): string {
-  return `You are ClipKenya's elite AI Creator Strategist. You specialize in viral short-form content, creator economy trends, and high-converting brand campaigns across Kenya and Africa. Tone: ${tone || 'Viral & Energetic'}. Preferred Language style: ${lang || 'English with Kenyan/Sheng Vibe'}. Niche context: ${niche || 'General Content'}. Target Platform: ${platform || 'TikTok/Reels'}. Always deliver formatted, well-structured, actionable text with markdown headers, bullet points, and practical advice.`;
+  return `You are ClipForge's elite AI Creator Strategist. You specialize in viral short-form content, creator economy trends, and high-converting brand campaigns across Kenya and Africa. Tone: ${tone || 'Viral & Energetic'}. Preferred Language style: ${lang || 'English with Kenyan/Sheng Vibe'}. Niche context: ${niche || 'General Content'}. Target Platform: ${platform || 'TikTok/Reels'}. Always deliver formatted, well-structured, actionable text with markdown headers, bullet points, and practical advice.`;
 }
 
 function buildUserPrompt(toolId: string, prompt: string, niche?: string, platform?: string, lang?: string, tone?: string, audience?: string): string {
@@ -266,14 +266,14 @@ function buildUserPrompt(toolId: string, prompt: string, niche?: string, platfor
     case "recommendations":
       return `Generate personalized recommendations for campaigns, courses, communities, and collaboration partners based on: "${prompt}".`;
     case "chat_assistant":
-      return `Answer this creator's question with actionable, expert advice on ClipKenya platform features, monetization, or content strategy: "${prompt}"`;
+      return `Answer this creator's question with actionable, expert advice on ClipForge platform features, monetization, or content strategy: "${prompt}"`;
     default:
       return prompt;
   }
 }
 
 function generateSmartFallbackResult(toolId: string, prompt: string, niche?: string, platform?: string, lang?: string, tone?: string, providerName?: string): string {
-  const p = prompt.trim() || "ClipKenya Creator Campaign";
+  const p = prompt.trim() || "ClipForge Creator Campaign";
   const header = `> **Generated via ${providerName} Architecture** (Tone: ${tone || 'Viral'}, Language: ${lang || 'Kenyan/Sheng Vibe'})\n\n`;
 
   switch (toolId) {
@@ -285,7 +285,7 @@ function generateSmartFallbackResult(toolId: string, prompt: string, niche?: str
 - **Viral Score:** 96/100
 - **Suggested Title:** "You Won't Believe What Happened in Nairobi Traffic! 😭"
 - **Clip Idea:** Fast cuts with zoom-in effects on key punchlines.
-- **Recommended Caption:** "Watch till the end! Tag a friend who does this daily in Nairobi 😂 #ClipKenya #NairobiViral"
+- **Recommended Caption:** "Watch till the end! Tag a friend who does this daily in Nairobi 😂 #ClipForge #NairobiViral"
 
 **2. Timestamp: [01:30 - 02:15] — 💡 Educational Breakdown**
 - **Type:** Educational
@@ -321,16 +321,16 @@ function generateSmartFallbackResult(toolId: string, prompt: string, niche?: str
       return `${header}### 💬 Generated Captions & Hashtag Sets
 
 **Option 1: Viral & Sheng Style (High Engagement)**
-"Aina ya watu utapatana nao pale Nairobi! 😂 Tag that one friend who never learns! 👇 Save this reel before it vanishes! #ClipKenya #KenyanCreators #NairobiTrending"
+"Aina ya watu utapatana nao pale Nairobi! 😂 Tag that one friend who never learns! 👇 Save this reel before it vanishes! #ClipForge #KenyanCreators #NairobiTrending"
 
 **Option 2: Storytelling Style**
 "I used to think creating content was hard until I tried this simple breakdown. Here is what changed everything for my brand in 2026. What's your biggest challenge? Let's discuss in the comments!"
 
 **Option 3: Direct Sales / Conversion CTA**
-"Ready to scale your content revenue? Click the link in my bio to sign up on ClipKenya and collaborate with top brands today! 🚀"
+"Ready to scale your content revenue? Click the link in my bio to sign up on ClipForge and collaborate with top brands today! 🚀"
 
 **🏷️ Recommended Hashtags:**
-#ClipKenya #NairobiCreators #KenyanTech #TikTokKenya #AfricanContentCreators #ViralReels #254Trend #ContentStrategy #UGCKenya #EastAfricaCreators`;
+#ClipForge #NairobiCreators #KenyanTech #TikTokKenya #AfricanContentCreators #ViralReels #254Trend #ContentStrategy #UGCKenya #EastAfricaCreators`;
 
     case "title_gen":
       return `${header}### 🏷️ Top Generated Titles for "${p}"
@@ -363,13 +363,13 @@ function generateSmartFallbackResult(toolId: string, prompt: string, niche?: str
 5. **[Story Hook]** "3 months ago I had zero brand sponsorships, but then I changed this ONE thing on my profile..."
 6. **[Educational Hook]** "Here are 3 video editing secrets that instantly boost your retention rate above 70%."
 7. **[Motivational Hook]** "Your content is worth more than you think. Here is how to price yourself properly."
-8. **[Comedy/Sheng Hook]** "Acha niwaambie ukweli, hii app ya ClipKenya imechange game completely!"`;
+8. **[Comedy/Sheng Hook]** "Acha niwaambie ukweli, hii app ya ClipForge imechange game completely!"`;
 
     case "hashtag_gen":
       return `${header}### #️⃣ Strategic Hashtag Vault for "${p}"
 
 **🔥 High-Volume Trending Tags:**
-#ClipKenya #TikTokKenya #Nairobi #KenyanCreators #ViralShorts #AfricanCreators #254Tech #FYPKenya
+#ClipForge #TikTokKenya #Nairobi #KenyanCreators #ViralShorts #AfricanCreators #254Tech #FYPKenya
 
 **🎯 Niche-Specific Tags:**
 #CreatorEconomy #UGCAfrica #VideoClipping #MpesaPayments #MicroInfluencer #DigitalKenya #ContentMarketing2026
@@ -389,14 +389,14 @@ function generateSmartFallbackResult(toolId: string, prompt: string, niche?: str
 
 **[0:05 - 0:20] THE PROBLEM & VALUE**
 - **Visual:** Fast cut B-roll showing editing software and M-Pesa payment SMS notification.
-- **Audio/Voiceover:** "Brands are spending millions on video clips right now. Instead of posting for free, you can submit your clips to active campaigns on ClipKenya."
+- **Audio/Voiceover:** "Brands are spending millions on video clips right now. Instead of posting for free, you can submit your clips to active campaigns on ClipForge."
 
 **[0:20 - 0:35] THE STEP-BY-STEP PROOF**
-- **Visual:** Screen recording navigating ClipKenya marketplace, selecting a campaign and clicking 'Apply'.
+- **Visual:** Screen recording navigating ClipForge marketplace, selecting a campaign and clicking 'Apply'.
 - **Audio/Voiceover:** "Step 1: Create your profile. Step 2: Pick a brand campaign. Step 3: Get paid straight to your M-Pesa or Bank account upon approval."
 
 **[0:35 - 0:45] CALL TO ACTION**
-- **Visual:** Creator smiling, pointing to bio link. Text: "Join ClipKenya Today!".
+- **Visual:** Creator smiling, pointing to bio link. Text: "Join ClipForge Today!".
 - **Audio/Voiceover:** "Link in my bio to start getting brand deals today. Follow for more creator secrets!"`;
 
     case "thumbnail_assistant":
@@ -411,7 +411,7 @@ function generateSmartFallbackResult(toolId: string, prompt: string, niche?: str
 **Concept 2: Before vs After Split**
 - **Text Overlay:** "BEFORE vs AFTER"
 - **Left Side:** Sad face with 0 views.
-- **Right Side:** Smiling face with 1,000,000 views badge and ClipKenya logo.
+- **Right Side:** Smiling face with 1,000,000 views badge and ClipForge logo.
 - **CTR Rating:** 9.1/10
 
 **💡 CTR Optimization Tip:** Keep background dark so text pops out on mobile devices!`;
@@ -420,7 +420,7 @@ function generateSmartFallbackResult(toolId: string, prompt: string, niche?: str
       return `${header}### 📆 7-Day Strategic Content Calendar
 
 - **Monday:** *Educational Video* — "Top 3 Editing Apps Every African Creator Needs in 2026" (Post at 7:00 PM)
-- **Tuesday:** *Storytelling / BTS* — "How I Landed My First 100,000 KES Brand Deal on ClipKenya" (Post at 8:00 PM)
+- **Tuesday:** *Storytelling / BTS* — "How I Landed My First 100,000 KES Brand Deal on ClipForge" (Post at 8:00 PM)
 - **Wednesday:** *Trend Reaction / Sheng* — Reaction to trending Nairobi news with comedic commentary (Post at 1:00 PM)
 - **Thursday:** *UGC Unboxing* — High-energy product showcase for local e-commerce brand (Post at 6:30 PM)
 - **Friday:** *Interactive Poll / Q&A* — "Answering your top questions on pricing your clips" (Post at 5:00 PM)
@@ -430,20 +430,20 @@ function generateSmartFallbackResult(toolId: string, prompt: string, niche?: str
     case "seo_assistant":
       return `${header}### 🔍 AI SEO Optimization Package
 
-**Target Meta Title:** Best Creator & Clipping Platform in Kenya | Monetize Videos on ClipKenya
-**Meta Description:** Join ClipKenya to connect with top brands, earn M-Pesa payments for video clips, and access AI content tools for African creators.
+**Target Meta Title:** Best Creator & Clipping Platform in Kenya | Monetize Videos on ClipForge
+**Meta Description:** Join ClipForge to connect with top brands, earn M-Pesa payments for video clips, and access AI content tools for African creators.
 
 **Key Primary Keywords:**
-` + `ClipKenya, video clipping Kenya, UGC creator Nairobi, brand deals Africa, monetize TikTok Kenya, M-Pesa creator payments
+` + `ClipForge, video clipping Kenya, UGC creator Nairobi, brand deals Africa, monetize TikTok Kenya, M-Pesa creator payments
 
 **Content Tags:**
-` + `ClipKenya, Creator Economy, Video Monetization, African UGC, Content Strategy 2026, TikTok Influencer Kenya`;
+` + `ClipForge, Creator Economy, Video Monetization, African UGC, Content Strategy 2026, TikTok Influencer Kenya`;
 
     case "proposal_writer":
       return `${header}### 💼 Brand Collaboration Proposal
 
 **To:** Brand Marketing Director
-**From:** Verified ClipKenya Creator / Clipper
+**From:** Verified ClipForge Creator / Clipper
 **Subject:** High-Converting UGC Short-Video Campaign Proposal for ${p}
 
 Dear Campaign Team,
@@ -459,14 +459,14 @@ I am writing to submit a tailored video creation proposal for **${p}**. With a t
 **Project Timeline:** 5 Business Days
 **Proposed Budget:** 35,000 KES (or $270 USD)
 
-Looking forward to bringing this campaign to life! Click 'Accept Proposal' on ClipKenya to begin.`;
+Looking forward to bringing this campaign to life! Click 'Accept Proposal' on ClipForge to begin.`;
 
     case "resume_builder":
       return `${header}### 📄 Creative Creator Resume
 
 **FULL NAME:** Alex K. Mwangi
 **TITLE:** Senior Short-Form Video Producer & UGC Creator
-**LOCATION:** Nairobi, Kenya | **CONTACT:** alex@clipkenya.co.ke
+**LOCATION:** Nairobi, Kenya | **CONTACT:** alex@clipforge.co.ke
 
 **PROFESSIONAL SUMMARY:**
 Results-driven content producer with 3+ years experience delivering high-converting video clips and UGC campaigns for African e-commerce, fintech, and tech brands. Generated over 12M total views across TikTok & YouTube Shorts.
@@ -488,7 +488,7 @@ Results-driven content producer with 3+ years experience delivering high-convert
 
 **Key Achievements:**
 - 🏆 15,000,000+ Total Impressions
-- ⭐ 4.9/5.0 Client Rating on ClipKenya
+- ⭐ 4.9/5.0 Client Rating on ClipForge
 - 🚀 45+ Completed Brand Orders
 
 **Featured Video Showcases:**
@@ -504,14 +504,14 @@ Results-driven content producer with 3+ years experience delivering high-convert
 
 **Option 1 (TikTok / Instagram - Sheng Vibe):**
 "🇰🇪 Content Creator in Nairobi | Helping you create viral clips 🚀
-💰 Brand deals & UGC via @ClipKenya
+💰 Brand deals & UGC via @ClipForge
 👇 Tap link for bookings!"
 
 **Option 2 (Corporate / LinkedIn):**
 "Digital Content Strategist & Video Producer | 15M+ Views Generated | Specializing in African Creator Economy & UGC Campaigns."
 
 **Option 3 (Clipper / Editor):**
-"✂️ I turn long podcasts into viral TikTok clips | Fast delivery & high CTR | Book me on ClipKenya 📌"
+"✂️ I turn long podcasts into viral TikTok clips | Fast delivery & high CTR | Book me on ClipForge 📌"
 
 **Option 4 (Minimalist):**
 "Creator. Storyteller. Nairobi 📍
@@ -524,7 +524,7 @@ Collaborations: link in bio ⚡"
       return `${header}### 📩 3 Professional Reply Options
 
 **Option 1: Accepting the Deal & Confirming Next Steps**
-"Hi! Thank you for the proposal regarding '${p}'. I am excited to work together on this campaign. I have reviewed the requirements and am ready to start immediately. I will submit the first draft within 3 business days via ClipKenya."
+"Hi! Thank you for the proposal regarding '${p}'. I am excited to work together on this campaign. I have reviewed the requirements and am ready to start immediately. I will submit the first draft within 3 business days via ClipForge."
 
 **Option 2: Polite Rate Negotiation / Scope Adjustment**
 "Hi! Thanks for reaching out. I'm very interested in this project! Based on the requested deliverables (including raw footage & expedited delivery), my standard rate is 25,000 KES. Let me know if we can adjust the budget to match, and I'll begin right away!"
@@ -579,12 +579,12 @@ Collaborations: link in bio ⚡"
 - *How To Price Your UGC & Brand Deliverables in KES & USD*`;
 
     case "chat_assistant":
-      return `${header}### 🤖 ClipKenya AI Assistant
+      return `${header}### 🤖 ClipForge AI Assistant
 
 Thank you for your question about **"${p}"**!
 
 Here is my recommended guide:
-1. **On ClipKenya Payments:** All campaign payments are securely held in escrow and released directly to your **M-Pesa** or **Bank Account** as soon as the brand approves your submitted clip.
+1. **On ClipForge Payments:** All campaign payments are securely held in escrow and released directly to your **M-Pesa** or **Bank Account** as soon as the brand approves your submitted clip.
 2. **To Maximise Approval:** Always ensure your video includes clean audio, crisp subtitles, and adheres strictly to the campaign brief parameters.
 3. **Growth Tip:** Creators who utilize the **AI Hook Generator** and **AI Caption Tool** report a **3.2x higher campaign selection rate**!
 

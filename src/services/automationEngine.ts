@@ -1,5 +1,5 @@
 /**
- * ClipKenya Zapier/Make-style Automation Engine & Webhook Management Platform
+ * ClipForge Zapier/Make-style Automation Engine & Webhook Management Platform
  */
 
 import { emailRegistry, EmailTemplateGenerator } from './emailAdapters';
@@ -74,9 +74,9 @@ export interface WebhookLog {
   retryCount: number;
 }
 
-const WORKFLOWS_STORAGE_KEY = 'clipkenya_automation_workflows';
-const WEBHOOKS_STORAGE_KEY = 'clipkenya_webhook_endpoints';
-const WEBHOOK_LOGS_STORAGE_KEY = 'clipkenya_webhook_logs';
+const WORKFLOWS_STORAGE_KEY = 'clipforge_automation_workflows';
+const WEBHOOKS_STORAGE_KEY = 'clipforge_webhook_endpoints';
+const WEBHOOK_LOGS_STORAGE_KEY = 'clipforge_webhook_logs';
 
 export const DefaultWorkflows: AutomationWorkflow[] = [
   {
@@ -97,7 +97,7 @@ export const DefaultWorkflows: AutomationWorkflow[] = [
       {
         id: 'act_2',
         type: 'SEND_SMS',
-        config: { messageText: 'ClipKenya Alert: Your campaign was approved! Escrow funds credited to your M-Pesa wallet.' }
+        config: { messageText: 'ClipForge Alert: Your campaign was approved! Escrow funds credited to your M-Pesa wallet.' }
       },
       {
         id: 'act_3',
@@ -119,12 +119,12 @@ export const DefaultWorkflows: AutomationWorkflow[] = [
       {
         id: 'act_4',
         type: 'SEND_SMS',
-        config: { messageText: 'ClipKenya M-Pesa Disbursal complete. Thank you for using ClipKenya.' }
+        config: { messageText: 'ClipForge M-Pesa Disbursal complete. Thank you for using ClipForge.' }
       },
       {
         id: 'act_5',
         type: 'DISPATCH_WEBHOOK',
-        config: { webhookUrl: 'https://api.clipkenya.com/webhooks/accounting-sync' }
+        config: { webhookUrl: 'https://api.clipforge.com/webhooks/accounting-sync' }
       }
     ]
   },
@@ -141,7 +141,7 @@ export const DefaultWorkflows: AutomationWorkflow[] = [
       {
         id: 'act_6',
         type: 'SEND_EMAIL',
-        config: { emailSubject: 'Welcome to ClipKenya!' }
+        config: { emailSubject: 'Welcome to ClipForge!' }
       },
       {
         id: 'act_7',
@@ -178,18 +178,18 @@ export const DefaultWebhooks: WebhookEndpoint[] = [
   {
     id: 'wh_1',
     name: 'Make.com Discord & Telegram Bot Feed',
-    url: 'https://hook.eu1.make.com/clipkenya-viral-alerts',
+    url: 'https://hook.eu1.make.com/clipforge-viral-alerts',
     events: ['CAMPAIGN_APPROVED', 'CLIP_APPROVED'],
-    secretKey: 'whsec_clipkenya_make_8f9a2b',
+    secretKey: 'whsec_clipforge_make_8f9a2b',
     enabled: true,
     createdAt: '2026-02-01T00:00:00.000Z'
   },
   {
     id: 'wh_2',
     name: 'Zapier Slack Brand Notifications Channel',
-    url: 'https://hooks.zapier.com/hooks/catch/912837/clipkenya',
+    url: 'https://hooks.zapier.com/hooks/catch/912837/clipforge',
     events: ['WITHDRAWAL_COMPLETED', 'PAYMENT_RECEIVED'],
-    secretKey: 'whsec_clipkenya_zapier_3d1e4f',
+    secretKey: 'whsec_clipforge_zapier_3d1e4f',
     enabled: true,
     createdAt: '2026-02-05T00:00:00.000Z'
   }
@@ -276,7 +276,7 @@ export class AutomationEngine {
           const emailAdapter = emailRegistry.getActiveAdapter();
           const tpl = EmailTemplateGenerator.generateWelcomeEmail(payload.userName || 'Creator');
           await emailAdapter.sendEmail({
-            to: payload.email || 'creator@clipkenya.com',
+            to: payload.email || 'creator@clipforge.com',
             subject: action.config.emailSubject || tpl.subject,
             html: tpl.html
           });
@@ -286,14 +286,14 @@ export class AutomationEngine {
           const smsAdapter = communicationRegistry.getActiveSmsAdapter();
           await smsAdapter.sendSms({
             to: payload.phone || '+254700000000',
-            message: action.config.messageText || 'ClipKenya Transaction Alert'
+            message: action.config.messageText || 'ClipForge Transaction Alert'
           });
           break;
         }
         case 'SEND_PUSH_NOTIFICATION': {
           const pushAdapter = communicationRegistry.getActivePushAdapter();
           await pushAdapter.sendPush({
-            title: 'ClipKenya Automation Alert 🔔',
+            title: 'ClipForge Automation Alert 🔔',
             body: action.config.messageText || 'Your campaign update is ready'
           });
           break;
@@ -399,7 +399,7 @@ export class AutomationEngine {
         webhookId: 'wh_1',
         webhookName: 'Make.com Discord & Telegram Bot Feed',
         event: 'CAMPAIGN_APPROVED',
-        url: 'https://hook.eu1.make.com/clipkenya-viral-alerts',
+        url: 'https://hook.eu1.make.com/clipforge-viral-alerts',
         requestPayload: { campaignId: 'camp_204', brand: 'Safaricom M-Pesa', payoutKES: 15000 },
         responseStatus: 200,
         responseBody: '{"status": "ok"}',
@@ -412,7 +412,7 @@ export class AutomationEngine {
         webhookId: 'wh_2',
         webhookName: 'Zapier Slack Brand Notifications Channel',
         event: 'WITHDRAWAL_COMPLETED',
-        url: 'https://hooks.zapier.com/hooks/catch/912837/clipkenya',
+        url: 'https://hooks.zapier.com/hooks/catch/912837/clipforge',
         requestPayload: { mpesaReceipt: 'MP928374102', amountKES: 4500, phone: '+254712***890' },
         responseStatus: 502,
         responseBody: 'Gateway Timeout from target endpoint',

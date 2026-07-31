@@ -54,7 +54,7 @@ export const AIPortfolioBuilderView: React.FC<{ initialSubTool?: string }> = ({ 
       printWindow.document.write(`
         <html>
           <head>
-            <title>ClipKenya AI Asset Export</title>
+            <title>ClipForge AI Asset Export</title>
             <style>
               body { font-family: sans-serif; padding: 40px; line-height: 1.6; color: #1e293b; }
               h1, h2, h3 { color: #4f46e5; }
@@ -62,7 +62,7 @@ export const AIPortfolioBuilderView: React.FC<{ initialSubTool?: string }> = ({ 
             </style>
           </head>
           <body>
-            <h2>ClipKenya AI Creator Profile Asset</h2>
+            <h2>ClipForge AI Creator Profile Asset</h2>
             <hr />
             <pre>${result.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>
           </body>
@@ -209,7 +209,7 @@ export const AIPortfolioBuilderView: React.FC<{ initialSubTool?: string }> = ({ 
           </div>
 
           <div className="pt-4 border-t border-slate-100 dark:border-slate-700 text-[10px] text-slate-400 flex items-center justify-between mt-4">
-            <span>ClipKenya Career Engine</span>
+            <span>ClipForge Career Engine</span>
             <span>Exportable to PDF</span>
           </div>
         </div>

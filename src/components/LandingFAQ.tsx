@@ -6,13 +6,13 @@ export const LandingFAQ: React.FC = () => {
   const faqItems = [
     {
       id: 'faq-1',
-      title: 'How do M-Pesa payouts work on ClipKenya?',
+      title: 'How do M-Pesa payouts work on ClipForge?',
       content: 'When a campaign bounty or UGC service order is created, funds are safely deposited into our Escrow account. Once you submit your video clip or UGC delivery link and it is approved by the creator/brand (or auto-approved after review period), the payment is instantly dispatched to your registered Safaricom M-Pesa phone number in Kenyan Shillings (KES).'
     },
     {
       id: 'faq-2',
       title: 'Do I need professional video editing software to be a clipper?',
-      content: 'Not at all! Many top clippers on ClipKenya use mobile editing apps like CapCut, VN Editor, or InShot alongside our built-in Gemini AI Viral Suite to generate hooks and captions. Raw 4K clips are provided directly in campaign source files.'
+      content: 'Not at all! Many top clippers on ClipForge use mobile editing apps like CapCut, VN Editor, or InShot alongside our built-in Gemini AI Viral Suite to generate hooks and captions. Raw 4K clips are provided directly in campaign source files.'
     },
     {
       id: 'faq-3',
@@ -21,12 +21,12 @@ export const LandingFAQ: React.FC = () => {
     },
     {
       id: 'faq-4',
-      title: 'How does ClipKenya protect creators and clippers against fraud?',
-      content: 'All campaign budgets are 100% pre-funded and held in escrow before clippers begin work. If a creator fails to review submitted work within 72 hours, funds are automatically released to the clipper. Disputes are handled by our 24/7 ClipKenya Audit Team.'
+      title: 'How does ClipForge protect creators and clippers against fraud?',
+      content: 'All campaign budgets are 100% pre-funded and held in escrow before clippers begin work. If a creator fails to review submitted work within 72 hours, funds are automatically released to the clipper. Disputes are handled by our 24/7 ClipForge Audit Team.'
     },
     {
       id: 'faq-5',
-      title: 'Can brands outside Kenya use ClipKenya to target African audiences?',
+      title: 'Can brands outside Kenya use ClipForge to target African audiences?',
       content: 'Yes! International brands can fund bounties in USD via Visa, Mastercard, or PayPal. Our system converts payments to local currencies (KES, NGN, ZAR, RWF) so local African creators receive seamless local mobile money payouts.'
     }
   ];

@@ -11,13 +11,13 @@ interface SEOHeadProps {
 }
 
 export const SEOHead: React.FC<SEOHeadProps> = ({
-  title = "ClipKenya - Africa's #1 Creator Economy Super Platform",
-  description = "Monetize live stream clipping bounties, UGC campaigns, brand sponsorships, and freelance media gigs in Kenya with instant M-Pesa payouts.",
-  canonicalUrl = "https://clipkenya.com",
+  title = "ClipForge - Global Creator Economy Super Platform",
+  description = "Monetize live stream clipping bounties, UGC campaigns, brand sponsorships, and freelance media gigs with instant M-Pesa & global payouts.",
+  canonicalUrl = "https://clipforge.com",
   ogImage = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80",
   ogType = "website",
   keywords = [
-    "ClipKenya",
+    "ClipForge",
     "video clipping bounties Kenya",
     "M-Pesa creator payouts",
     "UGC creators Kenya",
@@ -68,15 +68,15 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     const defaultOrganizationSchema = {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "ClipKenya",
-      "url": "https://clipkenya.com",
-      "logo": "https://clipkenya.com/logo.png",
+      "name": "ClipForge",
+      "url": "https://clipforge.com",
+      "logo": "https://clipforge.com/logo.png",
       "description": "Africa's leading platform for video clipping bounties, UGC, brand sponsorships, and M-Pesa creator settlements.",
       "sameAs": [
-        "https://twitter.com/clipkenya",
-        "https://instagram.com/clipkenya",
-        "https://tiktok.com/@clipkenya",
-        "https://youtube.com/@clipkenya"
+        "https://twitter.com/clipforge",
+        "https://instagram.com/clipforge",
+        "https://tiktok.com/@clipforge",
+        "https://youtube.com/@clipforge"
       ],
       "contactPoint": {
         "@type": "ContactPoint",

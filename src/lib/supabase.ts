@@ -2,8 +2,8 @@ import { createClient } from '@supabase/supabase-js';
 
 // Fallback configuration if VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY environment variables are not yet set
 const env = (import.meta as any).env || {};
-const supabaseUrl = env.VITE_SUPABASE_URL || 'https://demo-clipkenya-realtime.supabase.co';
-const supabaseAnonKey = env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.demo-clipkenya';
+const supabaseUrl = env.VITE_SUPABASE_URL || 'https://demo-clipforge-realtime.supabase.co';
+const supabaseAnonKey = env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.demo-clipforge';
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   realtime: {
@@ -22,7 +22,7 @@ class RealtimeChannelHub {
 
   constructor() {
     if (typeof window !== 'undefined' && 'BroadcastChannel' in window) {
-      this.broadcastChannel = new BroadcastChannel('clipkenya_realtime_hub');
+      this.broadcastChannel = new BroadcastChannel('clipforge_realtime_hub');
       this.broadcastChannel.onmessage = (event) => {
         const { channel, payload } = event.data || {};
         if (channel) {

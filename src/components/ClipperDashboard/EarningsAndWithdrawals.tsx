@@ -51,7 +51,7 @@ export const EarningsAndWithdrawals: React.FC = () => {
       id: 'wth_002',
       amountKES: 8000,
       method: 'paypal',
-      accountDetails: 'maina@clipkenya.africa',
+      accountDetails: 'maina@clipforge.africa',
       status: 'pending',
       requestedAt: '2026-07-27 18:05'
     }

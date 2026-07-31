@@ -1,5 +1,5 @@
-// ClipKenya Progressive Web App Service Worker v1.0
-const CACHE_NAME = 'clipkenya-pwa-v1';
+// ClipForge Progressive Web App Service Worker v1.0
+const CACHE_NAME = 'clipforge-pwa-v1';
 const OFFLINE_URL = '/offline.html';
 
 const STATIC_ASSETS = [
@@ -14,7 +14,7 @@ const STATIC_ASSETS = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[SW] Pre-caching ClipKenya App Shell');
+      console.log('[SW] Pre-caching ClipForge App Shell');
       return cache.addAll(STATIC_ASSETS).catch((err) => {
         console.warn('[SW] Caching non-critical asset failed:', err);
       });
@@ -54,7 +54,7 @@ self.addEventListener('fetch', (event) => {
           // Clone and cache successful API GET responses if appropriate
           if (response.status === 200) {
             const resClone = response.clone();
-            caches.open('clipkenya-api-cache').then((cache) => cache.put(event.request, resClone));
+            caches.open('clipforge-api-cache').then((cache) => cache.put(event.request, resClone));
           }
           return response;
         })
@@ -106,7 +106,7 @@ self.addEventListener('fetch', (event) => {
 
 // Background Sync Handling
 self.addEventListener('sync', (event) => {
-  if (event.tag === 'clipkenya-sync-uploads') {
+  if (event.tag === 'clipforge-sync-uploads') {
     console.log('[SW] Syncing queued clip uploads');
     event.waitUntil(
       self.clients.matchAll().then((clients) => {
@@ -121,7 +121,7 @@ self.addEventListener('sync', (event) => {
 // Push Notification Event Listener
 self.addEventListener('push', (event) => {
   let data = {
-    title: 'ClipKenya Notification',
+    title: 'ClipForge Notification',
     body: 'You have a new campaign update or payout update!',
     icon: '/favicon.ico',
     badge: '/favicon.ico',
@@ -143,7 +143,7 @@ self.addEventListener('push', (event) => {
     vibrate: [100, 50, 100],
     data: data.data || { url: '/' },
     actions: [
-      { action: 'open', title: 'Open ClipKenya' },
+      { action: 'open', title: 'Open ClipForge' },
       { action: 'dismiss', title: 'Dismiss' }
     ]
   };

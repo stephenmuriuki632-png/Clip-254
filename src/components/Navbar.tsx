@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
+import { ClipForgeLogo } from './Brand/ClipForgeLogo';
 import {
   Video,
   Scissors,
@@ -22,9 +23,12 @@ import {
   ChevronDown,
   PhoneCall,
   Smartphone,
-  Download
+  Download,
+  UserCheck
 } from 'lucide-react';
 import { UserRole } from '../types';
+import { AuthModal, AuthMode } from './Auth/AuthModal';
+import { RoleOnboardingModal } from './Auth/RoleOnboardingModal';
 
 export const Navbar: React.FC<{
   onOpenWallet: () => void;
@@ -55,6 +59,17 @@ export const Navbar: React.FC<{
   const [showRoleDropdown, setShowRoleDropdown] = useState(false);
   const [showNotifPopover, setShowNotifPopover] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Auth & Onboarding Modals
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<AuthMode>('login');
+  const [isOnboardingOpen, setIsOnboardingOpen] = useState(false);
+  const [onboardingRole, setOnboardingRole] = useState<UserRole>('creator');
+
+  const handleAuthSuccess = (role: UserRole) => {
+    setOnboardingRole(role);
+    setIsOnboardingOpen(true);
+  };
 
   const rolesList: { role: UserRole; label: string; icon: string }[] = [
     { role: 'creator', label: 'Content Creator', icon: '📹' },
@@ -93,22 +108,7 @@ export const Navbar: React.FC<{
               onClick={() => setActiveTab('landing')}
               className="flex items-center gap-2.5 group text-left focus:outline-none"
             >
-              <div className="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-sm group-hover:bg-indigo-700 transition-colors">
-                <Scissors className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <div className="flex items-center gap-1.5">
-                  <span className="font-heading font-extrabold text-lg tracking-tight text-slate-900 dark:text-white">
-                    Clip<span className="text-indigo-600 dark:text-indigo-400">Kenya</span>
-                  </span>
-                  <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-md bg-indigo-50 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-900">
-                    v1.0
-                  </span>
-                </div>
-                <p className="text-[10px] text-slate-500 dark:text-slate-400 font-medium tracking-wide">
-                  Africa's Creator Super Platform
-                </p>
-              </div>
+              <ClipForgeLogo variant="horizontal" showBadge={true} size="md" />
             </button>
           </div>
 
@@ -282,6 +282,18 @@ export const Navbar: React.FC<{
               {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-600" />}
             </button>
 
+            {/* Sign In / Register Button */}
+            <button
+              onClick={() => {
+                setAuthMode('login');
+                setIsAuthModalOpen(true);
+              }}
+              className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs border border-slate-200 dark:border-slate-700 transition-colors"
+            >
+              <UserCheck className="w-3.5 h-3.5 text-indigo-500" />
+              <span>Sign In</span>
+            </button>
+
             {/* User Profile Thumbnail */}
             <button
               onClick={() => setActiveTab('analytics')}
@@ -340,7 +352,7 @@ export const Navbar: React.FC<{
             <div className="px-3 py-1 mb-2">
               <input
                 type="text"
-                placeholder="Search ClipKenya..."
+                placeholder="Search ClipForge..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full px-3 py-2 text-xs rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white"
@@ -378,6 +390,30 @@ export const Navbar: React.FC<{
         )}
 
       </div>
+
+      {/* Auth & Role Onboarding Modals */}
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+        initialMode={authMode}
+        onAuthSuccess={handleAuthSuccess}
+      />
+
+      <RoleOnboardingModal
+        isOpen={isOnboardingOpen}
+        onClose={() => setIsOnboardingOpen(false)}
+        role={onboardingRole}
+        onGetStarted={() => {
+          setIsOnboardingOpen(false);
+          // Route to appropriate tab
+          if (onboardingRole === 'clipper') setActiveTab('clipper-dashboard');
+          else if (onboardingRole === 'creator') setActiveTab('creator-dashboard');
+          else if (onboardingRole === 'ugc') setActiveTab('ugc');
+          else if (onboardingRole === 'freelancer') setActiveTab('freelance');
+          else if (onboardingRole === 'brand') setActiveTab('creators');
+          else if (onboardingRole === 'agency') setActiveTab('admin');
+        }}
+      />
     </header>
   );
 };

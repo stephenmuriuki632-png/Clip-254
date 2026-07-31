@@ -97,7 +97,7 @@ export const EnterpriseFinancialSystemHub: React.FC = () => {
     provider: (tx.provider as PaymentProviderId) || 'mpesa',
     reference: tx.reference,
     description: tx.description,
-    senderOrRecipient: tx.recipientOrSource || 'ClipKenya Escrow Gateway',
+    senderOrRecipient: tx.recipientOrSource || 'ClipForge Escrow Gateway',
     feeAmountKES: 0,
     taxAmountKES: 0,
     invoiceId: 'inv_2025_001',
@@ -165,7 +165,7 @@ export const EnterpriseFinancialSystemHub: React.FC = () => {
         e.id === escrowId ? { ...e, status: 'disputed' as const, disputeNotes: reason } : e
       )
     );
-    alert('Escrow dispute lodged. ClipKenya Financial Compliance team notified.');
+    alert('Escrow dispute lodged. ClipForge Financial Compliance team notified.');
   };
 
   const handleApproveWithdrawal = (id: string) => {
@@ -216,7 +216,7 @@ export const EnterpriseFinancialSystemHub: React.FC = () => {
       paymentMethod: 'M-Pesa Express (+254 712 *** 678)',
       couponCodeApplied: couponCode
     });
-    alert(`Successfully upgraded to ClipKenya ${planId.toUpperCase()} Plan!`);
+    alert(`Successfully upgraded to ClipForge ${planId.toUpperCase()} Plan!`);
   };
 
   return (
@@ -225,7 +225,7 @@ export const EnterpriseFinancialSystemHub: React.FC = () => {
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
         <div>
           <span className="text-indigo-600 dark:text-indigo-400 font-extrabold text-xs uppercase tracking-wider block">
-            ClipKenya Financial Infrastructure
+            ClipForge Financial Infrastructure
           </span>
           <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 dark:text-white">
             Wallet, Payments & Escrow Hub

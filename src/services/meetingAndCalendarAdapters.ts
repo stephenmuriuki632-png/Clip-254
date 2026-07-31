@@ -1,5 +1,5 @@
 /**
- * ClipKenya Meeting & Calendar Adapters
+ * ClipForge Meeting & Calendar Adapters
  * Supports Meetings: Zoom, Google Meet, Microsoft Teams
  * Supports Calendars: Google Calendar, Outlook Calendar, Apple Calendar
  */
@@ -45,7 +45,7 @@ export class ZoomMeetingAdapter {
     await new Promise((r) => setTimeout(r, 600));
     const meetingId = Math.floor(10000000000 + Math.random() * 90000000000).toString();
     return {
-      meetingUrl: `https://zoom.us/j/${meetingId}?pwd=clipkenya_${Math.floor(1000 + Math.random() * 9000)}`,
+      meetingUrl: `https://zoom.us/j/${meetingId}?pwd=clipforge_${Math.floor(1000 + Math.random() * 9000)}`,
       meetingId,
       passcode: '354092',
       provider: 'zoom'

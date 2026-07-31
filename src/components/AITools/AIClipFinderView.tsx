@@ -193,7 +193,7 @@ export const AIClipFinderView: React.FC = () => {
           </div>
 
           <div className="pt-4 border-t border-slate-100 dark:border-slate-700 text-[10px] text-slate-400 flex items-center justify-between mt-4">
-            <span>ClipKenya AI Engine</span>
+            <span>ClipForge AI Engine</span>
             <span>Optimized for TikTok / Shorts / Reels</span>
           </div>
         </div>

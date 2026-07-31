@@ -48,7 +48,7 @@ export const DepositModal: React.FC<Props> = ({ isOpen, onClose, onSuccess }) =>
     if (selectedProvider === 'stripe' || selectedProvider === 'paystack') {
       identifier = cardDetails.number;
     } else if (selectedProvider === 'paypal') {
-      identifier = 'user@clipkenya.co.ke';
+      identifier = 'user@clipforge.co.ke';
     } else if (selectedProvider === 'wise') {
       identifier = 'Equity Bank Wire ACH #0112938475';
     }

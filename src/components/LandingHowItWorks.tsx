@@ -23,7 +23,7 @@ export const LandingHowItWorks: React.FC = () => {
         {
           num: '03',
           title: 'Submit Link & Get Paid via M-Pesa',
-          desc: 'Once approved or view thresholds are hit, escrow funds are instantly released to your ClipKenya M-Pesa Wallet.'
+          desc: 'Once approved or view thresholds are hit, escrow funds are instantly released to your ClipForge M-Pesa Wallet.'
         }
       ]
     },
@@ -102,7 +102,7 @@ export const LandingHowItWorks: React.FC = () => {
         <div className="text-center max-w-2xl mx-auto space-y-3">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-xs font-bold">
             <Sparkles className="w-3 h-3" />
-            <span>How ClipKenya Works</span>
+            <span>How ClipForge Works</span>
           </span>
           <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Designed for Africa’s Next-Gen Creator Economy

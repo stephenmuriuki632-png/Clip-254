@@ -21,7 +21,7 @@ export const LandingNewsletter: React.FC = () => {
         
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold">
           <Mail className="w-3.5 h-3.5" />
-          <span>ClipKenya Creator Dispatch</span>
+          <span>ClipForge Creator Dispatch</span>
         </div>
 
         <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-white tracking-tight">

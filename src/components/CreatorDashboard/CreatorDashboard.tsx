@@ -72,7 +72,7 @@ export const CreatorDashboard: React.FC = () => {
           <div>
             <div className="flex items-center gap-2">
               <h1 className="font-extrabold text-sm text-slate-900 dark:text-white font-heading">
-                ClipKenya Creator Studio
+                ClipForge Creator Studio
               </h1>
               <span className="px-2 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 text-[10px] font-bold uppercase border border-indigo-200/60 dark:border-indigo-800/60">
                 Brand Portal

@@ -14,7 +14,7 @@ export const AboutPage: React.FC = () => {
           Building Africa’s Most Empowering Creator Super Infrastructure
         </h1>
         <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          ClipKenya was founded in Nairobi with a singular mission: to democratize digital income for African video editors, storytellers, UGC creators, and brands through instant mobile payouts and transparent escrow security.
+          ClipForge was founded in Nairobi with a singular mission: to democratize digital income for African video editors, storytellers, UGC creators, and brands through instant mobile payouts and transparent escrow security.
         </p>
       </div>
 

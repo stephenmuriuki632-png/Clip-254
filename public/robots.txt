@@ -4,4 +4,4 @@ Disallow: /api/
 Disallow: /admin
 Disallow: /dashboard
 
-Sitemap: https://clipkenya.com/sitemap.xml
+Sitemap: https://clipforge.com/sitemap.xml

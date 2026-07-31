@@ -109,7 +109,7 @@ export const IntegrationsAndAutomationHub: React.FC = () => {
       userId: 'usr_kenya_88',
       userName: 'Amina Wanjiku',
       phone: '+254712345678',
-      email: 'wanjiku.creator@clipkenya.com',
+      email: 'wanjiku.creator@clipforge.com',
       campaignTitle: 'M-Pesa 10M Viral Clip Challenge'
     });
     setWorkflows(automationEngine.getWorkflows());
@@ -129,7 +129,7 @@ export const IntegrationsAndAutomationHub: React.FC = () => {
         {
           id: 'act_' + Date.now(),
           type: newWorkflowActionType,
-          config: { messageText: 'ClipKenya Automation Alert' }
+          config: { messageText: 'ClipForge Automation Alert' }
         }
       ]
     });
@@ -200,7 +200,7 @@ export const IntegrationsAndAutomationHub: React.FC = () => {
             Integrations & Workflow Hub
           </h1>
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-            Connect ClipKenya with global payment gateways, email/SMS services, cloud video streaming, social networks, and Zapier/Make-style automated workflow triggers.
+            Connect ClipForge with global payment gateways, email/SMS services, cloud video streaming, social networks, and Zapier/Make-style automated workflow triggers.
           </p>
         </div>
       </div>

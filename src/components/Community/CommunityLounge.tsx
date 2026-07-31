@@ -136,7 +136,7 @@ export const CommunityLounge: React.FC = () => {
       mediaType: postMediaUrl ? 'image' : undefined,
       pollOptions: pollOpts,
       pollTotalVotes: isPollPost ? 0 : undefined,
-      tags: ['#ClipKenya', `#${postCategory.replace(/\s+/g, '')}`]
+      tags: ['#ClipForge', `#${postCategory.replace(/\s+/g, '')}`]
     });
 
     setShowCreatePostModal(false);
@@ -159,7 +159,7 @@ export const CommunityLounge: React.FC = () => {
       date: eventDate.replace('T', ' '),
       prizePoolKES: eventPrizePool ? Number(eventPrizePool) : undefined,
       description: eventDescription,
-      meetingLink: eventMeetingLink || 'https://meet.google.com/clipkenya-live',
+      meetingLink: eventMeetingLink || 'https://meet.google.com/clipforge-live',
       bannerImage: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80'
     });
 

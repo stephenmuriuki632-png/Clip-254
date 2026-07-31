@@ -50,7 +50,7 @@ export const SubscriptionPlansView: React.FC<Props> = ({
       <div className="text-center max-w-2xl mx-auto space-y-3">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800 text-xs font-bold uppercase tracking-wider">
           <Crown className="w-3.5 h-3.5" />
-          <span>ClipKenya Membership Plans</span>
+          <span>ClipForge Membership Plans</span>
         </div>
 
         <h3 className="font-heading font-extrabold text-2xl sm:text-4xl text-slate-900 dark:text-white">

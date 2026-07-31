@@ -77,7 +77,7 @@ export const NoNotificationsEmptyState: React.FC = () => (
 export const NoPaymentsEmptyState: React.FC<{ onDeposit?: () => void }> = ({ onDeposit }) => (
   <EmptyState
     title="No Recent Wallet Transactions"
-    description="Top up your ClipKenya wallet via Safaricom M-Pesa or Visa/Mastercard to fund video bounties and hire talent."
+    description="Top up your ClipForge wallet via Safaricom M-Pesa or Visa/Mastercard to fund video bounties and hire talent."
     actionText="Top Up Wallet"
     onAction={onDeposit}
     icon={<Wallet className="w-7 h-7 text-indigo-600 dark:text-indigo-400" />}

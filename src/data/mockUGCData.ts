@@ -371,7 +371,7 @@ export const MOCK_UGC_CAMPAIGNS: UGCCampaignDetail[] = [
     videoDuration: '30-60 seconds',
     targetAudience: 'Africans aged 18-35 shopping online or paying for digital subscriptions.',
     referenceLinks: ['https://tiktok.com/@mpesa_official'],
-    hashtags: ['#MPesaGlobal', '#OnlineShoppingKE', '#ClipKenyaUGC'],
+    hashtags: ['#MPesaGlobal', '#OnlineShoppingKE', '#ClipForgeUGC'],
     keywords: ['M-Pesa Virtual Card', 'Netflix Payment', 'Online Shopping Kenya'],
     usageRightsDuration: '90 Days Digital Paid Ads',
     commercialRightsIncluded: true,

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
-import { Scissors, ShieldCheck, Heart, Twitter, Youtube, Instagram, Linkedin } from 'lucide-react';
+import { ClipForgeLogo } from './Brand/ClipForgeLogo';
+import { ShieldCheck, Heart, Twitter, Youtube, Instagram, Linkedin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const { setActiveTab } = useApp();
@@ -13,16 +14,9 @@ export const Footer: React.FC = () => {
           
           {/* Col 1 */}
           <div className="space-y-3 lg:col-span-2">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold">
-                <Scissors className="w-4 h-4 text-white" />
-              </div>
-              <span className="font-heading font-extrabold text-lg text-slate-900 dark:text-white">
-                Clip<span className="text-indigo-600 dark:text-indigo-400">Kenya</span>
-              </span>
-            </div>
+            <ClipForgeLogo variant="horizontal" size="md" showBadge={true} />
             <p className="text-xs leading-relaxed text-slate-500 dark:text-slate-400 max-w-sm">
-              Africa's Creator Economy Super Platform. Connecting creators, brands, video editors, UGC talent, and influencers with instant M-Pesa payouts.
+              Global Creator Economy Super Platform. Connecting creators, brands, video editors, UGC talent, and agencies with instant M-Pesa & global payouts.
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a href="#" className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-indigo-600 transition-colors"><Twitter className="w-4 h-4" /></a>
@@ -54,6 +48,7 @@ export const Footer: React.FC = () => {
               <li><button onClick={() => setActiveTab('careers')} className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Careers & Hiring</button></li>
               <li><button onClick={() => setActiveTab('blog')} className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Blog & Playbooks</button></li>
               <li><button onClick={() => setActiveTab('help')} className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Help Center</button></li>
+              <li><button onClick={() => setActiveTab('brand-kit')} className="text-indigo-600 dark:text-indigo-400 font-bold hover:underline transition-all">Brand & Logo Kit</button></li>
             </ul>
           </div>
 
@@ -77,7 +72,7 @@ export const Footer: React.FC = () => {
             <span>Escrow Protected Platform • Safaricom M-Pesa Integrated</span>
           </div>
 
-          <p>© 2026 ClipKenya Technologies Ltd. Built for African creators.</p>
+          <p>© 2026 ClipForge Technologies Ltd. Built for African creators.</p>
         </div>
 
       </div>

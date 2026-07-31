@@ -174,7 +174,7 @@ export const AIGrowthToolsView: React.FC<{ initialSubTool?: string }> = ({ initi
           </div>
 
           <div className="pt-4 border-t border-slate-100 dark:border-slate-700 text-[10px] text-slate-400 flex items-center justify-between mt-4">
-            <span>ClipKenya Growth Engine</span>
+            <span>ClipForge Growth Engine</span>
             <span>Strategic Optimization</span>
           </div>
         </div>

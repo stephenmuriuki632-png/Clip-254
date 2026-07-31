@@ -82,11 +82,11 @@ export const MobileUploader: React.FC<MobileUploaderProps> = ({
               submitClip(
                 selectedBountyId,
                 clipTitle || 'Mobile Bounty Clip',
-                'https://tiktok.com/@clipkenya/video/demo'
+                'https://tiktok.com/@clipforge/video/demo'
               );
             }
             if (onUploadComplete) {
-              onUploadComplete('https://tiktok.com/@clipkenya/video/demo', clipTitle);
+              onUploadComplete('https://tiktok.com/@clipforge/video/demo', clipTitle);
             }
             addToast('🎉 Video uploaded & compressed successfully!', 'success');
             return 100;
@@ -276,7 +276,7 @@ export const MobileUploader: React.FC<MobileUploaderProps> = ({
                 {uploadState === 'compressing'
                   ? 'Compressing Video...'
                   : uploadState === 'uploading'
-                  ? 'Uploading Clip to ClipKenya Cloud...'
+                  ? 'Uploading Clip to ClipForge Cloud...'
                   : uploadState === 'paused'
                   ? 'Upload Paused'
                   : 'Upload Complete!'}

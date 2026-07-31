@@ -194,10 +194,10 @@ export const NotificationCentre: React.FC<NotificationCentreProps> = ({ isOpen =
           <div className="p-12 text-center rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-3">
             <Bell className="w-10 h-10 text-slate-300 dark:text-slate-600 mx-auto" />
             <p className="font-heading font-extrabold text-sm text-slate-700 dark:text-slate-300">
-              No notifications found
+              You're all caught up.
             </p>
             <p className="text-xs text-slate-500">
-              You are all caught up! New campaign updates and M-Pesa notifications will appear here in real-time.
+              New campaign updates, M-Pesa escrow transfers, and submission notifications will appear here in real-time.
             </p>
           </div>
         ) : (

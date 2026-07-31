@@ -394,7 +394,7 @@ export const WorkflowBuilderModal: React.FC<WorkflowBuilderModalProps> = ({
                     </div>
                     <select className="w-full p-2 rounded-lg bg-slate-950 border border-slate-800 text-slate-200">
                       <option>Gemini 2.5 Flash (Fastest)</option>
-                      <option>ClipKenya Fine-Tuned AI</option>
+                      <option>ClipForge Fine-Tuned AI</option>
                       <option>DeepSeek R1 Reasoning</option>
                     </select>
                   </div>

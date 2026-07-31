@@ -1,5 +1,5 @@
 /**
- * ClipKenya Communication Adapters
+ * ClipForge Communication Adapters
  * Supports SMS (Africa's Talking, Twilio, Infobip) & Push Notifications (FCM, OneSignal, WebPush)
  */
 

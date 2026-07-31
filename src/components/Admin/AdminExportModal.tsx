@@ -48,7 +48,7 @@ export const AdminExportModal: React.FC<AdminExportModalProps> = ({
       ext = format === 'csv' ? 'csv' : 'xls';
     } else if (format === 'pdf') {
       // Simulated PDF summary export
-      content = `=== CLIPKENYA ENTERPRISE EXPORT REPORT ===\nTitle: ${title}\nExported At: ${new Date().toISOString()}\nTotal Records: ${
+      content = `=== CLIPFORGE ENTERPRISE EXPORT REPORT ===\nTitle: ${title}\nExported At: ${new Date().toISOString()}\nTotal Records: ${
         data.length
       }\n\n${JSON.stringify(data, null, 2)}`;
       mimeType = 'text/plain';

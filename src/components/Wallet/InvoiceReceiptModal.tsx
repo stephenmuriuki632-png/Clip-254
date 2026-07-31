@@ -27,7 +27,7 @@ export const InvoiceReceiptModal: React.FC<Props> = ({ invoice, isOpen, onClose 
   const handleDownloadPDF = () => {
     const content = `
 ==================================================
-CLIPKENYA MEDIA NETWORK - TAX INVOICE / RECEIPT
+CLIPFORGE MEDIA NETWORK - TAX INVOICE / RECEIPT
 Invoice No: ${invoice.invoiceNumber}
 Date: ${invoice.date}
 Status: ${invoice.status.toUpperCase()}
@@ -46,7 +46,7 @@ TOTAL PAID: ${invoice.totalKES} KES
 
 Payment Ref: ${invoice.transactionReference} (${invoice.paymentMethod})
 ==================================================
-Thank you for using ClipKenya Financial Gateway.
+Thank you for using ClipForge Financial Gateway.
 `;
     const blob = new Blob([content], { type: 'text/plain;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
@@ -103,7 +103,7 @@ Thank you for using ClipKenya Financial Gateway.
                   CK
                 </div>
                 <span className="font-heading font-extrabold text-xl text-slate-900">
-                  ClipKenya Technologies Ltd
+                  ClipForge Technologies Ltd
                 </span>
               </div>
               <p className="text-[11px] text-slate-500">
@@ -193,7 +193,7 @@ Thank you for using ClipKenya Financial Gateway.
           <div className="pt-4 border-t border-slate-200 flex items-center justify-between text-[11px] text-slate-500">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-emerald-600" />
-              <span>Official Electronic Tax Invoice Generated via ClipKenya Payment Engine</span>
+              <span>Official Electronic Tax Invoice Generated via ClipForge Payment Engine</span>
             </div>
 
             <div className="flex items-center gap-2 font-mono font-bold">

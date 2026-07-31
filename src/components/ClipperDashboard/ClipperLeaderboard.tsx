@@ -175,7 +175,7 @@ export const ClipperLeaderboard: React.FC = () => {
       <div className="p-6 rounded-3xl bg-gradient-to-r from-amber-500 via-amber-600 to-indigo-700 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider bg-white/20 px-3 py-1 rounded-full text-white">
-            🏆 Official ClipKenya Clipper League
+            🏆 Official ClipForge Clipper League
           </span>
           <h2 className="text-2xl font-black tracking-tight mt-2">
             National Clipper Leaderboard & Badges

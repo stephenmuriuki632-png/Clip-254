@@ -61,7 +61,7 @@ export const PushNotificationManagerModal: React.FC<PushNotificationManagerModal
         // Show test push notification via service worker
         if ('serviceWorker' in navigator) {
           const reg = await navigator.serviceWorker.ready;
-          reg.showNotification('ClipKenya Alerts Enabled! 🔔', {
+          reg.showNotification('ClipForge Alerts Enabled! 🔔', {
             body: 'You will now receive instant M-Pesa payout updates & bounty approval alerts.',
             icon: '/favicon.ico',
             vibrate: [100, 50, 100]

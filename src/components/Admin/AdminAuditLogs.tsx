@@ -86,7 +86,7 @@ export const AdminAuditLogs: React.FC = () => {
         onClose={() => setIsExportOpen(false)}
         title="Audit Logs"
         data={logs}
-        filename="clipkenya_audit_logs"
+        filename="clipforge_audit_logs"
       />
     </div>
   );

@@ -53,7 +53,7 @@ export const RoleManagerModal: React.FC<RoleManagerModalProps> = ({ isOpen, onCl
           <div className="space-y-1">
             <h3 className="font-heading font-extrabold text-lg text-slate-900 dark:text-white flex items-center gap-2">
               <Shield className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
-              <span>ClipKenya Roles & Permissions Hub</span>
+              <span>ClipForge Roles & Permissions Hub</span>
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
               Switch active context or activate additional creator & business roles on your account.

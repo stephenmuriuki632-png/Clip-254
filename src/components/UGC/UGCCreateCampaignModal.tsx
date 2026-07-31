@@ -42,7 +42,7 @@ export const UGCCreateCampaignModal: React.FC<UGCCreateCampaignModalProps> = ({
     platform: 'tiktok' as 'tiktok' | 'youtube' | 'instagram' | 'all',
     category: 'E-Commerce & Electronics',
     referenceLinks: [''],
-    hashtags: ['#BrandName', '#ClipKenyaUGC'],
+    hashtags: ['#BrandName', '#ClipForgeUGC'],
     keywords: ['UGC', 'Review', 'Unboxing'],
     usageRightsDuration: '90 Days Digital Paid Ads',
     commercialRightsIncluded: true

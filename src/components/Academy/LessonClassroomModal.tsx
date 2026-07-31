@@ -222,7 +222,7 @@ export const LessonClassroomModal: React.FC<LessonClassroomModalProps> = ({
             <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-xs text-slate-300 bg-slate-950/60 backdrop-blur-md px-3.5 py-2 rounded-xl">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span className="font-semibold text-white">ClipKenya Player HD</span>
+                <span className="font-semibold text-white">ClipForge Player HD</span>
               </div>
               <div className="flex items-center gap-2">
                 {/* Speed Controls */}

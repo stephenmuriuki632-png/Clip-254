@@ -1,7 +1,7 @@
-# 🏛️ ClipKenya - Enterprise Architecture & System Overview
+# 🏛️ ClipForge - Enterprise Architecture & System Overview
 
 ## 1. System Overview
-ClipKenya is built as a high-performance, full-stack creator platform tailored for the East African creator economy. It features an event-driven architecture, modular AI integrations, instant M-Pesa STK Push payments, escrow transaction engines, visual workflow automation, and progressive offline capabilities.
+ClipForge is built as a high-performance, full-stack creator platform tailored for the East African creator economy. It features an event-driven architecture, modular AI integrations, instant M-Pesa STK Push payments, escrow transaction engines, visual workflow automation, and progressive offline capabilities.
 
 ---
 
@@ -9,7 +9,7 @@ ClipKenya is built as a high-performance, full-stack creator platform tailored f
 
 ```
 +-----------------------------------------------------------------------+
-|                         ClipKenya UI / PWA Layer                      |
+|                         ClipForge UI / PWA Layer                      |
 | (React 18 + TypeScript + Vite + Tailwind CSS + Lucide + PWA Cache)    |
 +-----------------------------------------------------------------------+
                                    |

@@ -86,7 +86,14 @@ export const ClippingMarketplace: React.FC = () => {
 
       {/* Bounties List */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {filteredBounties.map((bounty) => (
+        {filteredBounties.length === 0 ? (
+          <div className="col-span-full p-12 text-center rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-3">
+            <Scissors className="w-10 h-10 text-slate-300 dark:text-slate-600 mx-auto" />
+            <p className="font-heading font-extrabold text-base text-slate-800 dark:text-slate-200">No jobs available</p>
+            <p className="text-xs text-slate-500">Browse available jobs or check back soon for newly posted stream bounties.</p>
+          </div>
+        ) : (
+          filteredBounties.map((bounty) => (
           <div
             key={bounty.id}
             className="rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 overflow-hidden shadow-2xs hover:shadow-md hover:border-slate-300 dark:hover:border-slate-600 transition-all duration-200 flex flex-col justify-between"
@@ -171,7 +178,7 @@ export const ClippingMarketplace: React.FC = () => {
               </button>
             </div>
           </div>
-        ))}
+        )))}
       </div>
 
       {/* Submitted Clips Status Pipeline */}
@@ -184,7 +191,14 @@ export const ClippingMarketplace: React.FC = () => {
         </h3>
 
         <div className="space-y-3">
-          {submissions.map((sub) => (
+          {submissions.length === 0 ? (
+            <div className="p-8 text-center rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-2">
+              <Scissors className="w-8 h-8 text-slate-300 dark:text-slate-600 mx-auto" />
+              <p className="font-heading font-extrabold text-sm text-slate-800 dark:text-slate-200">No submissions yet</p>
+              <p className="text-xs text-slate-500 max-w-md mx-auto">Select an active stream bounty above, edit your viral clip, and submit your URL to earn M-Pesa payouts.</p>
+            </div>
+          ) : (
+            submissions.map((sub) => (
             <div
               key={sub.id}
               className="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-2xs"
@@ -222,7 +236,7 @@ export const ClippingMarketplace: React.FC = () => {
                 </span>
               </div>
             </div>
-          ))}
+          )))}
         </div>
       </div>
 
@@ -280,7 +294,7 @@ export const ClippingMarketplace: React.FC = () => {
               </div>
 
               <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 text-[11px] text-amber-800 dark:text-amber-300 space-y-1">
-                <p className="font-bold">ClipKenya Verification Rules:</p>
+                <p className="font-bold">ClipForge Verification Rules:</p>
                 <p>• Clips are verified automatically by platform metrics or host review.</p>
                 <p>• Earnings release automatically into your M-Pesa wallet as views accumulate.</p>
               </div>

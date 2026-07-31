@@ -55,7 +55,7 @@ export const FeaturesPage: React.FC = () => {
           Everything You Need to Scale Your Digital Content Empire
         </h1>
         <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          ClipKenya combines creator bounties, UGC sourcing, freelance services, AI generation, and escrow wallet security in one unified applet.
+          ClipForge combines creator bounties, UGC sourcing, freelance services, AI generation, and escrow wallet security in one unified applet.
         </p>
       </div>
 

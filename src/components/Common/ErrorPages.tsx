@@ -18,7 +18,7 @@ export const OfflinePage: React.FC = () => {
             You are Offline
           </h2>
           <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-            ClipKenya is saved on your device, but live M-Pesa balances and real-time messaging require an internet connection.
+            ClipForge is saved on your device, but live M-Pesa balances and real-time messaging require an internet connection.
           </p>
         </div>
 
@@ -67,7 +67,7 @@ export const NotFound404Page: React.FC = () => {
           className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md"
         >
           <Home className="w-4 h-4" />
-          <span>Return to ClipKenya Home</span>
+          <span>Return to ClipForge Home</span>
         </button>
       </div>
     </div>
@@ -118,7 +118,7 @@ export const MaintenancePage: React.FC = () => {
             Scheduled Platform Maintenance
           </h2>
           <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-            ClipKenya is undergoing a scheduled upgrade to introduce faster video processing and lower M-Pesa withdrawal fees.
+            ClipForge is undergoing a scheduled upgrade to introduce faster video processing and lower M-Pesa withdrawal fees.
           </p>
         </div>
 

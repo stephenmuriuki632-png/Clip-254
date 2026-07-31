@@ -33,6 +33,7 @@ import { CareersPage } from './components/Pages/CareersPage';
 import { BlogPage } from './components/Pages/BlogPage';
 import { HelpCenterPage } from './components/Pages/HelpCenterPage';
 import { LegalPage } from './components/Pages/LegalPage';
+import { BrandIdentityHub } from './components/Brand/BrandIdentityHub';
 
 import { ProfileModal } from './components/Modals/ProfileModal';
 import { CreateCampaignModal } from './components/Modals/CreateCampaignModal';
@@ -119,6 +120,7 @@ const AppContent: React.FC = () => {
             {activeTab === 'blog' && <BlogPage />}
             {activeTab === 'help' && <HelpCenterPage />}
             {activeTab === 'legal' && <LegalPage />}
+            {activeTab === 'brand-kit' && <BrandIdentityHub />}
           </>
         )}
       </main>

@@ -255,7 +255,7 @@ export const AIContentToolsView: React.FC<{ initialSubTool?: string }> = ({ init
           </div>
 
           <div className="pt-4 border-t border-slate-100 dark:border-slate-700 text-[10px] text-slate-400 flex items-center justify-between mt-4">
-            <span>ClipKenya Content AI</span>
+            <span>ClipForge Content AI</span>
             <span>Target: {platform}</span>
           </div>
         </div>

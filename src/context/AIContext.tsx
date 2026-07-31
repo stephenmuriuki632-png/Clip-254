@@ -104,32 +104,32 @@ export const AIProviderComponent: React.FC<{ children: React.ReactNode }> = ({ c
   const [activeTab, setActiveTab] = useState<string>('dashboard');
   const [selectedProvider, setSelectedProvider] = useState<AIProvider>('gemini');
   const [settings, setSettings] = useState<AISettingsPreferences>(() => {
-    const saved = localStorage.getItem('clipkenya_ai_settings');
+    const saved = localStorage.getItem('clipforge_ai_settings');
     return saved ? JSON.parse(saved) : DEFAULT_SETTINGS;
   });
 
   const [usageStats, setUsageStats] = useState<AIUsageStats>(() => {
-    const saved = localStorage.getItem('clipkenya_ai_usage');
+    const saved = localStorage.getItem('clipforge_ai_usage');
     return saved ? JSON.parse(saved) : DEFAULT_USAGE_STATS;
   });
 
   const [history, setHistory] = useState<AIGeneratedItem[]>(() => {
-    const saved = localStorage.getItem('clipkenya_ai_history');
+    const saved = localStorage.getItem('clipforge_ai_history');
     return saved ? JSON.parse(saved) : INITIAL_HISTORY;
   });
 
   const [auditLogs, setAuditLogs] = useState<AIAuditLog[]>([]);
 
   useEffect(() => {
-    localStorage.setItem('clipkenya_ai_settings', JSON.stringify(settings));
+    localStorage.setItem('clipforge_ai_settings', JSON.stringify(settings));
   }, [settings]);
 
   useEffect(() => {
-    localStorage.setItem('clipkenya_ai_usage', JSON.stringify(usageStats));
+    localStorage.setItem('clipforge_ai_usage', JSON.stringify(usageStats));
   }, [usageStats]);
 
   useEffect(() => {
-    localStorage.setItem('clipkenya_ai_history', JSON.stringify(history));
+    localStorage.setItem('clipforge_ai_history', JSON.stringify(history));
   }, [history]);
 
   useEffect(() => {

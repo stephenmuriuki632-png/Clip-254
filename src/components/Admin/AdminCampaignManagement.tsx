@@ -226,7 +226,7 @@ export const AdminCampaignManagement: React.FC = () => {
         onClose={() => setIsExportOpen(false)}
         title="Campaigns"
         data={campaigns}
-        filename="clipkenya_campaigns"
+        filename="clipforge_campaigns"
       />
     </div>
   );

@@ -1,5 +1,5 @@
 /**
- * ClipKenya Enterprise Security & Audit Logging Library
+ * ClipForge Enterprise Security & Audit Logging Library
  */
 
 export interface AuditLogEntry {
@@ -14,7 +14,7 @@ export interface AuditLogEntry {
   status: 'SUCCESS' | 'WARNING' | 'FAILED';
 }
 
-const AUDIT_LOGS_KEY = 'clipkenya_audit_logs';
+const AUDIT_LOGS_KEY = 'clipforge_audit_logs';
 
 export const SecurityAudit = {
   // Sanitize user inputs against XSS and HTML injection
@@ -84,13 +84,13 @@ export const SecurityAudit = {
     const token = Array.from(crypto.getRandomValues(new Uint8Array(24)))
       .map((b) => b.toString(16).padStart(2, '0'))
       .join('');
-    sessionStorage.setItem('clipkenya_csrf_token', token);
+    sessionStorage.setItem('clipforge_csrf_token', token);
     return token;
   },
 
   // Validate CSRF Token
   validateCSRFToken: (providedToken: string): boolean => {
-    const storedToken = sessionStorage.getItem('clipkenya_csrf_token');
+    const storedToken = sessionStorage.getItem('clipforge_csrf_token');
     return Boolean(storedToken && storedToken === providedToken);
   }
 };

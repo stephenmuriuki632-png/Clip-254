@@ -1,5 +1,5 @@
 /**
- * ClipKenya Social Media & Analytics Adapters
+ * ClipForge Social Media & Analytics Adapters
  * Supports Social Connections: TikTok, YouTube, Instagram, Facebook, Twitter/X, Twitch, Kick, LinkedIn
  * Supports Analytics & Search: GA4, PostHog, Mixpanel, Sentry, Algolia, Meilisearch
  */
@@ -45,12 +45,12 @@ export const SocialMediaManager = {
     },
     {
       platform: 'instagram',
-      handle: '@clipkenya_official',
+      handle: '@clipforge_official',
       followerCount: 112000,
       totalViewsLast30Days: 920000,
       verified: false,
       avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80',
-      profileUrl: 'https://instagram.com/clipkenya_official'
+      profileUrl: 'https://instagram.com/clipforge_official'
     }
   ],
 

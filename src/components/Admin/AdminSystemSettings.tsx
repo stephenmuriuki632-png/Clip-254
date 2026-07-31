@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Settings, Save, CheckCircle, Shield, DollarSign, Globe, Sliders, Bell } from 'lucide-react';
 
 export const AdminSystemSettings: React.FC = () => {
-  const [platformName, setPlatformName] = useState('ClipKenya');
+  const [platformName, setPlatformName] = useState('ClipForge');
   const [currency, setCurrency] = useState('KES');
   const [platformFee, setPlatformFee] = useState('10');
   const [taxRate, setTaxRate] = useState('16');

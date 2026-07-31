@@ -87,7 +87,7 @@ export const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
       setPaymentProcessing(false);
       setPaymentModalOpen(false);
       onEnrollCourse(course, 'wallet');
-      addToast(`✅ Enrolled using ClipKenya Wallet balance!`, 'success');
+      addToast(`✅ Enrolled using ClipForge Wallet balance!`, 'success');
       onOpenClassroom(course);
       onClose();
     }, 1200);
@@ -281,7 +281,7 @@ export const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
                   </div>
                   <div className="space-y-1 text-center sm:text-left flex-1">
                     <h4 className="text-sm font-bold text-white font-heading">
-                      Official ClipKenya Verified Creator Certificate
+                      Official ClipForge Verified Creator Certificate
                     </h4>
                     <p className="text-xs text-slate-300">
                       Complete all module lessons and quizzes to earn a shareable, verified badge for your LinkedIn and portfolio.
@@ -573,7 +573,7 @@ export const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
                 disabled={paymentProcessing}
                 className="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-semibold text-xs flex items-center justify-center gap-2 transition-colors"
               >
-                <span>Pay from ClipKenya Wallet Balance</span>
+                <span>Pay from ClipForge Wallet Balance</span>
               </button>
             </div>
           </div>

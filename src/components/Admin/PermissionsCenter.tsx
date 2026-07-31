@@ -76,7 +76,7 @@ export const PermissionsCenter: React.FC = () => {
               Role-Based Access Control (RBAC) System
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              Overview of all 8 system roles and their assigned default permissions across ClipKenya modules.
+              Overview of all 8 system roles and their assigned default permissions across ClipForge modules.
             </p>
           </div>
 
@@ -199,7 +199,7 @@ export const PermissionsCenter: React.FC = () => {
               <div>
                 <h3 className="text-xs font-bold text-indigo-400 uppercase tracking-wider flex items-center gap-1.5">
                   <Database className="w-4 h-4" />
-                  <span>ClipKenya Supabase PostgreSQL Database (27 Tables)</span>
+                  <span>ClipForge Supabase PostgreSQL Database (27 Tables)</span>
                 </h3>
                 <p className="text-xs text-slate-400 mt-0.5">
                   Production-grade database schema with Row Level Security (RLS), UUID primary keys, cascading deletes, triggers, and automated indexes.

@@ -37,7 +37,7 @@ export const ReferralDashboard: React.FC<Props> = ({ referralData, onClaimCommis
           <div className="lg:col-span-7 space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 text-xs font-bold uppercase tracking-wider">
               <Gift className="w-3.5 h-3.5" />
-              <span>ClipKenya Ambassador Program</span>
+              <span>ClipForge Ambassador Program</span>
             </div>
 
             <h3 className="font-heading font-extrabold text-2xl sm:text-3xl text-white">
@@ -47,7 +47,7 @@ export const ReferralDashboard: React.FC<Props> = ({ referralData, onClaimCommis
 
             <p className="text-xs text-slate-300 max-w-xl">
               Share your custom referral link with clip editors, live streamers, UGC talent, or business owners.
-              Earn 5% on all earnings and campaign budgets they process on ClipKenya.
+              Earn 5% on all earnings and campaign budgets they process on ClipForge.
             </p>
           </div>
 

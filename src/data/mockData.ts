@@ -23,7 +23,7 @@ export const CURRENT_USER: UserProfile = {
   primaryRole: 'creator',
   additionalRoles: ['editor', 'freelancer', 'ugc', 'brand', 'agency', 'clipper'],
   activeRole: 'creator',
-  email: 'maina@clipkenya.africa',
+  email: 'maina@clipforge.africa',
   avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
   coverImage: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
   bio: 'Digital Creator & Video Editor in Nairobi, Kenya. Ready to launch campaigns & clip viral videos.',
@@ -57,7 +57,7 @@ export const MOCK_CREATORS: UserProfile[] = [
     name: 'Wanjiku Njuguna',
     handle: '@wanjiku_edits',
     role: 'editor',
-    email: 'wanjiku@clipkenya.africa',
+    email: 'wanjiku@clipforge.africa',
     avatar: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80',
     bio: 'Lead Premiere & DaVinci Video Editor in Kenya. I edit long-form podcasts into viral TikTok/Shorts clips with motion graphics and dynamic captions.',
     location: 'Nairobi, Kenya',
@@ -85,7 +85,7 @@ export const MOCK_CREATORS: UserProfile[] = [
     name: 'Amina Abdi',
     handle: '@amina_ugc_ke',
     role: 'ugc',
-    email: 'amina@clipkenya.africa',
+    email: 'amina@clipforge.africa',
     avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=300&q=80',
     bio: 'UGC Content Creator in East Africa. Authentic, relatable aesthetic videos for skincare, fashion, hospitality, and fintech brands.',
     location: 'Mombasa, Kenya',
@@ -112,7 +112,7 @@ export const MOCK_CREATORS: UserProfile[] = [
     name: 'Kipchumba "Kip" Chebet',
     handle: '@kip_sports_pod',
     role: 'creator',
-    email: 'kip@clipkenya.africa',
+    email: 'kip@clipforge.africa',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
     bio: 'Host of #1 African Athletics & Fitness Podcast. Looking for video editors to turn 2-hour episodes into viral clips!',
     location: 'Eldoret, Kenya',
@@ -139,7 +139,7 @@ export const MOCK_CREATORS: UserProfile[] = [
     name: 'Olumide "Olu" Adeleke',
     handle: '@olu_fx_editor',
     role: 'freelancer',
-    email: 'olu@clipkenya.africa',
+    email: 'olu@clipforge.africa',
     avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80',
     bio: 'Visual Effects & Motion Graphics Artist serving clients across Lagos, Nairobi, and London. Specialist in 3D product renders & YouTube thumbnails.',
     location: 'Lagos, Nigeria',
@@ -178,13 +178,13 @@ export const MOCK_BOUNTIES: ClipBounty[] = [
     rules: [
       'Clip duration: 30s to 75s (Vertical 9:16 format)',
       'Include auto-captions with highlighted active words',
-      'Must tag @kip_sports_pod and use hashtag #ClipKenyaPod',
+      'Must tag @kip_sports_pod and use hashtag #ClipForgePod',
       'No copyrighted music without fair use transformation'
     ],
     submissionsCount: 24,
     status: 'active',
     deadline: '2026-08-15',
-    viralTags: ['#AfricanTech', '#ClipKenya', '#FutureOfWork', '#KenyaCreator'],
+    viralTags: ['#AfricanTech', '#ClipForge', '#FutureOfWork', '#KenyaCreator'],
     description: 'Cut out the most controversial and high-energy 60 seconds where we discuss starting a tech business in Nairobi vs Lagos.'
   },
   {
@@ -384,7 +384,7 @@ export const MOCK_COURSES: AcademyCourse[] = [
     studentsCount: 1420,
     priceKES: 0, // Free course
     description: 'Learn how to generate $1,000+ per month through video clipping bounties, UGC brand deals, and M-Pesa direct monetization.',
-    topics: ['Finding High-Paying Bounties', 'Hook Science for TikTok FYP', 'Pitching Brands via ClipKenya', 'M-Pesa Escrow Payouts']
+    topics: ['Finding High-Paying Bounties', 'Hook Science for TikTok FYP', 'Pitching Brands via ClipForge', 'M-Pesa Escrow Payouts']
   },
   {
     id: 'course_002',
@@ -428,7 +428,7 @@ export const MOCK_POSTS: CommunityPost[] = [
     authorAvatar: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80',
     authorRole: 'Master Editor',
     title: '📢 Looking for a Swahili Voiceover Creator for a 10-clip Fintech series!',
-    content: 'Hey ClipKenya fam! I just landed a 10-clip bounty project for an international fintech app expanding in East Africa. Need a confident voiceover artist with a warm Nairobi accent. Budget is 15,000 KES. Drop your portfolio links below!',
+    content: 'Hey ClipForge fam! I just landed a 10-clip bounty project for an international fintech app expanding in East Africa. Need a confident voiceover artist with a warm Nairobi accent. Budget is 15,000 KES. Drop your portfolio links below!',
     category: 'Collab',
     likesCount: 24,
     commentsCount: 12,
@@ -503,7 +503,7 @@ export const MOCK_COMMUNITY_EVENTS: CommunityEvent[] = [
     id: 'evt_001',
     title: 'Nairobi Creator Hackathon: Build 10 Viral Short Clips in 3 Hours',
     type: 'Hackathon',
-    hostName: 'ClipKenya Official & Safaricom',
+    hostName: 'ClipForge Official & Safaricom',
     hostAvatar: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=300&q=80',
     date: '2026-08-10',
     time: '18:00 EAT',
@@ -528,7 +528,7 @@ export const MOCK_COMMUNITY_EVENTS: CommunityEvent[] = [
     description: 'Learn exact rate cards, pitch emails, contract templates, and how to negotiate 50,000+ KES per UGC campaign.',
     attendeesCount: 520,
     isAttending: false,
-    locationOrUrl: 'ClipKenya Academy Live Studio'
+    locationOrUrl: 'ClipForge Academy Live Studio'
   }
 ];
 

@@ -1,5 +1,5 @@
 -- ====================================================================
--- CLIPKENYA SUPABASE DATABASE ARCHITECTURE & SCHEMAS
+-- CLIPFORGE SUPABASE DATABASE ARCHITECTURE & SCHEMAS
 -- Production-grade PostgreSQL Schema with RLS, Triggers, Views & Indexes
 -- ====================================================================
 

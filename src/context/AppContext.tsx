@@ -408,7 +408,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
     const newNotif: NotificationItem = {
       id: 'notif_' + Date.now(),
-      title: '🚀 Campaign Live on ClipKenya!',
+      title: '🚀 Campaign Live on ClipForge!',
       message: `Your campaign "${campaign.title}" is now active with a budget of ${campaign.budgetKES.toLocaleString()} KES.`,
       type: 'success',
       read: false,
@@ -599,7 +599,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       reference: 'ESC' + Math.floor(Math.random() * 1000000),
       timestamp: new Date().toISOString().replace('T', ' ').substring(0, 16),
       description: `Escrow Held: Order for "${gig.title}"`,
-      recipientOrSource: `ClipKenya Escrow Protection (${gig.freelancerName})`
+      recipientOrSource: `ClipForge Escrow Protection (${gig.freelancerName})`
     };
 
     setTransactions(prev => [newTx, ...prev]);
@@ -607,7 +607,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     const newNotif: NotificationItem = {
       id: 'notif_' + Date.now(),
       title: '🔒 Order Placed & Escrow Protected!',
-      message: `${gig.startingPriceKES.toLocaleString()} KES locked safely in ClipKenya Escrow for ${gig.freelancerName}.`,
+      message: `${gig.startingPriceKES.toLocaleString()} KES locked safely in ClipForge Escrow for ${gig.freelancerName}.`,
       type: 'success',
       read: false,
       timestamp: 'Just now'

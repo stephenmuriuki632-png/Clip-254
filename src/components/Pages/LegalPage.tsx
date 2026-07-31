@@ -13,7 +13,7 @@ export const LegalPage: React.FC<{ defaultTab?: 'privacy' | 'terms' | 'cookies' 
           Trust & Legal Center
         </h1>
         <p className="text-xs text-slate-500 dark:text-slate-400">
-          Last updated: July 28, 2026 • ClipKenya Technologies Ltd.
+          Last updated: July 28, 2026 • ClipForge Technologies Ltd.
         </p>
       </div>
 
@@ -32,7 +32,7 @@ export const LegalPage: React.FC<{ defaultTab?: 'privacy' | 'terms' | 'cookies' 
         {activeTab === 'privacy' && (
           <div className="space-y-4">
             <h2 className="font-heading font-bold text-base text-slate-900 dark:text-white">1. Information We Collect</h2>
-            <p>ClipKenya collects profile information (name, avatar, social handles), payout credentials (Safaricom M-Pesa phone number, bank details), and uploaded campaign media to provide escrow marketplace services.</p>
+            <p>ClipForge collects profile information (name, avatar, social handles), payout credentials (Safaricom M-Pesa phone number, bank details), and uploaded campaign media to provide escrow marketplace services.</p>
             <h2 className="font-heading font-bold text-base text-slate-900 dark:text-white">2. How We Protect Your Data</h2>
             <p>All sensitive payment credentials are encrypted using AES-256 and communicated securely over HTTPS to financial gateways including Safaricom Daraja API.</p>
           </div>
@@ -43,7 +43,7 @@ export const LegalPage: React.FC<{ defaultTab?: 'privacy' | 'terms' | 'cookies' 
             <h2 className="font-heading font-bold text-base text-slate-900 dark:text-white">1. Creator & Clipper Licensing</h2>
             <p>By posting video campaign source files, creators grant participating clippers a limited commercial license to repurpose content for campaign submission and viral distribution.</p>
             <h2 className="font-heading font-bold text-base text-slate-900 dark:text-white">2. Escrow & Disbursal Conditions</h2>
-            <p>Funds deposited for bounties or UGC briefs remain held in ClipKenya Escrow until submission approval or automated 72-hour review expiry.</p>
+            <p>Funds deposited for bounties or UGC briefs remain held in ClipForge Escrow until submission approval or automated 72-hour review expiry.</p>
           </div>
         )}
 

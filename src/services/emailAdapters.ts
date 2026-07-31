@@ -1,5 +1,5 @@
 /**
- * ClipKenya Enterprise Email Adapters & Template Generator
+ * ClipForge Enterprise Email Adapters & Template Generator
  * Supports: Resend, SendGrid, Mailgun, AWS SES, and Custom SMTP
  */
 
@@ -126,10 +126,10 @@ export class AwsSesEmailAdapter implements IEmailAdapter {
  */
 export const EmailTemplateGenerator = {
   generateWelcomeEmail: (userName: string): { subject: string; html: string } => ({
-    subject: `Welcome to ClipKenya, ${userName}! 🚀 Start Clipping & Earning`,
+    subject: `Welcome to ClipForge, ${userName}! 🚀 Start Clipping & Earning`,
     html: `
       <div style="font-family: Arial, sans-serif; background-color: #0f172a; color: #f8fafc; padding: 32px; border-radius: 16px;">
-        <h1 style="color: #6366f1;">Welcome to ClipKenya, ${userName}!</h1>
+        <h1 style="color: #6366f1;">Welcome to ClipForge, ${userName}!</h1>
         <p>Africa's #1 marketplace for short-form video clipping bounties, UGC campaigns, and M-Pesa creator settlements.</p>
         <div style="background-color: #1e293b; padding: 20px; border-radius: 12px; margin: 20px 0;">
           <h3>Quick Next Steps:</h3>
@@ -139,7 +139,7 @@ export const EmailTemplateGenerator = {
             <li>Use the <strong>AI Hook & Script Generator</strong> to boost views</li>
           </ul>
         </div>
-        <a href="https://clipkenya.com" style="background-color: #4f46e5; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: bold;">Launch ClipKenya App</a>
+        <a href="https://clipforge.com" style="background-color: #4f46e5; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: bold;">Launch ClipForge App</a>
       </div>
     `
   }),
@@ -150,8 +150,8 @@ export const EmailTemplateGenerator = {
       <div style="font-family: Arial, sans-serif; background-color: #0f172a; color: #f8fafc; padding: 32px; border-radius: 16px;">
         <h2 style="color: #10b981;">Your UGC Campaign Submission Has Been Approved!</h2>
         <p>Great work! <strong>${brandName}</strong> approved your submission for <strong>${campaignTitle}</strong>.</p>
-        <p>Your escrow payout has been credited directly to your ClipKenya M-Pesa Wallet.</p>
-        <a href="https://clipkenya.com/?tab=wallet" style="background-color: #10b981; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: bold;">Check M-Pesa Wallet Balance</a>
+        <p>Your escrow payout has been credited directly to your ClipForge M-Pesa Wallet.</p>
+        <a href="https://clipforge.com/?tab=wallet" style="background-color: #10b981; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: bold;">Check M-Pesa Wallet Balance</a>
       </div>
     `
   }),

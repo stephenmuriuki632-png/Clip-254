@@ -98,7 +98,7 @@ const InnerAIToolsSuite: React.FC = () => {
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-xl sm:text-2xl font-extrabold font-heading text-slate-900 dark:text-white">
-                  ClipKenya AI Suite
+                  ClipForge AI Suite
                 </h1>
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
                   v3.6 Production

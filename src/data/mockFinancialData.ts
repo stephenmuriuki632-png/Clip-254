@@ -81,9 +81,9 @@ export const MOCK_PAYMENT_METHODS: PaymentMethod[] = [
     userId: 'usr_current',
     provider: 'paypal',
     label: 'Personal PayPal Account',
-    accountIdentifier: 'user***@clipkenya.co.ke',
+    accountIdentifier: 'user***@clipforge.co.ke',
     isDefault: false,
-    details: { paypalEmail: 'user@clipkenya.co.ke' }
+    details: { paypalEmail: 'user@clipforge.co.ke' }
   }
 ];
 
@@ -205,7 +205,7 @@ export const MOCK_WITHDRAWAL_REQUESTS: WithdrawalRequest[] = [
 
 export const MOCK_REFERRAL_DATA: ReferralDashboardData = {
   referralCode: 'CLIP-ALEX-2025',
-  referralLink: 'https://clipkenya.co.ke/signup?ref=CLIP-ALEX-2025',
+  referralLink: 'https://clipforge.co.ke/signup?ref=CLIP-ALEX-2025',
   totalReferrals: 14,
   activeReferrals: 9,
   totalCommissionsKES: 28400,
@@ -378,7 +378,7 @@ export const MOCK_INVOICES: Invoice[] = [
     invoiceNumber: 'INV-CK-2025-0089',
     userId: 'usr_current',
     customerName: 'Alex K. Media Services',
-    customerEmail: 'alex@clipkenya.co.ke',
+    customerEmail: 'alex@clipforge.co.ke',
     customerAddress: 'Westlands Commercial Center, Nairobi, Kenya',
     kraPin: 'P051987654Z',
     date: '2025-05-18',
@@ -399,7 +399,7 @@ export const MOCK_INVOICES: Invoice[] = [
     invoiceNumber: 'INV-CK-2025-0074',
     userId: 'usr_current',
     customerName: 'Alex K. Media Services',
-    customerEmail: 'alex@clipkenya.co.ke',
+    customerEmail: 'alex@clipforge.co.ke',
     kraPin: 'P051987654Z',
     date: '2025-04-18',
     dueDate: '2025-04-18',

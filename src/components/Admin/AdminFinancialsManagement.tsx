@@ -40,7 +40,7 @@ export const AdminFinancialsManagement: React.FC = () => {
   };
 
   const handleGenerateReceipt = (w: typeof withdrawalsList[0]) => {
-    const receiptContent = `=== CLIPKENYA M-PESA B2C TRANSACTION RECEIPT ===\nReceipt No: REC-${w.id.toUpperCase()}\nUser: ${w.user}\nPhone: ${w.phone}\nAmount: KES ${w.amountKES.toLocaleString()}\nDate: ${w.date}\nStatus: ${w.status}\nIssuer: Safaricom M-Pesa Daraja B2C Gateway`;
+    const receiptContent = `=== CLIPFORGE M-PESA B2C TRANSACTION RECEIPT ===\nReceipt No: REC-${w.id.toUpperCase()}\nUser: ${w.user}\nPhone: ${w.phone}\nAmount: KES ${w.amountKES.toLocaleString()}\nDate: ${w.date}\nStatus: ${w.status}\nIssuer: Safaricom M-Pesa Daraja B2C Gateway`;
     const blob = new Blob([receiptContent], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -229,7 +229,7 @@ export const AdminFinancialsManagement: React.FC = () => {
         onClose={() => setIsExportOpen(false)}
         title="Financial Transactions"
         data={transactions}
-        filename="clipkenya_financial_ledger"
+        filename="clipforge_financial_ledger"
       />
     </div>
   );

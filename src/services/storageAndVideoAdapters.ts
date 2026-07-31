@@ -1,5 +1,5 @@
 /**
- * ClipKenya Storage & Video Processing Adapters
+ * ClipForge Storage & Video Processing Adapters
  * Supports Storage: Supabase Storage, AWS S3, Cloudflare R2, Google Drive
  * Supports Video: Cloudinary, Mux, Vimeo
  */
@@ -49,7 +49,7 @@ export class SupabaseStorageAdapter {
     await new Promise((r) => setTimeout(r, 450));
     const cleanName = req.fileName.replace(/[^a-zA-Z0-9.-]/g, '_');
     const path = `uploads/${Date.now()}_${cleanName}`;
-    const publicUrl = `https://supabase.clipkenya.com/storage/v1/object/public/clips/${path}`;
+    const publicUrl = `https://supabase.clipforge.com/storage/v1/object/public/clips/${path}`;
 
     return {
       success: true,
@@ -74,12 +74,12 @@ export class AwsS3StorageAdapter {
 
   async uploadFile(req: FileUploadRequest): Promise<FileUploadResponse> {
     await new Promise((r) => setTimeout(r, 500));
-    const path = `s3-clipkenya-bucket/${Date.now()}_${req.fileName}`;
+    const path = `s3-clipforge-bucket/${Date.now()}_${req.fileName}`;
     return {
       success: true,
       fileUrl: `https://${path}`,
       storagePath: path,
-      cdnUrl: `https://cdn.clipkenya.com/${path}`,
+      cdnUrl: `https://cdn.clipforge.com/${path}`,
       provider: 's3'
     };
   }

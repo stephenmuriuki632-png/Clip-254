@@ -63,7 +63,7 @@ export const InstructorStudioModal: React.FC<InstructorStudioModalProps> = ({
     };
 
     onPublishCourse(newCourse);
-    addToast('🎉 Masterclass published to ClipKenya Academy!', 'success');
+    addToast('🎉 Masterclass published to ClipForge Academy!', 'success');
     onClose();
   };
 
@@ -78,7 +78,7 @@ export const InstructorStudioModal: React.FC<InstructorStudioModalProps> = ({
               Creator Studio
             </span>
             <h3 className="text-xl font-heading font-extrabold text-slate-900 dark:text-white">
-              ClipKenya Academy Instructor Hub
+              ClipForge Academy Instructor Hub
             </h3>
           </div>
           <button
@@ -291,7 +291,7 @@ export const InstructorStudioModal: React.FC<InstructorStudioModalProps> = ({
                 className="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 transition-all"
               >
                 <Sparkles className="w-4 h-4" />
-                <span>Publish Masterclass to ClipKenya</span>
+                <span>Publish Masterclass to ClipForge</span>
               </button>
             </form>
           )}

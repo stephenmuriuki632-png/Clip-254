@@ -41,7 +41,7 @@ export const MaintenanceMode: React.FC = () => (
     </div>
     <h1 className="font-heading text-2xl font-bold text-slate-900 dark:text-white">Scheduled Infrastructure Upgrade</h1>
     <p className="text-xs text-slate-500 leading-relaxed">
-      ClipKenya is upgrading M-Pesa STK Push nodes. All active escrow balances and campaign submissions are 100% safe. Back online shortly!
+      ClipForge is upgrading M-Pesa STK Push nodes. All active escrow balances and campaign submissions are 100% safe. Back online shortly!
     </p>
   </div>
 );

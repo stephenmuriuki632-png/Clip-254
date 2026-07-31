@@ -32,7 +32,7 @@ export function usePwaInstall() {
       setIsInstalled(true);
       setCanInstall(false);
       setDeferredPrompt(null);
-      console.log('[PWA] ClipKenya app installed successfully');
+      console.log('[PWA] ClipForge app installed successfully');
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);

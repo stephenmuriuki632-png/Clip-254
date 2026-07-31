@@ -1,5 +1,5 @@
 -- ====================================================================
--- CLIPKENYA SUPABASE STORAGE BUCKET CONFIGURATION & POLICIES
+-- CLIPFORGE SUPABASE STORAGE BUCKET CONFIGURATION & POLICIES
 -- ====================================================================
 
 -- 1. Create Storage Buckets

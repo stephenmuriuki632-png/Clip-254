@@ -57,7 +57,7 @@ export const AdminOverview: React.FC<AdminOverviewProps> = ({ onNavigateTab }) =
               </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold font-heading text-white tracking-tight">
-              ClipKenya Governance & Executive Control Center
+              ClipForge Governance & Executive Control Center
             </h1>
             <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
               Real-time platform metrics, automated M-Pesa escrow reconciliation, identity verification queues, and system audit monitoring.

@@ -1,12 +1,12 @@
-# 🚀 ClipKenya Production Deployment Guide
+# 🚀 ClipForge Production Deployment Guide
 
-This guide provides step-by-step instructions for building, testing, and deploying ClipKenya to production environments like **Vercel**, **Google Cloud Run**, or **Docker/Nginx**.
+This guide provides step-by-step instructions for building, testing, and deploying ClipForge to production environments like **Vercel**, **Google Cloud Run**, or **Docker/Nginx**.
 
 ---
 
 ## 📦 Build Process
 
-To compile ClipKenya for production:
+To compile ClipForge for production:
 
 ```bash
 # 1. Run type checks and linter

@@ -56,7 +56,7 @@ export const AIDashboardView: React.FC = () => {
               <span>Active Provider: {settings.provider.toUpperCase()} (Gemini 3.6 Flash Engine)</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold font-heading text-white tracking-tight">
-              ClipKenya AI Creator Suite 🚀
+              ClipForge AI Creator Suite 🚀
             </h1>
             <p className="text-sm text-slate-300 leading-relaxed">
               Supercharge your short-form video workflow with 20+ specialized AI tools designed for African creators, clippers, UGC strategists, and brands.

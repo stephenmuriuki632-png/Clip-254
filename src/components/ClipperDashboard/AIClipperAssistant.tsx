@@ -41,11 +41,11 @@ export const AIClipperAssistant: React.FC = () => {
         );
       } else if (activeTool === 'caption') {
         setOutput(
-          `Testing the $150 wireless mic right in the middle of Nairobi street noise! 🎤🔥 The noise cancellation left me speechles... Would you buy this? Drop your thoughts below! 👇\n\n#ClipKenya #TechTok #KenyaTech #NairobiEdits #CapCut`
+          `Testing the $150 wireless mic right in the middle of Nairobi street noise! 🎤🔥 The noise cancellation left me speechles... Would you buy this? Drop your thoughts below! 👇\n\n#ClipForge #TechTok #KenyaTech #NairobiEdits #CapCut`
         );
       } else if (activeTool === 'hashtag') {
         setOutput(
-          `#ClipKenya #TechTok #KenyaTech #NairobiEdits #CapCutViral #ContentCreatorKE #AfricanTech #ShortsTrends #ViralKe #GadgetUnboxing`
+          `#ClipForge #TechTok #KenyaTech #NairobiEdits #CapCutViral #ContentCreatorKE #AfricanTech #ShortsTrends #ViralKe #GadgetUnboxing`
         );
       } else if (activeTool === 'hook') {
         setOutput(

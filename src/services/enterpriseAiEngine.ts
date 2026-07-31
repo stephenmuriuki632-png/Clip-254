@@ -1,5 +1,5 @@
 /**
- * ClipKenya Enterprise AI Automation & Smart Workflow Engine
+ * ClipForge Enterprise AI Automation & Smart Workflow Engine
  * Powers Visual Node Workflows, AI Credits, Predictive Analytics, Badges & Recommendations
  */
 
@@ -45,7 +45,7 @@ export interface AiPromptHistoryItem {
   id: string;
   prompt: string;
   toolType: 'HOOK_WRITER' | 'SCRIPT_GEN' | 'HASHTAGS' | 'PROPOSAL_GEN' | 'CAMPAIGN_BRIEF' | 'BIO_WRITER';
-  provider: 'Gemini 2.5 Flash' | 'ClipKenya AI Fine-Tuned' | 'DeepSeek R1';
+  provider: 'Gemini 2.5 Flash' | 'ClipForge AI Fine-Tuned' | 'DeepSeek R1';
   output: string;
   isFavorite: boolean;
   timestamp: string;
@@ -80,9 +80,9 @@ export interface BadgeAward {
   category: 'VIRAL' | 'EARNINGS' | 'ACADEMY' | 'TRUST';
 }
 
-const AI_CREDITS_KEY = 'clipkenya_ai_credits';
-const AI_HISTORY_KEY = 'clipkenya_ai_history';
-const VISUAL_WORKFLOWS_KEY = 'clipkenya_visual_workflows';
+const AI_CREDITS_KEY = 'clipforge_ai_credits';
+const AI_HISTORY_KEY = 'clipforge_ai_history';
+const VISUAL_WORKFLOWS_KEY = 'clipforge_visual_workflows';
 
 export const DefaultWorkflowTemplates: VisualWorkflow[] = [
   {
@@ -342,7 +342,7 @@ export class EnterpriseAiEngine {
         id: 'badge_2',
         badgeName: 'Top M-Pesa Earner',
         iconName: 'Wallet',
-        description: 'Earned over KES 50,000 in creator payouts on ClipKenya.',
+        description: 'Earned over KES 50,000 in creator payouts on ClipForge.',
         earnedAt: '2026-02-01',
         category: 'EARNINGS'
       },
@@ -358,7 +358,7 @@ export class EnterpriseAiEngine {
         id: 'badge_4',
         badgeName: 'Academy Certified Master',
         iconName: 'GraduationCap',
-        description: 'Graduated from ClipKenya Viral Short Form Masterclass.',
+        description: 'Graduated from ClipForge Viral Short Form Masterclass.',
         earnedAt: '2026-02-14',
         category: 'ACADEMY'
       }

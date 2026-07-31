@@ -17,11 +17,11 @@ import {
 export const AIIntelligenceView: React.FC<{ initialSubTool?: string }> = ({ initialSubTool = 'chat_assistant' }) => {
   const { generateContent } = useAISuite();
   const [activeSubTool, setActiveSubTool] = useState<string>(initialSubTool);
-  const [prompt, setPrompt] = useState('How do I pricing my video clips for a 50,000 KES brand campaign on ClipKenya?');
+  const [prompt, setPrompt] = useState('How do I pricing my video clips for a 50,000 KES brand campaign on ClipForge?');
   
   // Interactive Chat State
   const [chatMessages, setChatMessages] = useState<{ role: 'user' | 'assistant'; text: string }[]>([
-    { role: 'assistant', text: 'Jambo! 👋 I am your ClipKenya AI Strategy Assistant. Ask me anything about campaign briefs, M-Pesa escrow payments, video editing tips, Sheng caption localization, or creator growth!' }
+    { role: 'assistant', text: 'Jambo! 👋 I am your ClipForge AI Strategy Assistant. Ask me anything about campaign briefs, M-Pesa escrow payments, video editing tips, Sheng caption localization, or creator growth!' }
   ]);
   const [chatInput, setChatInput] = useState('');
 
@@ -125,7 +125,7 @@ export const AIIntelligenceView: React.FC<{ initialSubTool?: string }> = ({ init
                 <Bot className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h3 className="font-bold text-sm text-white">ClipKenya Built-in AI Assistant</h3>
+                <h3 className="font-bold text-sm text-white">ClipForge Built-in AI Assistant</h3>
                 <p className="text-[10px] text-slate-300">Powered by Gemini 3.6 Flash • Real-time Platform Guidance</p>
               </div>
             </div>
@@ -281,7 +281,7 @@ export const AIIntelligenceView: React.FC<{ initialSubTool?: string }> = ({ init
             </div>
 
             <div className="pt-4 border-t border-slate-100 dark:border-slate-700 text-[10px] text-slate-400 flex items-center justify-between mt-4">
-              <span>ClipKenya Global Search & Intelligence</span>
+              <span>ClipForge Global Search & Intelligence</span>
               <span>Natural Language AI</span>
             </div>
           </div>

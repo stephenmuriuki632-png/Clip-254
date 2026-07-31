@@ -478,7 +478,7 @@ export function canAccessTab(
   * Supabase Row Level Security SQL Generator Script
   */
 export const SUPABASE_RLS_SQL_SCRIPT = `-- ===============================================================
--- CLIPKENYA SUPABASE ROW LEVEL SECURITY (RLS) POLICIES
+-- CLIPFORGE SUPABASE ROW LEVEL SECURITY (RLS) POLICIES
 -- Generated for PostgreSQL / Supabase Database Security
 -- ===============================================================
 

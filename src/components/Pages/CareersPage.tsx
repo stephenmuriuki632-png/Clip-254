@@ -35,7 +35,7 @@ export const CareersPage: React.FC = () => {
   return (
     <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-10">
       <div className="text-center space-y-3">
-        <Badge variant="blue" size="lg">Join ClipKenya</Badge>
+        <Badge variant="blue" size="lg">Join ClipForge</Badge>
         <h1 className="font-heading text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
           Help Us Empower 1 Million African Creators
         </h1>

@@ -256,7 +256,7 @@ export const CampaignDetailsModal: React.FC<CampaignDetailsModalProps> = ({
                   Required Hashtags & Niche Keywords
                 </h3>
                 <div className="flex flex-wrap gap-1.5">
-                  {(campaign.hashtags || ['#ClipKenya', '#TechTok', '#NairobiEdits', '#ViralKe', '#CapCutTrend']).map((tag, i) => (
+                  {(campaign.hashtags || ['#ClipForge', '#TechTok', '#NairobiEdits', '#ViralKe', '#CapCutTrend']).map((tag, i) => (
                     <span key={i} className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-900">
                       {tag}
                     </span>
@@ -416,7 +416,7 @@ export const CampaignDetailsModal: React.FC<CampaignDetailsModalProps> = ({
               <div className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40">
                 <h4 className="text-xs font-bold text-slate-900 dark:text-white">How fast will my clip be reviewed?</h4>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                  Brands review submissions within 24 to 48 hours. Once approved, the payout is automatically released to your ClipKenya Wallet.
+                  Brands review submissions within 24 to 48 hours. Once approved, the payout is automatically released to your ClipForge Wallet.
                 </p>
               </div>
               <div className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40">

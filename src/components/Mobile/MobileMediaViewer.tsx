@@ -66,7 +66,7 @@ export const MobileMediaViewer: React.FC<MobileMediaViewerProps> = ({
       try {
         await navigator.share({
           title: currentItem.title,
-          text: currentItem.description || 'Check out this clip on ClipKenya!',
+          text: currentItem.description || 'Check out this clip on ClipForge!',
           url: currentItem.url
         });
         addToast('Shared successfully!', 'success');

@@ -46,7 +46,7 @@ export const CampaignFormModal: React.FC<CampaignFormModalProps> = ({ campaign, 
   const [targetAudience, setTargetAudience] = useState(campaign?.targetAudience || 'Youth, Gen-Z, Tech Enthusiasts in Kenya');
   const [platform, setPlatform] = useState<'tiktok' | 'youtube' | 'instagram' | 'all'>(campaign?.platform || 'tiktok');
   
-  const [hashtagsStr, setHashtagsStr] = useState(campaign?.hashtags?.join(', ') || '#ClipKenya, #KenyaCreators, #ViralClips');
+  const [hashtagsStr, setHashtagsStr] = useState(campaign?.hashtags?.join(', ') || '#ClipForge, #KenyaCreators, #ViralClips');
   const [keywordsStr, setKeywordsStr] = useState(campaign?.keywords?.join(', ') || 'funny, gaming, reaction, podcast');
   const [refLinkInput, setRefLinkInput] = useState('');
   const [referenceLinks, setReferenceLinks] = useState<string[]>(campaign?.referenceLinks || []);
@@ -98,7 +98,7 @@ export const CampaignFormModal: React.FC<CampaignFormModalProps> = ({ campaign, 
     const payload = {
       title,
       description,
-      brandName: currentUser.name || 'ClipKenya Partner',
+      brandName: currentUser.name || 'ClipForge Partner',
       brandLogo: currentUser.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
       brandId: currentUser.id,
       budgetKES,
@@ -379,7 +379,7 @@ export const CampaignFormModal: React.FC<CampaignFormModalProps> = ({ campaign, 
                   type="text"
                   value={hashtagsStr}
                   onChange={(e) => setHashtagsStr(e.target.value)}
-                  placeholder="#ClipKenya, #NairobiGaming, #ViralClips"
+                  placeholder="#ClipForge, #NairobiGaming, #ViralClips"
                   className="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white"
                 />
               </div>

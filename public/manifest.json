@@ -1,7 +1,7 @@
 {
-  "short_name": "ClipKenya",
-  "name": "ClipKenya - Creator Economy Super Platform",
-  "description": "Africa's #1 marketplace for short-form video clipping bounties, UGC campaigns, brand sponsorships, and creator tools.",
+  "short_name": "ClipForge",
+  "name": "ClipForge - Creator Economy Super Platform",
+  "description": "Global marketplace for short-form video clipping bounties, UGC campaigns, brand sponsorships, and creator tools.",
   "icons": [
     {
       "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%234f46e5'><rect width='512' height='512' rx='128' fill='%234f46e5'/><path d='M180 140l180 116-180 116V140z' fill='%23f59e0b'/><path d='M340 140l32 32-132 132-32-32L340 140z' fill='%23ffffff'/></svg>",
